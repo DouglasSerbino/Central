@@ -1,0 +1,48 @@
+#cargando{
+	position: absolute;
+	top: 100px;
+	margin-left: 149px;
+	padding: 47px 112px 47px 112px;
+}
+.calendario_usuario{
+	position: absolute;
+	top: 150px;
+	width: 624px;
+	margin-left: 200px;
+	padding: 5px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+.dia_vacio{
+	width: 89px;
+	float: left;
+}
+.dia_lleno{
+	width: 87px;
+	float: left;
+	border: 1px solid #eeeeee;
+}
+.media_info{
+	background: #f4f4f4;
+}
+#porcentaje_extra{
+	position: absolute;
+	top: 170px;
+	width: 500px;
+	margin-left: 250px;
+	padding: 10px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#porcentaje_extra strong{
+	letter-spacing: 1px;
+}
+.verde1{
+	color: #189308;
+}
+.amarillo1{
+	color: #bbb100;
+}
+.rojo1{
+	color: #bb0000;
+}

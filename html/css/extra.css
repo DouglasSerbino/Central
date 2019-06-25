@@ -1,0 +1,90 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	-webkit-print-color-adjust: exact;
+}
+body{
+	font-family: Verdana;
+	font-size: 12px;
+	line-height: 18px;
+}
+#contenedor-pagina{
+	width: 800px;
+	margin: auto;
+}
+#encabezado{
+	text-align: right;
+}
+#titulo{
+	font-size: 14px;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+}
+#titulo div{
+	color: #000000;
+	background: #fff;
+	font-size: 12px;
+}
+#contenido{
+	text-align: left;
+}
+
+a{
+	color: #000000;
+	text-decoration: none;
+}
+a:hover{
+	color: #777777;
+	text-decoration: underline;
+}
+.total{
+	text-align: right;
+}
+legend{
+	font-weight: bold;
+}
+.tabla_centro{
+	margin: auto;
+}
+.tabla_centro td{
+	padding: 5px 10px;
+}
+.tabla_mini{
+	width: 55%;
+}
+#atencion_div{
+	position: absolute;
+	top: 100px;
+	margin-left: 150px;
+	background: #ffffff;
+	border: 2px solid #000000;
+	padding: 10px 20px;
+}
+.tabla_100{
+	width: 100%;
+}
+.scantidad, .sdescripcion, .seliminar, .scantidad2, .sdescripcion2{
+	float: left;
+	height: 20px;
+	overflow: hidden;
+}
+.scantidad{
+	width: 75px;
+}
+.sdescripcion{
+	width: 302px;
+}
+.seliminar{
+	width: 15px;
+}
+.scantidad2{
+	text-align: right;
+	width: 30px;
+}
+.sdescripcion2{
+	width: 232px;
+}
+.con_margen{
+	margin-top: 7px;
+	margin-bottom: 7px;
+}

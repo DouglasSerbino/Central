@@ -1,0 +1,168 @@
+#observacion{
+	width: 462px;
+	padding: 3px 0px;
+	position: absolute;
+	background: #ffffff;
+	border: 3px solid #BC8A1A;
+}
+.tabla_pedido td{
+	padding: 2px 20px;
+}
+#scaneos{
+	width: 462px;
+	padding: 3px 0px;
+	position: absolute;
+	background: #ffffff;
+	border: 3px solid #BC8A1A;
+}
+#modificar_mp{
+	width: 462px;
+	height: 187px;
+	position: absolute;
+	color: #eeeeee;
+	background: url(../img/estilo1/mensaje.png);
+}
+.caja_sb{
+	border: none;
+	background: #000000;
+	color:#eeeeee;
+	text-align: center;
+}
+#ver_horas{
+	border: 2px solid #999999;
+	background: #fbf9ee;
+	width: 545px;
+	text-align: left;
+	padding: 5px;
+	height: 300px;
+	overflow: hidden;
+	position: absolute;
+	margin-left: 150px;
+}
+#ver_horas_det{
+	position: absolute;
+	width: 520px;
+}
+.flechas{
+	float: right;
+	margin-right: 2px;
+}
+.hoja_dia{
+	background: url(../img/estilo1/cuaderno_rayado.png);
+	height: 76px;
+	clear: both;
+}
+.hoja_dia span{
+	float: left;
+	margin-left: 0px;
+}
+.ui-state-trabajo{
+	border: 1px solid #fbf9ee;
+	background: #979bab;/* url(../../css/images/ui-bg_highlight-hard_f1f3fc_1x100.png) 50% top repeat-x;*/
+	color: #fefefe;
+	padding: 0 0.7em;
+	line-height: 10px;
+	font-size: 11px;
+	width: 225px;
+	position: absolute;
+}
+.ui-state-trabajo a{
+	color: #cccccc;
+}
+.div_horas{
+	border: 1px solid #67745F;
+	background: #96AB8B;
+	color: #F5F5F5;
+	position: absolute;
+	margin-top: -50px;
+}
+.div_usu{
+	border: 1px solid #7F6261;
+	background: #AB8684;
+	color: #F5F5F5;
+	position: absolute;
+	margin-top: 240px;
+	margin-left: 20px;
+}
+.fecha_entrega_real{
+	border: 1px solid #66516B;
+	background: #8C6F94;
+	color: #F5F5F5;
+	font-size: 10px;
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 710px;
+	font-size: 10px;
+}
+
+.fecha_real_entrega{
+	border: 1px solid #66516B;
+	background: #8C6F94;
+	color: #F5F5F5;
+	font-size: 10px;
+}
+#arc_adjuntos{
+	position: absolute;
+	width: 332px;
+	padding: 10px;
+	margin-left: 150px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#cerrar_adj{
+	position: absolute;
+	margin-left: 300px;
+	margin-top: -5px;
+}
+#lista-filtros{
+	position: absolute;
+	top: 165px;
+	margin-left: 130px;
+	padding: 5px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#nuevo_proc, #mayor_proc, #proceso_proc{
+	position: absolute;
+	top: 187px;
+	margin-left: 480px;
+	width: 290px;
+}
+#buscar-producto{
+	position: absolute;
+	padding: 15px;
+	margin-left: 50px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#cerrar_bus{
+	position: absolute;
+	margin-left: 500px;
+	margin-top: -14px;
+}
+#rechazar-ingreso{
+	position: absolute;
+	padding: 15px;
+	margin-left: 150px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#cerrar_recin{
+	position: absolute;
+	margin-left: 500px;
+	margin-top: -14px;
+}
+.div-info-plani{
+	float: left;
+	width: 254px;
+}
+#resucitar{
+	width: 350px;
+	padding: 3px 15px;
+	position: absolute;
+	background: #ffffff;
+	border: 3px solid #BC8A1A;
+	top: 250px;
+	margin-left: 300px;
+	text-align: left;
+}

@@ -1,0 +1,142 @@
+#contenedor{
+	border-top: 4px solid #232830;
+}
+[class*=MID_] span{
+	background-image: url(/html/img/icon_menu2.jpg);
+}
+#menu-lateral{
+	display:none;
+}
+#cont-pagina{
+	width: 100%;
+}
+.encabezado{
+	font-size: 20px;
+	color: #e8e8e8;
+	background: #303641;
+	border-bottom: 4px solid #232830;
+}
+#nombre_usuario a{
+	color: #e8e8e8;
+}
+#navegacion a{
+	color: #303641;
+}
+
+
+#menu-conta{
+	float:left;
+	width: 220px;
+	color: #e8e8e8;
+	margin-top: -22px;
+	margin-right: 20px;
+	padding: 7px 10px;
+	background: #303641;
+}
+#menu-conta strong{
+	font-size: 17px;
+}
+#menu-conta li{
+	padding: 2px 3px;
+}
+#menu-conta a, #menu-conta li a{
+	color: #e8e8e8;
+}
+#contenido-conta{
+	float:left;
+	width: 860px;
+	margin-top: -22px;
+}
+.conta_subtitulo{
+	display: block;
+	font-size: 25px;
+}
+.sin_facturar{
+	background: #0085c1;
+	box-shadow: 0 10px 6px -6px #549DBC;
+}
+.sin_quedan{
+	background: #004993;
+	box-shadow: 0 10px 6px -6px #446B93;
+}
+.sin_pago{
+	background: #ef4131;
+	box-shadow: 0 10px 6px -6px #EA7C72;
+}
+.pagado{
+	background: #007d35;
+	box-shadow: 0 10px 6px -6px #1E7F46;
+}
+
+.sin_facturar, .sin_quedan, .sin_pago, .pagado{
+	width: 200px;
+	height: 130px;
+	color: #eaeaea;
+	font-size: 15px;
+	margin: 0px 5px;
+	overflow: hidden;
+	font-weight: bold;
+	border-radius: 7px;
+	vertical-align: top;
+	display: inline-block;
+}
+.conta_total{
+	color: #fafafa;
+	display: block;
+	font-size: 40px;
+	padding: 17px 15px 12px;
+}
+.sin_facturar .conta_total{
+	background: #004A6B;
+}
+.sin_quedan .conta_total{
+	background: #00274F;
+}
+.sin_pago .conta_total{
+	background: #9E0D00;
+}
+.pagado .conta_total{
+	background: #00441C;
+}
+
+.conta_leyenda{
+	padding: 0px 15px;
+}
+.conta_valor{
+	display: block;
+	font-size: 12px;
+	padding: 0px 15px;
+}
+.conta_enlace{
+	display: block;
+	color: #222222;
+	text-align: right;
+	padding: 0px 15px;
+	background: #dddddd;
+}
+
+#conta_facturar, #conta_quedan{
+	display: none;
+	padding: 5px 15px;
+	background: #eeeeee;
+}
+
+
+.cont_grafico{
+	display: inline-block;
+	width: 420px;
+	text-align: center;
+	overflow: hidden;
+ }
+.conta_grafico{
+	margin-top: -50px;
+	width: 420px;
+	height: 250px;
+}
+.cont_graf_leyenda{
+	font-size: 20px;
+}
+
+
+
+

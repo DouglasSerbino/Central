@@ -1,0 +1,38 @@
+#opciones-herr, #area-trabajo-herr{
+	float: left;
+}
+#opciones-herr{
+	width: 245px;
+	margin-right: 5px;
+}
+#opciones-herr dl, #opciones-herr dt, #opciones-herr ul, #opciones-herr li{
+	margin: 0px;
+	padding: 0px;
+}
+#opciones-herr dd{
+	margin: 0px 20px;
+	padding: 0px;
+}
+#area-trabajo-herr{
+	width: 515px;
+}
+#area-trabajo-herr div{
+	display: none;
+}
+#area-trabajo-herr a{
+	font-weight: bold;
+}
+#haps-informacion_sap{
+	position: absolute;
+	border: 1px solid #000000;
+	background: #ffffff;
+	width: 495px;
+	top: 195px;
+	margin-left: 245px;
+	padding: 5px;
+}
+.hae-tercera{
+	float: left;
+	padding: 0px 10px;
+	border: 1px solid #777777;
+}

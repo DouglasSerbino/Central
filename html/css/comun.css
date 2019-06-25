@@ -1,0 +1,77 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: Verdana, Arial;
+	color: #555658;
+	font-size: 12px;
+	line-height: 22px;
+	text-align: center;
+	background: #ffffff;
+}
+textarea, input, select {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #000000;
+	margin: 2px;
+}
+table{
+	border: 0px;
+	text-align: left;
+	border-collapse : collapse;
+}
+caption{
+	text-align: left;
+	font-weight: bold;
+}
+td, th{
+	vertical-align: top;
+	padding: 0px 10px 0px 10px;
+}
+
+#contenedor-pagina{
+	width: 950px;
+	margin: auto;
+}
+.selec{
+	background: #e2e9ee;
+}
+.desel{
+	background: #ffffff;
+}
+.tabla_i th{
+	color: #394843;
+	padding: 0px 8px;
+}
+.tabla_i td{
+	border: 1px dotted #CCCCCC;
+	padding: 0px 8px;
+}
+.tabla_100 th{
+	color: #394843;
+	padding: 0px 8px;
+}
+.tabla_100 td{
+	padding: 0px 10px;
+	margin: 0px 10px;
+}
+.tabla_iderecha{
+	text-align: right;
+}
+.tabla_iderecha th{
+	color: #394843;
+	padding: 0px 8px;
+}
+.tabla_iderecha td{
+	border: 1px dotted #CCCCCC;
+	padding: 0px 15px;
+}
+.informacion_chica{
+	width: 95%;
+	margin: auto;
+	background: url(/html/img/nt.png) repeat;
+	margin: 1em auto;
+}

@@ -1,0 +1,20 @@
+#div_ver_cliente{
+	position: absolute;
+	margin-left: 400px;
+	padding: 10px 30px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#formfac_div{
+	position: absolute;
+	margin-left: 200px;
+	padding: 10px 30px;
+	background: #ffffff;
+	border: 1px solid #f8c773;
+}
+#codigo_sap_fac{
+	background: #dcdcde;
+	border: none;
+	font-weight: bold;
+	font-size: 12px;
+}

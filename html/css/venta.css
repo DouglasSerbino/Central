@@ -1,0 +1,31 @@
+.listado_ventas tr{
+	height: 22px;
+}
+.listado_ventas td, .listado_ventas th{
+	padding: 0px;
+}
+.caja_pequena{
+	/*float: left;*/
+	width: 100px;
+	font-size: 12px;
+	text-align: right;
+}
+.caja_grande{
+	/*clear: both;
+	float: left;*/
+	width: 250px;
+	font-size: 12px;
+}
+#movible{
+	position: absolute;
+	background: #ffffff;
+}
+#contenedor-pagina2{
+	position: absolute;
+	margin-left: 160px;
+	text-align: left;
+}
+.contiene_cliente{
+	/*height: 22px;*/
+	/*clear: both;*/
+}

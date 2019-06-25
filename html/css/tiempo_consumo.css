@@ -1,0 +1,31 @@
+.puesto, .fecha, .inicio, .fin, .horas, .turno{
+	padding: 0px 3px;
+}
+.puesto{
+	width: 125px;
+}
+.fecha{
+	width: 150px;
+}
+.inicio, .fin, .horas, .turno{
+	width: 75px;
+}
+table{
+	margin-left: 25px;
+	border-collapse: collapse;
+}
+td, th{
+	border: 1px solid #000000;
+}
+.codigo_mat, .nombre_mat, .cantidad_mat{
+	padding: 0px 3px;
+}
+.codigo_mat{
+	width: 90px;
+}
+.nombre_mat{
+	width: 350px;
+}
+.cantidad_mat{
+	width: 75px;
+}

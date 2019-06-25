@@ -1,0 +1,28 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	-webkit-print-color-adjust: exact;
+}
+body{
+	font-family: Verdana;
+	font-size: 12px;
+	line-height: 18px;
+}
+#contenedor-pagina{
+	width: 1000px;
+	margin: auto;
+}
+
+.titulo{
+	font-size: 20px;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+	color: #ffffff;
+}
+.titulo div{
+	color: #000000;
+	font-size: 25px;
+}
+#contenido{
+	text-align: left;
+}
