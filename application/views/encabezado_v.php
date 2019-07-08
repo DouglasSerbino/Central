@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="/html/js/acciones.js?n=1"></script>
 	<link rel="stylesheet" href="/html/css/estilo.003.css?v=010" />
 	<link rel="stylesheet" href="/html/css/jquery-ui-1.8.17.css" />
+	<link rel="stylesheet" type="text/css" href="/html/css/bootstrap.min.css" />
 	<?php
 
 	if(3 == $this->session->userdata('id_usuario') || 'central.com' == $_SERVER['SERVER_NAME'])
