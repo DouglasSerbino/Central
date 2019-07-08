@@ -18,7 +18,7 @@
 		<br />
 		
 		<table>
-<?
+<?php
 $Contador = 0;
 
 if(isset($Rech_Razones))
@@ -29,21 +29,21 @@ foreach($Rech_Razones as $Razon)
 	{
 ?>
 			<tr>
-<?
+<?php
 	}
 ?>
 				<td>
 					<input type="checkbox" name="rz_<?=$Razon['id_rechazo_razones']?>" id="rz_<?=$Razon['id_rechazo_razones']?>" />
 					<label for="rz_<?=$Razon['id_rechazo_razones']?>"><?=$Razon['rechazo_razon']?></label>
 				</td>
-<?
+<?php
 	$Contador++;
 	if(3 == $Contador)
 	{
 		$Contador = 0;
 ?>
 			</tr>
-<?
+<?php
 	}
 }
 }

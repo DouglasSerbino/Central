@@ -5,13 +5,13 @@
 	<th>Proceso</th>
 	<th>Fecha Finalizado</th>
  </tr>
-<?
+<?php
 $i = 1;
 foreach($pedidos_sap as $Informacion)
 {
 ?>
  <tr>
-	<td colspan='3'><strong><?=$Informacion['nombre_cli']?> - <?=count($Informacion['inform'])?></strong></td>
+	<td colspan='3'><strong><?=$Informacion['nombre_cli']?> - <?php=count($Informacion['inform'])?></strong></td>
  </tr>
 <?php
  foreach($Informacion['inform'] as $Datos)
@@ -25,7 +25,7 @@ foreach($pedidos_sap as $Informacion)
 		<span>Detalle del Pedido</span></a>&nbsp;<?=$Datos['proceso']?> -  <?=$Datos['nombre']?></td>
 	<td style='width: 31%;'><?=$this->fechas_m->fecha_ymd_dmy($Datos['fecha_reale'])?></td>
  </tr>
-<?
+<?php
 	$i++;
  }
 ?>

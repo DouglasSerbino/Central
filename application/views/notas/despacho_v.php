@@ -17,7 +17,7 @@
 	</form>
 	
 
-<?
+<?php
 //Verificamos si hay informacion del cliente ingresado.
 if($id_cliente != "")
 {
@@ -41,14 +41,14 @@ foreach($clientes as $Datos_cliente)
 ?>
 			</strong>
 	<form name="miform" action="/notas/nota_envio" method="post">
-		<input type="hidden" name="id_cliente" value="<? echo $id_cliente; ?>" />
+		<input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" />
 		
 		<table class="tabular">
 			<tr>
 				<th>Proceso</th>
 				<th>&nbsp;&nbsp;&nbsp;Producto</th>
 			</tr>
-<?
+<?php
 		//Definimos las variables.
 		$contador = 0;
 		$i = 0;
@@ -83,10 +83,10 @@ foreach($clientes as $Datos_cliente)
 ?>
 		</table>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="boton" value="Generar Nota" />
-		<input type="hidden" name="cajas" value="<? echo $i; ?>" />
+		<input type="hidden" name="cajas" value="<?php echo $i; ?>" />
 	</form>
 	(*) Ya fue creada una nota de envio para este pedido. Click para ver hoja completa.
-<?
+<?php
 	}
 }
 ?>

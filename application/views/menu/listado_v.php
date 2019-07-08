@@ -1,5 +1,5 @@
 
-<?
+<?php
 
 foreach($Menu as $Id_Menu => $Principal)
 {
@@ -16,14 +16,14 @@ foreach($Menu as $Id_Menu => $Principal)
 		<th style="width:300px;"><?=$Principal['etiqueta']?></th>
 		<td style="width:300px;"><?=$Principal['enlace']?></td>
 		<td>
-<?
+<?php
 	/****************************/
 	if('listado' == $Pagina)
 	{//Este es el default, muestra el listados de los menus al acceder desde el menu :)
 ?>
 			<a href="/menu/modificar/index/<?=$Id_Menu?>" class="iconos ieditar toolder"><span>Modificar Men&uacute;</span></a>
 			<a href="/menu/activar_desactivar/<?=$Direccion?>/<?=$Id_Menu?>"<?=$Opcion_icono?></a>
-<?
+<?php
 	}
 	
 	/****************************/
@@ -54,13 +54,13 @@ foreach($Menu as $Id_Menu => $Principal)
 			{//Si este menu ya fue asignado al usuario, muestro opcion para deshabilitar
 ?>
 			<a name="<?=$Id_Menu?>" href="/usuarios/modificar/desactivar_menu/<?=$Id_Usuario?>/<?=$Id_Menu?>" class="iconos ieliminar toolder"><span>Desactivar Me&uacute;</span></a>
-<?
+<?php
 			}
 			else
 			{//Si este menu no esta asignado al usuario, muestro opcion para habilitar
 ?>
 			<a name="<?=$Id_Menu?>" href="/usuarios/modificar/activar_menu/<?=$Id_Usuario?>/<?=$Id_Menu?>" class="iconos ireactivar toolder"><span>Reactivar Me&uacute;</span></a>
-<?
+<?php
 			}
 		}
 		else
@@ -72,7 +72,7 @@ foreach($Menu as $Id_Menu => $Principal)
 ?>
 		</td>
 	</tr>
-<?
+<?php
 	foreach($Principal['submenu'] as $Id_sMenu => $SubMenu)
 	{
 		$Direccion = 'desactivar';
@@ -87,14 +87,14 @@ foreach($Menu as $Id_Menu => $Principal)
 		<td><?=$SubMenu['etiqueta']?></td>
 		<td><?=$SubMenu['enlace']?></td>
 		<td>
-<?
+<?php
 		/****************************/
 		if('listado' == $Pagina)
 		{//Este es el default, muestra el listados de los menus al acceder desde el menu :)
 ?>
 			<a href="/menu/modificar/index/<?=$Id_sMenu?>" class="iconos ieditar toolder"><span>Modificar Me&uacute;</span></a>
 			<a href="/menu/activar_desactivar/<?=$Direccion?>/<?=$Id_sMenu?>"<?=$Opcion_icono?></a>
-<?
+<?php
 		}
 		
 		/****************************/
@@ -125,13 +125,13 @@ foreach($Menu as $Id_Menu => $Principal)
 				{//Si este menu ya fue asignado al usuario, muestro opcion para deshabilitar
 ?>
 			<a name="<?=$Id_sMenu?>" href="/usuarios/modificar/desactivar_menu/<?=$Id_Usuario?>/<?=$Id_sMenu?>" class="iconos ieliminar toolder"><span>Desactivar Me&uacute;</span></a>
-<?
+<?php
 				}
 				else
 				{//Si este menu no esta asignado al usuario, muestro opcion para habilitar
 ?>
 			<a name="<?=$Id_sMenu?>" href="/usuarios/modificar/activar_menu/<?=$Id_Usuario?>/<?=$Id_sMenu?>" class="iconos ireactivar toolder"><span>Reactivar Me&uacute;</span></a>
-<?
+<?php
 				}
 			}
 			else
@@ -142,11 +142,11 @@ foreach($Menu as $Id_Menu => $Principal)
 ?>
 		</td>
 	</tr>
-<?
+<?php
 	}
 ?>
 </table>
 <br />
-<?
+<?php
 }
 ?>

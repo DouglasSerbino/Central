@@ -24,12 +24,12 @@
 			<td>
 				<select name="cliente">
 					<option value="--">No Asignar</option>
-<?
+<?php
 foreach($Clientes as $Cliente)
 {
 ?>
 					<option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Grupos['id_cliente'])?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
-<?
+<?php
 }
 ?>
 				</select>

@@ -17,7 +17,7 @@ if('' != $cod_cliente)
 	
 	<div class="informacion_cont">
 		Hojas coincidentes:<br />
-<?
+<?php
 foreach($informacion_procesos as $Datos)
 {
 ?>

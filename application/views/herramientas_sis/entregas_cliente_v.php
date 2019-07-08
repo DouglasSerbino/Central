@@ -1,12 +1,12 @@
 <form method='post' action='/herramientas_sis/entregas_cliente/index'>
 	Codigo de Cliente<input type='text' name='cod_cliente' style='width: 45px;' value='<?=$Cliente?>'>
 	<select name="mes" id='mes'>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 ?>
 		<option value="<?=$iMes?>"<?=($Mes==$iMes)?' selected="selected"':''; ?>><?=$nMes?></option>
-<?
+<?php
 }
 ?>
 	</select>

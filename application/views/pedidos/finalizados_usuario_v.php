@@ -11,7 +11,7 @@
 		<th style="width: 170px;">Fecha Fin</th>
 		<th>Material Solicitado</th>
 	</tr>
-<?
+<?php
 
 //print_r($Listado_Pedidos);
 
@@ -27,7 +27,7 @@ if(0 < count($Listado_Pedidos))
 		<td><?=date(('d-m-Y H:i:s'), strtotime($Pedido['fecha_fin']))?></td>
 		<td><?=$Pedido['producto']?></td>
 	</tr>
-<?
+<?php
 	}
 }
 ?>

@@ -11,13 +11,13 @@
 
 <strong>A&ntilde;o</strong>
 <select id="mc_anho_cambia">
-<?
+<?php
 $Fecha_Fin = date('Y') + 2;
 for($i = 2015; $i <= $Fecha_Fin; $i++)
 {
 ?>
 	<option value="<?=$i?>"<?=($i==$Anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+<?php
 }
 ?>
 </select>
@@ -36,23 +36,23 @@ for($i = 2015; $i <= $Fecha_Fin; $i++)
 		<table style="width:100%;">
 			<tr>
 				<th>L&iacute;nea</th>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 				<th style="width:6%;"><?=$nMes?></th>
-<?
+<?php
 }
 ?>
 			</tr>
 			<tr>
 				<td id="mc_nomb_line"></td>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 				<td><input type="text" name="mc_pres_<?=$iMes?>" id="mc_pres_<?=$iMes?>" /></td>
-<?
+<?php
 }
 ?>
 			</tr>
@@ -72,16 +72,16 @@ foreach($Meses_v as $iMes => $nMes)
 <table id="mc_linea_presupuesto" class="tabular" style="width: 100%;">
 	<tr>
 		<th>L&iacute;nea</th>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 		<th style="width:6%;"><?=$nMes?></th>
-<?
+<?php
 }
 ?>
 	</tr>
-<?
+<?php
 recorrer_lineas($Lineas[0], 0, $Lineas, $Meses_v, $Presupuesto);
 
 function recorrer_lineas(
@@ -124,7 +124,7 @@ function recorrer_lineas(
 			
 			<input type="hidden" id="lin_<?=$Id_Mc_Linea?>" value="<?=$Datos['codigo'].' - '.$Datos['linea']?>" />
 		</td>
-<?
+<?php
 			foreach($Meses_v as $iMes => $nMes)
 			{
 				$Presu_Mes_Linea = 0;
@@ -134,11 +134,11 @@ function recorrer_lineas(
 				}
 ?>
 		<td class="derecha">$<?=number_format($Presu_Mes_Linea, 0)?><input type="hidden" id="pres_<?=$Id_Mc_Linea?>_<?=$iMes?>" value="<?=$Presu_Mes_Linea?>" /></td>
-<?
+<?php
 			}
 ?>
 	</tr>
-<?
+<?php
 		}
 		
 	}

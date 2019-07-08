@@ -32,7 +32,7 @@ foreach($Mostrar_Proveedor as $Datos_proveedor)
 		<td>
 		 <select name="cod_plancha">
 		  <option value=''>-- Seleccione --</option>
-<?
+<?php
 foreach($tipo_planchas as $Datos_planchas)
 {
 ?>

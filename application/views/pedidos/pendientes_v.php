@@ -46,7 +46,7 @@ else
 		<th style="width: 90px;">Entrega</th>
 		<th style="width: 120px;">Producto</th>
 	</tr>
-<?
+<?php
 foreach($Pedidos as $Id_Pedido => $Pedido)
 {
 	
@@ -102,14 +102,14 @@ foreach($Pedidos as $Id_Pedido => $Pedido)
 	}
 ?>
 		</td>
-		<td><?
+		<td><?php
 if('Agregado' != $Pedido['estado'])
 {
-?><a href="/pedidos/detalle_activo/index/<?=$Id_Pedido?>"><?=$Pedido['codigo_cliente']?>-<?=$Pedido['proceso']?></a><?
+?><a href="/pedidos/detalle_activo/index/<?=$Id_Pedido?>"><?=$Pedido['codigo_cliente']?>-<?=$Pedido['proceso']?></a><?php
 }
 else
 {
-?><a href="/pedidos/pedido_detalle/index/<?=$Id_Pedido?>"><?=$Pedido['codigo_cliente']?>-<?=$Pedido['proceso']?></a><?
+?><a href="/pedidos/pedido_detalle/index/<?=$Id_Pedido?>"><?=$Pedido['codigo_cliente']?>-<?=$Pedido['proceso']?></a><?php
 }
 ?></td>
 		<td><?=$Pedido['proceso_nombre'].$Pedido['tiempo_asignado']?></td>
@@ -118,12 +118,12 @@ else
 		<td class='<?=$Estado_Fecha?>'><?=('0000-00-00'!=$Pedido['fecha_entrega'])?date('d-m-Y', strtotime($Pedido['fecha_entrega'])):'0000-00-00'?></td>
 		<td><?=$Pedido['producto']?></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
 <br />
-<?
+<?php
 }
 ?>
 <script>

@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/plancha.js?n=1"></script>
-<?
+<?php
 if(count($info_retazos) != 0)
 {
 	foreach($info_retazos as $Datos)
@@ -28,7 +28,7 @@ if(count($info_retazos) != 0)
 				<td>Tipo:</td>
 				<td>
 					<select name="tipo">
-<?
+<?php
 foreach($plancha_tipo as $Datos)
 {
 	$cod_tipo = $Datos["cod_tipo"];

@@ -3,24 +3,24 @@
 <div id="menu-conta">
 	
 	<select id="conta_anho">
-<?
+<?php
 $Anho_fin = date('Y') + 1;
 for($i = 2016; $i <= $Anho_fin; $i++)
 {
 ?>
 		<option value="<?=$i?>"<?=($i==$Anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+<?php
 }
 ?>
 	</select>
 	
 	<select id="conta_mes">
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 ?>
 		<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></option>
-<?
+<?php
 }
 ?>
 	</select>

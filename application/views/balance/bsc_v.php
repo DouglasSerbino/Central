@@ -27,7 +27,7 @@
 <input type="button" value="Cambiar" onclick="window.location='/balance/bsc/index/'+$('#bsc_anho').val()" />
 
 <table style="width:115%;font-size:10px;">
-<?
+<?php
 
 foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 {
@@ -38,13 +38,13 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 	<tr class="detalle">
 		<td>Objetivos Estrat&eacute;gicos</td>
 		<td>Indicadores</td>
-<?
+<?php
 	$a = 1;
 	foreach($Meses as $iMes => $nMes)
 	{
 ?>
 		<td class="porcen"><?=$nMes?></td>
-<?
+<?php
 		if($iMes == 3 or $iMes == 6 or $iMes == 9 or $iMes == 12)
 		{
 			?>
@@ -56,7 +56,7 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 ?>
 	<td>Prom Final</td>
 	</tr>
-<?
+<?php
 	
 	foreach($Perspectiva['Objs'] as $Id_Bsc_Objetivo => $Objetivo)
 	{
@@ -65,7 +65,7 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 	<tr>
 		<td><?=$Objetivo['Nom']?></td>
 		<td>[<?=$Objetivo['Con']?>] <?=$Objetivo['Ind']?></td>
-<?
+<?php
 //print_r($Datos[$Id_Bsc_Objetivo]);
 	$realt = 0;
 	$proyect = 0;
@@ -105,18 +105,18 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 	{
 ?>
 		<td class="porcen"><?=number_format($Porcentaje, 0)?>%<br /><img src="/html/img/semaforo_<?=$Imagen?>.png" /></td>
-<?
+<?php
 	}
 	elseif($Mes <= date('m'))
 	{
 	?>
 		<td class="porcen"><?=number_format($Porcentaje, 0)?>%<br /><img src="/html/img/semaforo_<?=$Imagen?>.png" /></td>
-	<?
+	<?php
 	}
 	else{
 ?>
 			<td class="porcen"></td>
-<?
+<?php
 	}
 
 		$real += $Valores['real'];
@@ -186,11 +186,11 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 ?>
 	<td class="porcen"><?=number_format($porfinal, 0)?>%<br /><img src="/html/img/semaforo_<?=$Imagen?>.png" /></td>
 	</tr>
-<?
+<?php
 	}	
 ?>
 
-<?
+<?php
 }
 ?>
 </table>

@@ -33,47 +33,47 @@
 	
 	<form name="miform" id="miform" action="/ventas/cliente" method="post">
 		
-		<input type="checkbox" name="rango_fecha" id="rango_fecha"<? echo ('on'==$multiple)?' checked="checked"':''; ?> /><label for="rango_fecha"><strong>Multiple</strong></label>
+		<input type="checkbox" name="rango_fecha" id="rango_fecha"<?php echo ('on'==$multiple)?' checked="checked"':''; ?> /><label for="rango_fecha"><strong>Multiple</strong></label>
 		
 		<select name="mes" id="mes">
-<?
+<?php
 foreach($meses_v as $Index => $D_A){
 ?>
-			<option value="<? echo $Index; ?>"<? echo ($imes==$Index)?' selected="selected"':''; ?>><? echo $D_A; ?></option>
-<?
+			<option value="<?php echo $Index; ?>"<?php echo ($imes==$Index)?' selected="selected"':''; ?>><?php echo $D_A; ?></option>
+<?php
 }
 ?>
 		</select>
 		
 		<select name="anho" id="anho">
-<?
+<?php
 for($i = $anho_inicio; $i <= $anho_fin; $i++){
 ?>
-			<option value="<? echo $i; ?>"<? echo ($ianho==$i)?' selected="selected"':''; ?>><? echo $i; ?></option>
-<?
+			<option value="<?php echo $i; ?>"<?php echo ($ianho==$i)?' selected="selected"':''; ?>><?php echo $i; ?></option>
+<?php
 }
 ?>
 		</select>
 		
-		<span id="fecha_multiple"<? if('' == $multiple) echo ' style="display:none;"'; ?>>
+		<span id="fecha_multiple"<?php if('' == $multiple) echo ' style="display:none;"'; ?>>
 			&laquo;&raquo;
 			
 			<select name="mes2" id="mes2">
-<?
+<?php
 foreach($meses_v as $Index => $D_A){
 ?>
-			<option value="<? echo $Index; ?>"<? echo ($fmes==$Index)?' selected="selected"':''; ?>><? echo $D_A; ?></option>
-<?
+			<option value="<?php echo $Index; ?>"<?php echo ($fmes==$Index)?' selected="selected"':''; ?>><?php echo $D_A; ?></option>
+<?php
 }
 ?>
 			</select>
 			
 			<select name="anho2" id="anho2">
-<?
+<?php
 for($i = $anho_inicio; $i <= $anho_fin; $i++){
 ?>
-			<option value="<? echo $i; ?>"<? echo ($fanho==$i)?' selected="selected"':''; ?>><? echo $i; ?></option>
-<?
+			<option value="<?php echo $i; ?>"<?php echo ($fanho==$i)?' selected="selected"':''; ?>><?php echo $i; ?></option>
+<?php
 }
 ?>
 			</select>
@@ -81,8 +81,8 @@ for($i = $anho_inicio; $i <= $anho_fin; $i++){
 		
 		<select name="vista" id="vista">
 			<option value="todo">Completo</option>
-			<option value="venta"<? if('venta' == $vista) echo ' selected="selected"'; ?>>Ventas</option>
-			<option value="proyeccion"<? if('proyeccion' == $vista) echo ' selected="selected"'; ?>>Proyecciones</option>
+			<option value="venta"<?php if('venta' == $vista) echo ' selected="selected"'; ?>>Ventas</option>
+			<option value="proyeccion"<?php if('proyeccion' == $vista) echo ' selected="selected"'; ?>>Proyecciones</option>
 		</select>
 		
 
@@ -107,14 +107,14 @@ for($i = $anho_inicio; $i <= $anho_fin; $i++){
 		
 		<select name="vendedor" style="display: none;">
 			<option value='todos'>Vendedor</option>
-<?
+<?php
 /*
 foreach($vendedores as $Vendedor)
 {
 	$Vendedores = $Vendedor['usuario'];
 ?>
 			<option value='<?=$Vendedor['id_usuario'];?>'<?=($Vendedor['id_usuario']==$filtro_vendedor)?' selected="selected"':'';?>><?=$Vendedores?></option>
-<?
+<?php
 }
 */
 ?>

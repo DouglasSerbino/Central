@@ -47,36 +47,36 @@
 <strong>A&ntilde;o</strong>
 
 <select id="mc_anho_cambia">
-<?
+<?php
 $Fecha_Fin = date('Y') + 2;
 for($i = 2015; $i <= $Fecha_Fin; $i++)
 {
 ?>
 	<option value="<?=$i?>"<?=($i==$Anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+<?php
 }
 ?>
 </select>
 
 <select id="mc_mes_inicio">
 	<option value="anual">Anual</option>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 			<option value="<?=$iMes?>"<?=($iMes==$Mes_Inicio)?' selected="selected"':''?>><?=$nMes?></td>
-<?
+<?php
 }
 ?>
 </select>
 
 <select id="mc_mes_fin"<?=('anual'==$Mes_Inicio)?' style="display:none;"':''?>>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 			<option value="<?=$iMes?>"<?=($iMes==$Mes_Fin)?' selected="selected"':''?>><?=$nMes?></td>
-<?
+<?php
 }
 ?>
 </select>
@@ -94,7 +94,7 @@ foreach($Meses_v as $iMes => $nMes)
 	<tr>
 		<td class="clase_titulo negrita">&nbsp;</td>
 	</<tr>
-<?
+<?php
 recorrer_lineas($Lineas[0], 0, $Lineas, 0, $Mes_Inicio, $Anho);
 
 function recorrer_lineas(
@@ -149,7 +149,7 @@ function recorrer_lineas(
 			- [<?=$Datos['mas_menos']?>] <?=$Datos['linea']?>
 		</td>
 	</tr>
-<?
+<?php
 		
 	}
 }
@@ -161,7 +161,7 @@ function recorrer_lineas(
 	
 	<table id="mc_listado_lineas">
 		<tr>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 	if('anual' != $Mes_Inicio && $iMes < $Mes_Inicio)
@@ -170,7 +170,7 @@ foreach($Meses_v as $iMes => $nMes)
 	}
 ?>
 			<td colspan="4" class="clase_titulo negrita"><?=$nMes?></td>
-<?
+<?php
 	
 	if('anual' != $Mes_Inicio && $iMes == $Mes_Fin)
 	{
@@ -182,7 +182,7 @@ foreach($Meses_v as $iMes => $nMes)
 			<td colspan="4" class="clase_titulo negrita">CONSOLIDADO</td>
 		</tr>
 		<tr>
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 	if('anual' != $Mes_Inicio && $iMes < $Mes_Inicio)
@@ -194,7 +194,7 @@ foreach($Meses_v as $iMes => $nMes)
 			<td class="clase_titulo negrita" style="width: 65px;">PORC.</td>
 			<td class="clase_titulo negrita" style="width: 65px;">REAL</td>
 			<td class="clase_titulo negrita" style="width: 65px;">PORC.</td>
-<?
+<?php
 	
 	if('anual' != $Mes_Inicio && $iMes == $Mes_Fin)
 	{
@@ -208,7 +208,7 @@ foreach($Meses_v as $iMes => $nMes)
 			<td class="clase_titulo negrita" style="width: 65px;">REAL</td>
 			<td class="clase_titulo negrita" style="width: 65px;">PORC.</td>
 		</tr>
-<?
+<?php
 
 //Al final ordenare las filas segun su codigo
 $Lineas_JS = array();
@@ -292,7 +292,7 @@ function recorrer_lineasB(
 		
 ?>
 		<tr id="mc_li_<?=$Datos['codigo']?>" style="display:none;">
-<?
+<?php
 		//Sumatoria mes por mes de los valores reales y presupuestados
 		$Plan_Linea = 0;
 		$Real_Linea = 0;
@@ -409,7 +409,7 @@ function recorrer_lineasB(
 			<td style="background:#<?=($Hijos)?$Grises[$Gris]:'ffffbb'?>;" class="derecha"><?=number_format($Porc_Plan, 1)?>%</td>
 			<td style="background:#<?=($Hijos)?$Grises[$Gris]:'eeeeee'?>;" class="derecha">$<?=number_format($Real, 0)?></td>
 			<td style="background:#<?=($Hijos)?$Grises[$Gris]:'ffffbb'?>;" class="derecha"><?=number_format($Porc_Real, 1)?>%</td>
-<?
+<?php
 			
 			if('anual' != $Mes_Inicio && $iMes == $Mes_Fin)
 			{
@@ -430,7 +430,7 @@ function recorrer_lineasB(
 			<td style="background:#<?=($Hijos)?$Grises[$Gris]:'eeeeee'?>;" class="derecha">$<?=number_format($Real_Linea, 0)?></td>
 			<td style="background:#<?=($Hijos)?$Grises[$Gris]:'ffffbb'?>;" class="derecha"><?=number_format($Porcentaje, 0)?>%</td>
 		</tr>
-<?
+<?php
 		
 	}
 	

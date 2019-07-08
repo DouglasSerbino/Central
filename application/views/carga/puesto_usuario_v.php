@@ -9,7 +9,7 @@
 
 
 
-<?
+<?php
 //Lastimosamente estos datos no estan tan listos
 $Trabajos_Usuario = 0;
 if(isset($Trabajos[$Id_Usuario]))
@@ -108,7 +108,7 @@ if(isset($Rechazos[$Id_Usuario]))
 <strong>Total de Trabajos: <?=$TotaTrab?></strong>
 
 <br />
-<?
+<?php
 if(isset($ListClie))
 {
 	foreach($ListClie as $Cod_Cliente => $Cliente)
@@ -125,7 +125,7 @@ if(isset($ListClie))
 		<th style="width: 60px;">Progr.</th>
 		<th style="width: 60px;">Real</th>
 	</tr>
-<?
+<?php
 		foreach($ListTrab[$Cod_Cliente] as $Trabajo)
 		{
 			$Trabajo['fecha_fin'] = substr($Trabajo['fecha_fin'], 0, 10);
@@ -138,13 +138,13 @@ if(isset($ListClie))
 		<td><?=$this->fechas_m->minutos_a_hora($Trabajo['tiempo_asignado'])?>h</td>
 		<td><?=(isset($ListTiem[$Trabajo['id_pedido']]))?$this->fechas_m->minutos_a_hora($ListTiem[$Trabajo['id_pedido']]):'0:00'?>h</td>
 	</tr>
-<?
+<?php
 		}
 ?>
 </table>
 
 <br />
-<?
+<?php
 	}
 }
 ?>
@@ -161,7 +161,7 @@ if(isset($ListClie))
 		<th style="width: 90px;">Proceso</th>
 		<th>Trabajo</th>
 	</tr>
-<?
+<?php
 if(isset($ListRech))
 {
 	foreach($ListRech as $Trabajo)
@@ -172,7 +172,7 @@ if(isset($ListRech))
 		<?=$Trabajo['codigo_cliente'].'-'.$Trabajo['proceso']?></td>
 		<td><?=$Trabajo['nombre']?></td>
 	</tr>
-<?
+<?php
 	}
 }
 ?>

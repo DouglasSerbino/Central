@@ -6,7 +6,7 @@
 <table class="tabular">
 	<tr style='height: 25px;'>
 		<th rowspan="2" class="vent250">Cliente</th>
-<?
+<?php
 
 $Total_Venta = 0;
 $Total_Proye = 0;
@@ -33,13 +33,13 @@ foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 {
 ?>
 		<th<?=$Colspan?> style="text-align:center;"><?=$meses_abr_v[date('M', strtotime($Anho_Mes.'-01'))]?> <?=date('Y', strtotime($Anho_Mes.'-01'))?></th>
-<?
+<?php
 }
 ?>
 		<th <?=$Colspan?> style="text-align:center;">Total por Cliente</th>
 	</tr>
 	<tr>
-<?
+<?php
 foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 {
 	echo $Fila_Tr;
@@ -47,7 +47,7 @@ foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 echo $Fila_Tr;
 ?>
 	</tr>
-<?
+<?php
 foreach($Clientes as $Cliente)
 {
 	if('todos' != $filtro_vendedor && $Cliente['id_usuario'] != $filtro_vendedor)
@@ -80,7 +80,7 @@ foreach($Clientes as $Cliente)
 ?>
 	<tr>
 		<td><?=$Cliente['nombre']?></td>
-<?
+<?php
 	$Total_Cliente_Proy = 0;
 	$Total_Cliente_Vent = 0;
 	foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
@@ -101,7 +101,7 @@ foreach($Clientes as $Cliente)
 			}
 ?>
 		<td class="numero vent100">$<?=number_format($Proyeccion, 2)?></td>
-<?
+<?php
 		}
 		if('todo' == $vista || 'venta' == $vista)
 		{
@@ -119,7 +119,7 @@ foreach($Clientes as $Cliente)
 			}
 ?>
 		<td class="numero vent100">$<?=number_format($Venta, 2)?></td>
-<?
+<?php
 		}
 		if('todo' == $vista)
 		{
@@ -135,7 +135,7 @@ foreach($Clientes as $Cliente)
 			}
 ?>
 		<td class="numero vent100 ven_cli_porcen"><?=number_format($Porcentaje, 2)?>%</td>
-<?
+<?php
 		}
 		
 	}
@@ -143,13 +143,13 @@ foreach($Clientes as $Cliente)
 	{
 ?>
 		<td class="numero vent100">$<?=number_format($Total_Cliente_Proy, 2)?></td>
-<?
+<?php
 	}
 	if('todo' == $vista || 'venta' == $vista)
 	{
 ?>
 		<td class="numero vent100">$<?=number_format($Total_Cliente_Vent, 2)?></td>
-<?
+<?php
 	}
 	if('todo' == $vista)
 	{
@@ -161,11 +161,11 @@ foreach($Clientes as $Cliente)
 		}
 ?>
 		<td class="numero vent100"><?=number_format($Porcentaje, 2)?>%</td>
-<?
+<?php
 	}
 ?>
 	</tr>
-<?
+<?php
 }
 ?>
 	<tr>
@@ -173,7 +173,7 @@ foreach($Clientes as $Cliente)
 		
 		
 
-<?
+<?php
 $Total_Proye = 0;
 $Total_Venta = 0;
 foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
@@ -188,7 +188,7 @@ foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 		$Total_Proye += $Proyeccion;
 ?>
 		<th class="numero vent100">$<?=number_format($Proyeccion, 2)?></th>
-<?
+<?php
 	}
 	if('todo' == $vista || 'venta' == $vista)
 	{
@@ -200,7 +200,7 @@ foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 		$Total_Venta += $Venta;
 ?>
 		<th class="numero vent100">$<?=number_format($Venta, 2)?></th>
-<?
+<?php
 	}
 	if('todo' == $vista)
 	{
@@ -211,7 +211,7 @@ foreach($Vent_Clie['Meses_Rango'] as $Anho_Mes)
 		}
 ?>
 		<th class="numero vent100"><?=number_format($Porcentaje, 2)?>%</th>
-<?
+<?php
 	}
 }
 
@@ -223,13 +223,13 @@ if('todo' == $vista || 'proyeccion' == $vista)
 {
 ?>
 		<th class="numero vent100">$<?=number_format($Total_Proye, 2)?></th>
-<?
+<?php
 }
 if('todo' == $vista || 'venta' == $vista)
 {
 ?>
 		<th class="numero vent100">$<?=number_format($Total_Venta, 2)?></th>
-<?
+<?php
 }
 if('todo' == $vista)
 {
@@ -240,7 +240,7 @@ if('todo' == $vista)
 	}
 ?>
 		<th class="numero vent100"><?=number_format($Porcentaje, 2)?>%</th>
-<?
+<?php
 }
 ?>
 	</tr>

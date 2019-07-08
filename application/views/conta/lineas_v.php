@@ -92,7 +92,7 @@
 		<th>L&Iacute;NEA</th>
 		<th style="width: 10%;">&nbsp;</th>
 	</tr>
-<?
+<?php
 $Lineas_JS = array();
 $Lineas_Autocomplete = array();
 
@@ -171,7 +171,7 @@ function poner_datos($Id_Padre, $Id_Mc_Linea, $Datos, $Gris, $Hijos)
 			<input type="hidden" id="info-<?=$Id_Mc_Linea?>" value="<?=$Id_Padre.'[-]'.$Id_Mc_Linea.'[-]'.$Datos['codigo'].'[-]'.$Datos['linea'].'[-]'.$Datos['mas_menos']?>" />
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

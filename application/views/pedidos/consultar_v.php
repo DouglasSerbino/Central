@@ -21,12 +21,12 @@
 	
 	<select name="clientes" id="clientes" onchange="buscar_pedido_desc()">
 		<option value="">Seleccionar cliente</option>
-<?
+<?php
 foreach($Clientes as $Cliente)
 {
 ?>
 		<option value="<?=$Cliente['id_cliente']?>"><?=$Cliente["codigo_cliente"]?> - <?=$Cliente['nombre']?></option>
-<?
+<?php
 }
 ?>
 	</select>

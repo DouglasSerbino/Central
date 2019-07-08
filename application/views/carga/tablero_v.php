@@ -111,7 +111,7 @@ Analizar un planificador para fotopolimeros
 <div id='deptos'>
 <div class="tablero_listas" style="height: 780px;">
 	<div style="width: 102px;border-right: 1px solid #999;height: 720px;"></div>
-<?
+<?php
 $Tiempos = array(
 	'08:00',
 	'09:00',
@@ -158,7 +158,7 @@ for($i = 1; $i <= 8; $i++)
 	}
 ?>
 		<div style="background:#<?=$Fondo?>;left:<?=$Izquierda?>px;width:<?=$ancho?>px;border-right: 1px solid #999;height: 720px;"></div>
-<?
+<?php
 	$Izquierda += $ancho + 1;
 	$Contador2++;
 }
@@ -188,7 +188,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<div style="top:20px;left:<?=$Izquierda?>px;width:<?=$ancho?>px;border-right: 1px solid #ccc;height: 700px;"></div>
-<?
+<?php
 	$Izquierda += $ancho + 1;
 	$Contador++;
 	if(8 == $Contador)
@@ -225,12 +225,12 @@ for($i = 0; $i <= 7; $i++)
 	}
 ?>
 		<li style="overflow: hidden;width: <?=$Ancho_Div?>px;text-align: center;"><strong><?=$Dias[date('w', strtotime('+'.$Contador2.' days', strtotime(date('Y-m-d'))))].' '.date('d-m-Y', strtotime('+'.$Contador2.' days', strtotime(date('Y-m-d'))))?></strong></li>
-<?
+<?php
 	$Contador2++;
 }
 ?>
 	</ul>
-<?
+<?php
 foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 {
 	if('n' == $Dpto['tiempo'] && 'SAP' != $Dpto['dpto'] && 'Despacho' != $Dpto['dpto'])
@@ -240,7 +240,7 @@ foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 ?>
 	<ul class="tiempos" style="z-index: 5;">
 		<li class="no_sortable">&nbsp;</li>
-<?
+<?php
 
 
 $Contador = 0;
@@ -257,7 +257,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<li style="width: <?=(7==$Contador)?'30':'60'?>px; text-align: center;"><strong><?=$Tiempos[$Contador]?></strong></li>
-<?
+<?php
 	$Contador++;
 	if(8 == $Contador)
 	{
@@ -267,7 +267,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 }
 ?>
 	</ul>
-<?
+<?php
 	//Listado de los trabajos
 	foreach($Dpto['usuarios'] as $Id_Usuario => $Usuario)
 	{
@@ -299,7 +299,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<br style="clear:both;" />
-<?
+<?php
 }
 ?>
 </div>
@@ -313,7 +313,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 <div class="tablero_listas posicion_fix" style="width: 100px;">
 
 <form action="/carga/seguimiento" method="post" id="ir_carga_laboral" target="cargaaaa">
-	<?
+	<?php
 //Este form envia la info a carga por puesto y busca un mes antes (M_A) y un mes despues (M_D)
 $M_A = date('Y-m-d', strtotime('-30 days', strtotime(date('Y-m-d'))));
 $M_D = date('Y-m-d', strtotime('+30 days', strtotime(date('Y-m-d'))));
@@ -334,7 +334,7 @@ $M_D = explode('-', $M_D);
 	<ul class="tiempos" style="height:26px;">
 		<li></li>
 	</ul>
-<?
+<?php
 foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 {
 	if('n' == $Dpto['tiempo'] && 'SAP' != $Dpto['dpto'] && 'Despacho' != $Dpto['dpto'])
@@ -345,7 +345,7 @@ foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 	<ul class="tiempos" style="z-index: 5;">
 		<li class="no_sortable" <?=(9==$Id_Dpto)?' onclick="MostrarPlanchas();"':''?>><?=$Dpto['dpto']?></li>
 	</ul>
-<?
+<?php
 	//Listado de los trabajos
 	foreach($Dpto['usuarios'] as $Id_Usuario => $Usuario)
 	{
@@ -361,7 +361,7 @@ foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 	}
 ?>
 		<br style="clear:both;" />
-<?
+<?php
 }
 ?>
 </form>
@@ -392,7 +392,7 @@ $Tiempos = array(
 	
 <div class="tablero_listas" style="height: 150px;">
 	<div style="width: 102px;border-right: 1px solid #999;height: 110px;"></div>
-<?
+<?php
 //Franjas para representar el ancho de los dias
 $Contador2 = 0;
 $Izquierda = 102;
@@ -420,7 +420,7 @@ for($i = 1; $i <= 8; $i++)
 	}
 ?>
 		<div style="background:#<?=$Fondo?>;left:<?=$Izquierda?>px;width:<?=$ancho?>px;border-right: 0px solid #999;height: 110px;"></div>
-<?
+<?php
 	$Izquierda += $ancho + 1;
 	$Contador2++;
 }
@@ -447,7 +447,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<div style="top:20px;left:<?=$Izquierda?>px;width:<?=$ancho?>px;border-right: 1px solid #ccc;height: 90px;"></div>
-<?
+<?php
 	$Izquierda += $ancho + 1;
 	$Contador++;
 	if(7 == $Contador)
@@ -484,12 +484,12 @@ for($i = 0; $i <= 7; $i++)
 	}
 ?>
 		<li style="overflow: hidden;width: <?=$Ancho_Div?>px;text-align: center;"><strong><?=$Dias[date('w', strtotime('+'.$Contador2.' days', strtotime(date('Y-m-d'))))].' '.date('d-m-Y', strtotime('+'.$Contador2.' days', strtotime(date('Y-m-d'))))?></strong></li>
-<?
+<?php
 	$Contador2++;
 }
 ?>
 	</ul>
-<?
+<?php
 foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 {
 	if(9 == $Id_Dpto)
@@ -498,7 +498,7 @@ foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 	<ul class="tiempos" style="z-index: 5;">
 		<li class="no_sortable">&nbsp;</li>
 	
-<?
+<?php
 
 
 $Contador = 0;
@@ -516,7 +516,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<li style="width: 60px; text-align: center;"><strong><?=$Tiempos[$Contador]?></strong></li>
-<?
+<?php
 	$Contador++;
 	if(15 == $Contador)
 	{
@@ -526,7 +526,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 }
 ?>
 	</ul>
-<?
+<?php
 	//Listado de los trabajos
 	foreach($Dpto['usuarios'] as $Id_Usuario => $Usuario)
 	{
@@ -559,7 +559,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 	}
 ?>
 		<br style="clear:both;" />
-<?
+<?php
 	}
 }
 ?>
@@ -574,7 +574,7 @@ for($i = 1; $i <= $Horas_Tablero; $i++)
 <div class="tablero_listas posicion_fix" style="width: 100px;">
 
 <form action="/carga/seguimiento" method="post" id="ir_carga_laboral" target="cargaaaa">
-	<?
+	<?php
 //Este form envia la info a carga por puesto y busca un mes antes (M_A) y un mes despues (M_D)
 $M_A = date('Y-m-d', strtotime('-30 days', strtotime(date('Y-m-d'))));
 $M_D = date('Y-m-d', strtotime('+30 days', strtotime(date('Y-m-d'))));
@@ -595,7 +595,7 @@ $M_D = explode('-', $M_D);
 	<ul class="tiempos" style="height:26px;">
 		<li></li>
 	</ul>
-<?
+<?php
 foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 {
 	if(9 == $Id_Dpto)
@@ -605,7 +605,7 @@ foreach($Dpto_Usu as $Id_Dpto => $Dpto)
 		<div style='height: 22px; width: 102px; background: #ffffff;'><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onclick="Ocultar();">Cerrar</label></strong></div>
 		<li class="no_sortable"><?=$Dpto['dpto']?></li>
 	</ul>
-<?
+<?php
 
 ?>
 		<ul class="sortable">

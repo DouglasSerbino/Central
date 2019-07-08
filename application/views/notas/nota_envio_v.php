@@ -5,7 +5,7 @@ $fecha = date("d-m-Y");
 	
 	<div class="informacion_top"><div></div></div>
 	
-	<div class="inf_titulo">Nota de Env&iacute;o -  &nbsp; Fecha: <? echo $fecha; ?></div>
+	<div class="inf_titulo">Nota de Env&iacute;o -  &nbsp; Fecha: <?php echo $fecha; ?></div>
 	
 	<div class="informacion_cont">
 <?

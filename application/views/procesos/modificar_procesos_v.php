@@ -1,7 +1,7 @@
 
 <script type="text/javascript" src="/html/js/procesos.js?n=1"></script>
 
-<?
+<?php
 if($Info_producto == '')
 {
   echo  '';
@@ -50,7 +50,7 @@ else
 	$('#codigo_cliente').focus();
 </script>
 
-<?
+<?php
 }
 ?>
 

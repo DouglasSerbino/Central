@@ -7,7 +7,7 @@ if(count($mostrar_hoja) != 0)
 </script>
 <div class="informacion">
 	<table>
-<?
+<?php
 
 foreach($Cliente_Procesos as $Datos)
 {
@@ -192,7 +192,7 @@ foreach($mostrar_hoja as $Datos)
 	</tr>
 
 	<tr><td><br /><br />Certificamos que el Producto se revis&oacute; de acuerdo al proceso adjunto por<br />Central Graphics: Preprensa <?=$puesto?> en esta Fecha 
-	<?
+	<?php
 	if($fecha_real != '')
 	{
 		echo $this->fechas_m->fecha_ymd_dmy($fecha_real);

@@ -21,7 +21,7 @@
 <form name="revisa-form" id="revisa-form" action="/hojas_revision/nueva_revision/revisar/<?=$Id_Pedido?>" method="post">
 
 
-<?
+<?php
 foreach ($Items_Revision as $Index => $Item)
 {
 ?>
@@ -31,7 +31,7 @@ foreach ($Items_Revision as $Index => $Item)
 		<th style="width: 80%;"><?=$Item['item']?></th>
 		<th>Revisado</th>
 	</tr>
-<?
+<?php
 	foreach ($Item['sub_item'] as $SubIndex => $Sub_Item)
 	{
 ?>
@@ -45,11 +45,11 @@ foreach ($Items_Revision as $Index => $Item)
 			</select>
 		</td>
 	</tr>
-<?
+<?php
 	}
 ?>
 </table>
-<?
+<?php
 }
 ?>
 

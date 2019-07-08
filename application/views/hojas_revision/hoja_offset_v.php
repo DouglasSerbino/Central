@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/hojas_revision.js?n=1"></script>
-<?
+<?php
 foreach($Cliente_Procesos as $Datos)
 {
 	$id_cliente = $Datos["codigo_cliente"];
@@ -33,7 +33,7 @@ foreach($Cliente_Procesos as $Datos)
 			
 			<div id="revi_2" class="margen_revision" style="visibility:hidden; display:none;">
 				<strong>2. PLANCHA POR COLOR</strong><br />
-<?
+<?php
 $i = 1;
 foreach($Buscar_color as $Datos)
 {

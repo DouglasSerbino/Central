@@ -12,7 +12,7 @@
 			<th>Proveedor</th>
 			<th style='width: 17%;'>&nbsp;</th>
 		</tr>
-<?
+<?php
 foreach($Mostrar_proveedor as $Datos_proveedor)
 {
 ?>

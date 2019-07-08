@@ -23,7 +23,7 @@ $(function() {
 	$("ul, li").disableSelection();
 	$("#sortable span").live('click', function(){ $(this).parent().remove(); })
 	$("[type=button]").click(function(){ enviar_ruta(); });
-	<? /*
+	<?php /*
 	ESTE METODO FUNCIONA PARA UNIR CELDAS EN VIVO
 	$('.td2').click(function(){ $('.td4').remove(); $(this).attr('rowspan', '2'); })
 	*/ ?>
@@ -74,7 +74,7 @@ function enviar_ruta()
 </script>
 
 
-<?
+<?php
 /*
 ESTE METODO FUNCIONA PARA UNIR CELDAS EN VIVO
 <table>
@@ -94,12 +94,12 @@ ESTE METODO FUNCIONA PARA UNIR CELDAS EN VIVO
 	
 	<select name="sl_grupos">
 		<option value="0">Seleccionar Grupo</option>
-<?
+<?php
 foreach($Grupos as $Grupo)
 {
 ?>
-		<option value="<?=$Grupo['id_grupo']?>"<? echo (isset($Ruta_Grupo[$Grupo['id_grupo']]))?' disabled="disabled"':''; ?>><?=$Grupo['nombre_grupo']?></option>
-<?
+		<option value="<?=$Grupo['id_grupo']?>"<?php echo (isset($Ruta_Grupo[$Grupo['id_grupo']]))?' disabled="disabled"':''; ?>><?=$Grupo['nombre_grupo']?></option>
+<?php
 }
 ?>
 	</select>
@@ -119,12 +119,12 @@ foreach($Grupos as $Grupo)
 
 
 <ul id="draggable">
-<?
+<?php
 foreach($Departamentos as $Dpto)
 {
 ?>
 	<li class="dp_<?=$Dpto['id_dpto']?>"><span>[x]</span><?=$Dpto['departamento']?></li>
-<?
+<?php
 }
 ?>
 </ul>

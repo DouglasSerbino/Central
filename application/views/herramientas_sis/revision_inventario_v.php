@@ -8,18 +8,18 @@
 <div class="informacion" id='reporte_semanal'>
 	<form method='post' action='/herramientas_sis/revision_inventario'>
 		
-		<input type="text" name="fecha_inicio" id="fecha_inicio" size="15" value="<? echo $Fecha_Inicio; ?>" readonly="readonly" />
-		<input type="text" name="fecha_fin" id="fecha_fin" size="15" value="<? echo $Fecha_Fin; ?>" readonly="readonly" />
+		<input type="text" name="fecha_inicio" id="fecha_inicio" size="15" value="<?php echo $Fecha_Inicio; ?>" readonly="readonly" />
+		<input type="text" name="fecha_fin" id="fecha_fin" size="15" value="<?php echo $Fecha_Fin; ?>" readonly="readonly" />
 		Codigo Sap <input type='text' name='sap' value='<?=$sap?>'>
 		<br />
 		<select name="cliente" id="cliente">
 			<option value="--">Seleccionar Cliente</option>
-<?
+<?php
 foreach($mostrar_clientes as $Cliente)
 {
 ?>
 			<option value="<?=$Cliente["id_cliente"]?>"<?=($Id_Cliente==$Cliente["id_cliente"])?' selected="selected"':''?>><?=$Cliente["codigo_cliente"]?> - <?=$Cliente["nombre"]?></option>
-<?
+<?php
 }
 ?>
 		</select>
@@ -36,7 +36,7 @@ foreach($mostrar_clientes as $Cliente)
 		<th>Codigo Sap</th>
 		<th>Fecha de Terminado</th>
 	</tr>
-<?
+<?php
 if('' != $sap)
 {
 	if(0 < count($Listado))
@@ -76,7 +76,7 @@ foreach($Listado as $Datos)
 	<tr>
 		<th># Orden</th>
 	</tr>
-<?
+<?php
 foreach($Listado as $Datos)
 {
 	$Orden = explode(',', $Datos['orden']);

@@ -177,12 +177,12 @@
 						<td>
 							<select name="ruta_cliente">
 								<!--option value="">Seleccionar cliente</option-->
-<?
+<?php
 foreach($Clientes as $Fila)
 {
 ?>
 								<option value="<?=$Fila['id_cliente']?>"<?=($Fila['id_cliente']==$Ruta['info']['id_cliente'])?' selected="selected"':''?>><?=$Fila['codigo_cliente'].' - '.$Fila['nombre']?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -197,7 +197,7 @@ foreach($Clientes as $Fila)
 		</div>
 
 		<div class="ruta_elementos_divs">
-<?
+<?php
 $Puestos = array(
 	2 => 'Arte',
 	5 => 'PrePrensa',
@@ -211,7 +211,7 @@ foreach($Puestos as $Index => $Valor)
 {
 ?>
 			<div class="ruta_departamento" info="<?=$Index?>"><?=$Valor?></div>
-<?
+<?php
 }
 ?>
 		</div>
@@ -282,7 +282,7 @@ foreach($Puestos as $Index => $Valor)
 
 		var Inicio_Fin = { operators: {}, links: {} };
 
-<?
+<?php
 $Operador = 0;
 $Operador_Anterior = '';
 foreach($Ruta['dptos'] as $Fila)
@@ -320,7 +320,7 @@ foreach($Ruta['dptos'] as $Fila)
 
 		Espacio_Left = Espacio_Left + 160;
 
-<?
+<?php
 	$Operador++;
 	$Operador_Anterior = $Operador_Activo;
 

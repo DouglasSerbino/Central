@@ -65,12 +65,12 @@
 <!-- ***************** -->
 <strong>Tipo de trabajo:</strong>
 <select name="tipo_trabajo">
-<?
+<?php
 foreach($Tipos_Trabajo as $Tipo)
 {
 ?>
 	<option value="<?=$Tipo['id_tipo_trabajo']?>"><?=$Tipo['trabajo']?></option>
-<?
+<?php
 }
 ?>
 </select>
@@ -82,18 +82,21 @@ foreach($Tipos_Trabajo as $Tipo)
 
 <!-- ***************** -->
 <strong>Tipo de Impresi&oacute;n:</strong>
-<?
+<?php
 foreach($Tipos_Impresion as $Tipo)
 {
 ?>
-<input type="radio" name="id_tipo_impresion" id="iti_<?=$Tipo['id_tipo_impresion']?>" value="<?=$Tipo['id_tipo_impresion']?>"<?
-if($Tipo['id_tipo_impresion'] == 2)
-{
-?> checked="checked"<?
+<input type="radio" name="id_tipo_impresion" id="iti_<?=$Tipo['id_tipo_impresion']?>" value="<?=$Tipo['id_tipo_impresion']?>"
+<?php
+	if($Tipo['id_tipo_impresion'] == 2)
+	{
+?> checked="checked"
+	<?php
 }
-?> />
+?>
+/>
 <label for="iti_<?=$Tipo['id_tipo_impresion']?>"><?=$Tipo['tipo_impresion']?></label>
-<?
+<?php
 }
 ?>
 
@@ -108,26 +111,26 @@ if($Tipo['id_tipo_impresion'] == 2)
 
 <br />
 Cara:
-<?
+<?php
 $Embobinado = 1;
 for($i = 1; $i <= 8; $i++)
 {
 ?>
 &nbsp; <input type="radio" name="embobinado_cara" id="embo_cara_<?=$i?>" value="<?=$i?>"<?=($i==$Embobinado)?' checked="checked"':''?> />
 <label for="embo_cara_<?=$i?>"><span class="embobinados embo<?=$i?>"></span></label>
-<?
+<?php
 }
 ?>
 
 <br /><br />
 Dorso:
-<?
+<?php
 for($i = 1; $i <= 8; $i++)
 {
 ?>
 &nbsp; <input type="radio" name="embobinado_dorso" id="embo_dorso<?=$i?>" value="<?=$i?>"<?=($i==$Embobinado)?' checked="checked"':''?> />
 <label for="embo_dorso<?=$i?>"><span class="embobinados embo<?=$i?>"></span></label>
-<?
+<?php
 }
 ?>
 
@@ -148,14 +151,14 @@ for($i = 1; $i <= 8; $i++)
 				
 				<strong>Acabados</strong>
 				
-	<?
+	<?php
 	foreach($Tipo_Acabado as $Tipo)
 	{
 	?>
 				<br />
 				<input type="checkbox" name="impd_acabado_<?=$Tipo['id_tipo_impd_acabado']?>" id="impd_acabado_<?=$Tipo['id_tipo_impd_acabado']?>" />
 				<label for="impd_acabado_<?=$Tipo['id_tipo_impd_acabado']?>"><?=$Tipo['tipo_impd_acabado']?></label>
-	<?
+	<?php
 	}
 	?>
 				
@@ -166,14 +169,14 @@ for($i = 1; $i <= 8; $i++)
 				
 				<strong>Material</strong>
 				
-	<?
+	<?php
 	foreach($Tipo_Material as $Tipo)
 	{
 	?>
 				<br />
 				<input type="radio" name="id_tipo_impd_material" id="impd_material_<?=$Tipo['id_tipo_impd_material']?>" value="<?=$Tipo['id_tipo_impd_material']?>" />
 				<label for="impd_material_<?=$Tipo['id_tipo_impd_material']?>"><?=$Tipo['tipo_impd_material']?></label>
-	<?
+	<?php
 	}
 	?>
 				<br />
@@ -379,7 +382,7 @@ for($i = 1; $i <= 8; $i++)
 					<th>Lineaje</th>
 					<!-- th>Resoluci&oacute;n</th-->
 				</tr>
-<?
+<?php
 for($i = 1; $i <= 10; $i++)
 {
 ?>
@@ -393,7 +396,7 @@ for($i = 1; $i <= 10; $i++)
 					<td><input type="text" size="4" name="lineaje_<?=$i?>" id="lineaje_<?=$i?>" value="" /></td>
 					<!-- td><input type="text" size="4" name="resolucion_<?=$i?>" id="resolucion_<?=$i?>" value="" /></td-->
 				</tr>
-<?
+<?php
 }
 ?>
 			</table>
@@ -459,7 +462,7 @@ for($i = 1; $i <= 10; $i++)
 						<input type="text" name="radio" id="radio" size="6" value="" onblur="calcular_distorsion()" /> Radio
 					</td>
 					<td>
-<?
+<?php
 $Polimero = array(
 	'0.045', '0.067', '0.090',
 	'0.100', '0.107', '0.112',
@@ -470,12 +473,12 @@ $Stickyback = array('0.015', '0.020', '0.0177', '0.250', '0.60');
 ?>
 						<select name="polimero" id="polimero" onchange="calcular_distorsion()">
 							<option value="">Polimero</option>
-<?
+<?php
 foreach($Polimero as $index => $Valor)
 {
 ?>
 							<option value="<?=$Valor?>"><?=$Valor?></option>
-<?
+<?php
 }
 ?>
 						</select>
@@ -483,12 +486,12 @@ foreach($Polimero as $index => $Valor)
 					<td>
 						<select name="stickyback" id="stickyback" onchange="calcular_distorsion()">
 							<option value="">StickyBack</option>
-<?
+<?php
 foreach($Stickyback as $index => $Valor)
 {
 ?>
 							<option value="<?=$Valor?>"><?=$Valor?></option>
-<?
+<?php
 }
 ?>
 						</select>

@@ -27,18 +27,18 @@
 		<form name="miform" action="/inventario/inventario_req/requisar_material/" method="post">
 			<table style="float: left;">
 				<tr><th>Material</th><th>Descripci&oacute;n</th><th>Cantidad</th></tr>
-<? for($i_m_t = 0; $i_m_t < 12; $i_m_t++){ ?>
+<?php for($i_m_t = 0; $i_m_t < 12; $i_m_t++){ ?>
 				<tr>
-					<td><input class="nombre_material" type="text" size="12" name="codigo_material_<? echo $i_m_t; ?>" id="codigo_material_<? echo $i_m_t; ?>" onblur="ver_material('_<?=$i_m_t?>')" /></td>
+					<td><input class="nombre_material" type="text" size="12" name="codigo_material_<?php echo $i_m_t; ?>" id="codigo_material_<?php echo $i_m_t; ?>" onblur="ver_material('_<?php=$i_m_t?>')" /></td>
 					<td>
-						<input class="nombre_material" type="text" size="50" name="nombre_material_<? echo $i_m_t; ?>" id="nombre_material_<? echo $i_m_t; ?>" value="" readonly="readonly" />
-						<input type="hidden" id="id_material_<? echo $i_m_t; ?>" name="id_material_<? echo $i_m_t; ?>" value="" />
+						<input class="nombre_material" type="text" size="50" name="nombre_material_<?php echo $i_m_t; ?>" id="nombre_material_<?php echo $i_m_t; ?>" value="" readonly="readonly" />
+						<input type="hidden" id="id_material_<?php echo $i_m_t; ?>" name="id_material_<?php echo $i_m_t; ?>" value="" />
 					</td>
 					<td>
-						<input class="nombre_material" type="text" size="12" name="cantidad_material_<? echo $i_m_t; ?>" id="cantidad_material_<? echo $i_m_t; ?>" />
+						<input class="nombre_material" type="text" size="12" name="cantidad_material_<?php echo $i_m_t; ?>" id="cantidad_material_<?php echo $i_m_t; ?>" />
 					</td>
 				</tr>
-<? } ?>
+<?php } ?>
 			</table>
 			
 			<div style="float: left; margin-left: 25px; width: 300px;">

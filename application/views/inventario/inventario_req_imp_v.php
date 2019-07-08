@@ -12,7 +12,7 @@
 <body>
 	
 	<div id="contenedor">
-<?
+<?php
 //Quien realiza la requisicion
 $Departamento = '';
 $Costo = '';
@@ -70,7 +70,7 @@ if($Requisicion > 0)
 				<th>CANTIDAD</th>
 				<th>REFERENCIA</th>
 			</tr>
-<?
+<?php
 //Materiales de la requisicion
 if($Materiales > 0)
 {
@@ -83,7 +83,7 @@ if($Materiales > 0)
 				<td><?=$Datos_materiales['cantidad'].' '.$Datos_materiales['tipo']?></td>
 				<td>&nbsp;</td>
 			</tr>
-<?
+<?php
 	}
 }
 ?>

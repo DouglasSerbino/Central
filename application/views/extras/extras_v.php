@@ -1,7 +1,7 @@
 <script type="text/javascript" src="/html/js/extra.js?n=1"></script>
 <link rel="stylesheet" type="text/css" media="all" href="/html/css/calendario.css" />
 <link rel="stylesheet" type="text/css" media="all" href="/html/css/extra_rep.css" />
-<?
+<?php
 $dia = date("d");
 $meses_v = array(" ",
 								 "Enero",
@@ -212,7 +212,7 @@ for($i = 1; $i <= $dias_mes; $i++)
 	<strong><a href="/extras/extra_rep" title="Generar Reporte">Reporte General de Horas Extras</a></strong>	
 </div>
 
-<?
+<?php
 if($this->session->userdata('codigo') != 'SAP')
 {
 ?>

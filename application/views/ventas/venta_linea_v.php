@@ -65,21 +65,21 @@ foreach($porcentaje_linea as $Datos)
 	<form action="/ventas/venta_linea/index" method="post">
 		
 		<select name="mes" id="mes">
-<?
+<?php
 foreach($meses_v as $_mes => $nmes){
 ?>
-			<option value="<?=$_mes?>"<? echo ($_mes==$mes)?' selected="selected"':''; ?>><?=$nmes?></option>
-<?
+			<option value="<?=$_mes?>"<?php echo ($_mes==$mes)?' selected="selected"':''; ?>><?=$nmes?></option>
+<?php
 }
 ?>
 		</select>
 		
 		<select name="anho" id="anho">
-<?
+<?php
 for($i = $anho_inicial; $i <= $anho_actual; $i++){
 ?>
-			<option value="<?=$i?>"<? echo ($i==$anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+			<option value="<?=$i?>"<?php echo ($i==$anho)?' selected="selected"':''?>><?=$i?></option>
+<?php
 }
 ?>
 		</select>
@@ -103,7 +103,7 @@ if(count($materiales_v) != 0)
 			<th style="text-align: right;">Pedidos</th>
 			<th style="text-align: right;">Venta</th>
 		</tr>
-<?
+<?php
 //print_r($materiales_v);
 
 $cien_redondo = 0;
@@ -117,7 +117,7 @@ foreach($materiales_v as $id_material => $material)
 			<td style="text-align: right;"><?=number_format($material['pedidos'], 0)?></td>
 			<td style="text-align: right;">&nbsp; $<?=number_format($material['total'], 2)?></td>
 		</tr>
-<?
+<?php
 }
 
 //Necesario, sucio pero necesario
@@ -136,14 +136,14 @@ if($cien_redondo < 100)
 	<script language='javascript' type='text/javascript'>
 		$.plot($('#grafico-pastel'),
 			[
-<?
+<?php
 foreach($materiales_v as $id_material => $material)
 {
 ?>
 				{
 					label: '<?=$material['material_solicitado'].' '.$material['porcentaje'].'%'?>',  data: [[1,<?=$material['total']?>]]
 				},
-<?
+<?php
 }
 ?>
 			],
@@ -159,17 +159,17 @@ foreach($materiales_v as $id_material => $material)
 <script>
 
 var Clientes_v = {
-<?
+<?php
 foreach($Clientes as $Divi => $Cli)
 {
 ?>
-	'<?=$Divi?>': '<?
+	'<?=$Divi?>': '<?php
 	foreach($Cli as $Clie)
 	{
-?><option value="<?=$Clie['id_cliente']?>" <?=($Clie['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Clie['cliente']?></option><?
+?><option value="<?=$Clie['id_cliente']?>" <?=($Clie['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Clie['cliente']?></option><?php
 	}
 ?>',
-<?
+<?php
 }
 ?>
 };

@@ -6,7 +6,7 @@
 		<th><strong>Tipo del Grupo &nbsp;&nbsp;</strong></th>
 		<th><strong>Opciones</strong></th>
 	</tr>
-<?
+<?php
 foreach($Grupos as $Grupo)
 {
 ?>	
@@ -31,7 +31,7 @@ foreach($Grupos as $Grupo)
 			}
 ?>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>			

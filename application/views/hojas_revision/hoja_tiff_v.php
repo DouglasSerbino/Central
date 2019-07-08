@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/hojas_revision.js?n=1"></script>
-<?
+<?php
 foreach($Cliente_Procesos as $Datos)
 {
 	$id_cliente = $Datos["codigo_cliente"];
@@ -10,8 +10,8 @@ foreach($Cliente_Procesos as $Datos)
 ?>
 <div class="informacion">
 	<div class="inf_titulo"><strong><?=$id_cliente.'-'.$proceso?></strong></div>
-		Cliente: <strong><? echo $cliente; ?></strong><br />
-		Producto: <strong><? echo $nombre_p; ?></strong><br /><br />
+		Cliente: <strong><?php echo $cliente; ?></strong><br />
+		Producto: <strong><?php echo $nombre_p; ?></strong><br /><br />
 		
 		<form name="miform" id="miform" action="/hojas_revision/hoja_revision/hojas_sql" method="post">
 			<input type="hidden" value="" name="diseno" id="diseno" />

@@ -6,7 +6,7 @@ foreach($usuarios as $Datos_usuario)
 	$dpto = $Datos_usuario["departamento"];
 }
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo "<?phpxml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,7 +36,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	
 	<form name="miform" id="miform" action="/extras/extra_agr_ped/extra_agr_sql" method="post">
 		<input type="hidden" name="id_usuario" value="<?=$id_usuario2?>" />
-<?
+<?php
 $inicio = "";
 $fin = "";
 $id_pedido_v = array();
@@ -79,7 +79,7 @@ if('' != $id_extra or 0 != $id_extra)
 				<th width="23%">Proceso</th>
 				<th>Descripci&oacute;n</th>
 			</tr>
-<?
+<?php
 $id_ped_mat_v = array();
 //Pedidos que estan activos.
 foreach($pedido_activo as $Datos_activo)

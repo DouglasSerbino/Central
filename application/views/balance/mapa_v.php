@@ -36,12 +36,12 @@
 	Mostrando:
 	<select name="mes_mapa" id="mes_mapa">
 		<option value="anual">Anual</option>
-	<?
+	<?php
 foreach($Meses as $iMes => $nMes)
 {
 	?>
 		<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></option>
-	<?
+	<?php
 }
 	?>
 	</select>
@@ -71,7 +71,7 @@ foreach($Meses as $iMes => $nMes)
 </script>
 
 <div id="mapaest">
-<?
+<?php
 $Altos = array(
 	2,
 	70,
@@ -137,7 +137,7 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 		<img src="/html/img/semaforo_<?=$Imagen?>.png" />
 		<div><?=$Objetivo['Nom']?><br /><?=number_format($Porcentaje, 2)?>%</div>
 	</div>
-<?
+<?php
 		$o++;
 	}
 	$p++;

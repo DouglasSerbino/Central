@@ -1,4 +1,4 @@
-<?
+<?php
 foreach($informacion_procesos as $Datos_proceso)
 {
 	$proceso = $Datos_proceso["codigo_cliente"]."-".$Datos_proceso["proceso"];
@@ -6,7 +6,7 @@ foreach($informacion_procesos as $Datos_proceso)
 	$cliente = $Datos_proceso["cliente"];
 }
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo "<?phpxml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,7 +30,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 <div id="contenedor-pagina">
 
 <div id="encabezado"><img src="/html/img/lgtps/<?=$this->session->userdata('grupo')?>.png" width="125" alt="<?=$this->session->userdata('grupo')?>" /></div>
-<div id="titulo" align='center'>REPORTE DE PRODUCCION <? echo $proceso; ?></div>
+<div id="titulo" align='center'>REPORTE DE PRODUCCION <?php echo $proceso; ?></div>
 
 <?php
 if(count($informacion_sap) != 0)

@@ -20,7 +20,7 @@
 </style>
 
 
-<?
+<?php
 $Lineas_Mostrar = array();
 $Padres = array();
 //Relajo de relajos
@@ -55,7 +55,7 @@ foreach($Lineas as $Id_Mc_Linea => $Principal)
 
 <div>
 	<strong><span class="toolder" id="mostrar_movi">Agregar Movimientos &nbsp; [+]<span>Mostrar formulario para agregar movimientos</span></span></strong>
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 	//Esto no lo logro capturar en el bucle anterior
@@ -68,7 +68,7 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 			&raquo;<?=$Lineas_Mostrar[$Index]['nom']?><span>Ver/Ocultar L&iacute;neas</span>
 		</span>
 		<div style="display:none;">
-<?
+<?php
 	foreach($Datos['line'] as $iLine => $nLine)
 	{
 ?>
@@ -76,12 +76,12 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 				&nbsp; &nbsp; <input type="checkbox" valor="<?=$iLine?>" />
 				<?=$nLine?><br />
 			</label>
-<?
+<?php
 	}
 ?>
 		</div>
 	</div>
-<?
+<?php
 }
 ?>
 	<div class="lineas_agregar" style="display:none;">
@@ -126,14 +126,14 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 
 <select id="mc_lineas">
 	<option value='todos'>Todas las L&iacute;neas</option>
-<?
+<?php
 foreach($Lineas as $Index => $Datos)
 {
 	foreach($Datos as $Id_MC_sLinea => $Info)
 	{
 ?>
 	<option value='<?=$Id_MC_sLinea?>'><?=$Info['codigo'].' - '.$Info['linea']?></option>
-<?
+<?php
 	}
 }
 ?>
@@ -152,7 +152,7 @@ foreach($Lineas as $Index => $Datos)
 		<th style="width:10%;">Total</th>
 		<th style="width:6%;">&nbsp;</th>
 	</tr>
-<?
+<?php
 foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 {
 ?>
@@ -167,7 +167,7 @@ foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 			<span info="<?=$Id_Mc_Movimiento?>" class="iconos ieliminar toolder"><span>Eliminar Movimiento</span></span>
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -180,14 +180,14 @@ foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 <script>
 	
 	var Lineas_Movimientos = {};
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 	foreach($Datos['line'] as $iLine => $nLine)
 	{
 ?>
 	Lineas_Movimientos["<?=$iLine?>"] = ["<?=$nLine?>", "<?=$Datos['cod']?>"];
-<?
+<?php
 	}
 }
 ?>

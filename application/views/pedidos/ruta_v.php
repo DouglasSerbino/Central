@@ -1,4 +1,4 @@
-<?
+<?php
 $Icono_Ruta = array(
 	2 => 'fdi_pdf',
 	5 => 'fdi_liberacion',
@@ -17,12 +17,12 @@ $Icono_Ruta = array(
 Aplicar Ruta:
 <select id="asigna_ruta" name="asigna_ruta">
 	<option value="">Seleccione</option>
-<?
+<?php
 foreach($Detalle_Rutas as $Id_Ruta => $Rutina)
 {
 ?>
 	<option value="<?=$Id_Ruta?>"><?=$Rutina['elemento']?></option>
-<?
+<?php
 }
 ?>
 </select>
@@ -30,7 +30,7 @@ foreach($Detalle_Rutas as $Id_Ruta => $Rutina)
 
 <br />
 <div id="ruta_trabajo">
-<?
+<?php
 //Quien tiene asignado el trabajo actualmente?
 $Puesto_Asignado = 0;
 //Puestos originales, para comparar si se realizaron cambios
@@ -56,7 +56,7 @@ if(0 == count($Ruta_Actual))
 
 <script>
 	
-<?
+<?php
 $Usuarios_Array_v = array();
 foreach($Dpto_Usuario as $Index => $Fila)
 {
@@ -76,24 +76,24 @@ foreach($Dpto_Usuario as $Index => $Fila)
 
 	var Puestos_actuales = <?=count($Ruta_Actual)?>;
 	
-<?
+<?php
 foreach($Puestos_Originales as $Id_Ruta_Dpto => $Id_Usu_Dpto)
 {
 ?>
 	puestos_originales[<?=$Id_Ruta_Dpto?>] = <?=$Id_Usu_Dpto?>;
-<?
+<?php
 }
 ?>
 	puesto_asignado = <?=$Puesto_Asignado?>;
 
 
 	var Detalle_Rutas = {};
-<?
+<?php
 foreach($Detalle_Rutas as $Index => $Fila)
 {
 ?>
 	Detalle_Rutas[<?=$Index?>] = <?=json_encode($Fila, true)?>;
-<?
+<?php
 }
 
 
@@ -233,12 +233,12 @@ var Nuevo_Viejo = "<?=(0==count($Ruta_Actual))?'nuevo':'viejo'?>";
 	});
 
 
-<?
+<?php
 if(isset($Ruta_Aplicada))
 {
 ?>
 	$('#asigna_ruta').val(<?=$Ruta_Aplicada?>).change();
-<?
+<?php
 }
 ?>
 

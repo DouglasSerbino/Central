@@ -16,11 +16,11 @@ if('mostrar' == $this->generar_cache_m->preparar_cache($Cache))
 	<form action="/reportes/cumplimiento/index/" method="post" name="miform">
 		
 		<select name="mes1">
-<?
+<?php
 foreach($Meses as $iMes => $nMes){
 ?>
 			<option value="<?=$iMes?>"<?=($mes==$iMes)?' selected="selected"':''?>><?=$nMes?></option>
-<?
+<?php
 }
 ?>
 		</select> &nbsp;
@@ -39,7 +39,7 @@ foreach($Meses as $iMes => $nMes){
 			<th style='width: 150px;'>Entregas Atrasadas</th>
 			<th>Productividad</th>
 		</tr>
-<?
+<?php
 
 if(0 < count($cumplimiento_general))
 {

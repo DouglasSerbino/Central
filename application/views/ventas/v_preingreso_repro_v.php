@@ -48,12 +48,12 @@
 <!-- ***************** -->
 <strong>Tipo de trabajo:</strong>
 <select name="tipo_trabajo">
-<?
+<?php
 foreach($Tipos_Trabajo as $Tipo)
 {
 ?>
 	<option value="<?=$Tipo['id_tipo_trabajo']?>"><?=$Tipo['trabajo']?></option>
-<?
+<?php
 }
 ?>
 </select>
@@ -64,18 +64,18 @@ foreach($Tipos_Trabajo as $Tipo)
 
 <!-- ***************** -->
 <strong>Tipo de Impresi&oacute;n:</strong>
-<?
+<?php
 foreach($Tipos_Impresion as $Tipo)
 {
 ?>
-<input type="radio" name="id_tipo_impresion" id="iti_<?=$Tipo['id_tipo_impresion']?>" value="<?=$Tipo['id_tipo_impresion']?>"<?
+<input type="radio" name="id_tipo_impresion" id="iti_<?=$Tipo['id_tipo_impresion']?>" value="<?=$Tipo['id_tipo_impresion']?>"<?php
 if($Tipo['id_tipo_impresion'] == 2)
 {
-?> checked="checked"<?
+?> checked="checked"<?php
 }
 ?> />
 <label for="iti_<?=$Tipo['id_tipo_impresion']?>"><?=$Tipo['tipo_impresion']?></label>
-<?
+<?php
 }
 ?>
 
@@ -97,7 +97,7 @@ if($Tipo['id_tipo_impresion'] == 2)
 		<th>BCM</th>
 		<th>Sticky</th>
 	</tr>
-<?
+<?php
 for($i = 1; $i <= 10; $i++)
 {
 ?>
@@ -111,7 +111,7 @@ for($i = 1; $i <= 10; $i++)
 		<td><input type="text" size="4" name="bcm_<?=$i?>" id="resolucion_<?=$i?>" /></td>
 		<td><input type="text" size="4" name="sticky_<?=$i?>" id="resolucion_<?=$i?>" /></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -131,12 +131,12 @@ for($i = 1; $i <= 10; $i++)
 		<td colspan="2">
 			<select name="maquina">
 				<option value="">--</option>
-<?
+<?php
 foreach($Maquinas as $Maquina)
 {
 ?>
 				<option value="<?=$Maquina?>"><?=$Maquina?></option>
-<?
+<?php
 }
 ?>
 			</select>
@@ -238,7 +238,7 @@ foreach($Maquinas as $Maquina)
 			Altura:
 			<select name="polimero" id="polimero" onchange="calcular_distorsion()">
 				<option value="">Polimero</option>
-<?
+<?php
 $Polimero = array(
 	'0.045', '0.067', '0.090',
 	'0.100', '0.107', '0.112',
@@ -248,7 +248,7 @@ foreach($Polimero as $index => $Valor)
 {
 ?>
 				<option value="<?=$Valor?>"><?=$Valor?></option>
-<?
+<?php
 }
 ?>
 			</select>
@@ -257,13 +257,13 @@ foreach($Polimero as $index => $Valor)
 			StickyBack:
 			<select name="stickyback" id="stickyback" onchange="calcular_distorsion()">
 				<option value="">StickyBack</option>
-<?
+<?php
 $Stickyback = array('0.015', '0.020', '0.0177', '0.250', '0.60');
 foreach($Stickyback as $index => $Valor)
 {
 ?>
 				<option value="<?=$Valor?>"><?=$Valor?></option>
-<?
+<?php
 }
 ?>
 			</select>
@@ -291,7 +291,7 @@ foreach($Stickyback as $index => $Valor)
 </div>
 
 <div class="imprime_al_lado">
-	<? $this->load->view('pedidos/cotizacion_v'); ?>
+	<?php $this->load->view('pedidos/cotizacion_v'); ?>
 
 	<br class="no_imprime" />
 </div>

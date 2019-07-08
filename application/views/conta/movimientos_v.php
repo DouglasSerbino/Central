@@ -56,7 +56,7 @@
 </style>
 
 
-<?
+<?php
 $Lineas_Mostrar = array();
 $Padres = array();
 //Relajo de relajos
@@ -93,7 +93,7 @@ foreach($Lineas as $Id_Mc_Linea => $Principal)
 	<strong><span class="toolder" id="mostrar_movi">Agregar Movimientos &nbsp; [+]<span>Mostrar formulario para agregar movimientos</span></span></strong>
 	
 	<div id="contiene_lineas_agregar">
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 	//Esto no lo logro capturar en el bucle anterior
@@ -106,7 +106,7 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 				&raquo;<?=$Lineas_Mostrar[$Index]['nom']?><span>Ver/Ocultar L&iacute;neas</span>
 			</span>
 			<div style="display:none;">
-<?
+<?php
 	foreach($Datos['line'] as $iLine => $nLine)
 	{
 ?>
@@ -114,12 +114,12 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 					&nbsp; &nbsp; <input type="checkbox" valor="<?=$iLine?>" />
 					<?=$nLine?><br />
 				</label>
-<?
+<?php
 	}
 ?>
 			</div>
 		</div>
-<?
+<?php
 }
 ?>
 		<div class="lineas_agregar" style="display:none;">
@@ -173,7 +173,7 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 	<br />
 	<select id="mc_slc_mov_linea">
 		<option value="todos">Todas las l&iacute;neas</option>
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 	//Esto no lo logro capturar en el bucle anterior
@@ -181,7 +181,7 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 	$Lineas_Mostrar[$Index]['nom'] = $Padres[$Index][1];
 ?>
 		<option value="<?=$Index?>"><?=$Lineas_Mostrar[$Index]['nom']?></option>
-<?
+<?php
 }
 ?>
 	</select>
@@ -190,17 +190,17 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 		<optgroup id="mc_opt_todos">
 			<option value="todos">Todos</option>
 		</optgroup>
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 ?>
 		<optgroup id="mc_opt_<?=$Index?>">
-<?
+<?php
 	foreach($Datos['line'] as $iLine => $nLine)
 	{
 ?>
 			<option value="<?=$iLine?>"><?=$nLine?></option>
-<?
+<?php
 	}
 }
 ?>
@@ -220,7 +220,7 @@ foreach($Lineas_Mostrar as $Index => $Datos)
 
 
 
-<?
+<?php
 $Lineas_Mostrar = array();
 $Padres = array();
 //Relajo de relajos
@@ -271,14 +271,14 @@ foreach($Lineas as $Id_Mc_Linea => $Principal)
 
 <!--select id="mc_lineas">
 	<option value='todos'>Todas las L&iacute;neas</option>
-<?
+<?php
 foreach($Lineas as $Index => $Datos)
 {
 	foreach($Datos as $Id_MC_sLinea => $Info)
 	{
 ?>
 	<option value='<?=$Id_MC_sLinea?>'><?=$Info['codigo'].' - '.$Info['linea']?></option>
-<?
+<?php
 	}
 }
 ?>
@@ -302,7 +302,7 @@ foreach($Lineas as $Index => $Datos)
 		<th class="derecha" style="width:90px;">Confirmaci&oacute;n</th>
 		<th style="width:30px;">&nbsp;</th>
 	</tr>
-<?
+<?php
 foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 {
 ?>
@@ -314,25 +314,25 @@ foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 		<td class="derecha"><?=$Datos['factura']?></td>
 		<td class="derecha"><?=$Datos['pedido']?></td>
 		<td class="derecha">
-<?
+<?php
 	if('' == $Datos['codigo_pago'])
 	{
 ?>
 			<span class="toolder mc_confirma" info="<?=$Id_Mc_Movimiento?>" desc="<?=$Datos['codigo']?> [<?=$Datos['mas_menos']?>] - <?=$Datos['descripcion']?>"><p>Confirmar</p><span>Ingresar el n&uacute;mero y tipo de la transacci&oacute;n realizada.</span></span>
-<?
+<?php
 	}
 	else
 	{
 ?>
 			<?=$Datos['codigo_pago']?> (<?=$Datos['tipo_pago']?>)
-<?
+<?php
 	}
 ?></td>
 		<td>
 			<span info="<?=$Id_Mc_Movimiento?>" class="iconos ieliminar toolder"><span>Eliminar Movimiento</span></span>
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -403,14 +403,14 @@ foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 	
 	
 	var Lineas_Movimientos = {};
-<?
+<?php
 foreach($Lineas_Mostrar as $Index => $Datos)
 {
 	foreach($Datos['line'] as $iLine => $nLine)
 	{
 ?>
 	Lineas_Movimientos["<?=$iLine?>"] = ["<?=$nLine?>", "<?=$Datos['cod']?>"];
-<?
+<?php
 	}
 }
 ?>

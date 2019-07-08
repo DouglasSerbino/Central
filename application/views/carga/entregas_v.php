@@ -10,7 +10,7 @@
 
 <br />
 
-<?
+<?php
 foreach($Mat_Solicitado as $Material)
 {
 	if('&nbsp;' == $Material['material_solicitado'])
@@ -35,7 +35,7 @@ foreach($Mat_Solicitado as $Material)
 		<th style="width: 95px;">Entrega</th>
 		<th>Ruta</th>
 	</tr>
-<?
+<?php
 	
 	
 	
@@ -52,27 +52,27 @@ foreach($Mat_Solicitado as $Material)
 		<td><?=$Trabajo['nombre']?></td>
 		<td><?=$Trabajo['fecha_entrega']?></td>
 		<td>
-<?
+<?php
 		if(isset($Pedidos['Ruta'][$Trabajo['id_pedido']]))
 		{
 			foreach($Pedidos['Ruta'][$Trabajo['id_pedido']] as $Ruta)
 			{
 ?>
 			<span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><strong><?=$Ruta['usu']?></strong>: <?=$Ruta['est']?>  </span></span>
-<?
+<?php
 			}
 		}
 ?>
 		</td>
 	</tr>
-<?
+<?php
 		
 	}
 ?>
 </table>
 <br />
 
-<?	
+<?php	
 }
 ?>
 

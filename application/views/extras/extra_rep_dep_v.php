@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/html/js/extra.js?n=1"></script>
 <link rel="stylesheet" type="text/css\" media="all" href="/html/css/extra_rep.css" />
-<?
+<?php
 foreach($departamento as $Datos_dpto)
 {
 	$codigo = $Datos_dpto["codigo"];
@@ -17,7 +17,7 @@ $meses_v = array("01" => "Enero", "02" => "Febrero", "03" => "Marzo", "04" => "A
 	<br /><strong>Reporte de Horas Extras por Departamento &nbsp; - &nbsp; <?=$codigo?> [ <?=$dpto_nombre?> ]</strong>
 	<br /><br />
 	
-<?
+<?php
 if(count($usuarios) > 0)
 {
 	foreach($proyecciones as $Datos_proyeccion)

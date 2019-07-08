@@ -17,12 +17,12 @@
 			<td>
 				<select name="grupo">
 					<option value="0">Principal</option>
-<?
+<?php
 foreach($Menu_Padre as $Menu)
 {
 ?>
-					<option value="<?=$Menu['id_menu']?>"<? if($Menu['id_menu'] == $Informacion[0]['id_menu_padre']) echo ' selected="selected"'; ?>><?=$Menu['etiqueta']?></option>
-<?
+					<option value="<?=$Menu['id_menu']?>"<?php if($Menu['id_menu'] == $Informacion[0]['id_menu_padre']) echo ' selected="selected"'; ?>><?=$Menu['etiqueta']?></option>
+<?php
 }
 ?>
 				</select>
@@ -66,24 +66,24 @@ foreach($Menu_Padre as $Menu)
 <ul id="sortable">
 	<li class="disabled"><strong>Agregar Elementos</strong></li>
 
-<?php
+<?phpphp
 /*foreach($Extraer_accesos as $Datos)
 {
 ?>
 	<li class="dp_<?=$Datos['id_dpto']?>"><span>[x]</span><?=$Datos['departamento']?></li>
-<?php
+<?phpphp
 }*/
 ?>
 	
 </ul>
 
 <ul id="draggable">
-<?
+<?php
 foreach($Departamentos as $Dpto)
 {
 ?>
 	<li class="dp_<?=$Dpto['id_dpto']?>"><span>[x]</span><?=$Dpto['departamento']?></li>
-<?
+<?php
 }
 ?>
 </ul-->

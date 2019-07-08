@@ -50,7 +50,7 @@
 		<input type='text' name='fecha_fac' id='fecha_fac' value='<?=date('Y-m-d')?>' style='width: 100px;'>
 		<input type="hidden" name="id_cliente_ver" value="<?=$Id_Cliente?>" />
 		<br />
-<?php
+<?php 
 //print_r($procesos);
 $suma = 0;
 foreach($procesos as $Informacion)

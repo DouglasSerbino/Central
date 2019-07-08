@@ -4,12 +4,12 @@
 			<td>Oficina</td>
 			<td colspan="3">
 				<select name="upais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 					<option value="<?=$pCod?>"><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 				</select>
@@ -40,11 +40,11 @@ foreach($Paises_C as $pCod => $pNomb)
 			<td>Departamento</td>
 			<td>
 				<select name="departamento">
-<?
+<?php
 foreach($Departamentos as $Dpto){
 ?>
 					<option value="<?=$Dpto['id_dpto']?>"><?=$Dpto['departamento']?> [<?=$Dpto['codigo']?>]</option>
-<?
+<?php
 }
 ?>
 				</select>

@@ -8,12 +8,12 @@
 			<td>Oficina</td>
 			<td colspan="3">
 				<select name="upais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 					<option value="<?=$pCod?>"<?=($pCod==$Usuario[0]['upais'])?' selected="selected"':''?>><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 				</select>
@@ -44,7 +44,7 @@ foreach($Paises_C as $pCod => $pNomb)
 			<td>Departamento</td>
 			<td>
 				<select name="departamento">
-<?
+<?php
 foreach($Departamentos as $Dpto)
 {
 	if(
@@ -59,8 +59,8 @@ foreach($Departamentos as $Dpto)
 		continue;
 	}
 ?>
-					<option value="<?=$Dpto['id_dpto']?>"<? if($Dpto['id_dpto']==$Usuario[0]['id_dpto']){ echo ' selected="selected"'; } ?>><?=$Dpto['departamento']?> [<?=$Dpto['codigo']?>]</option>
-<?
+					<option value="<?=$Dpto['id_dpto']?>"<?php if($Dpto['id_dpto']==$Usuario[0]['id_dpto']){ echo ' selected="selected"'; } ?>><?=$Dpto['departamento']?> [<?=$Dpto['codigo']?>]</option>
+<?php
 }
 ?>
 				</select>

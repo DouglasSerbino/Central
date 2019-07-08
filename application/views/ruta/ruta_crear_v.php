@@ -177,12 +177,12 @@
 						<td>
 							<select name="ruta_cliente">
 								<!--option value="">Seleccionar cliente</option-->
-<?
+<?php
 foreach($Clientes as $Fila)
 {
 ?>
 								<option value="<?=$Fila['id_cliente']?>"><?=$Fila['codigo_cliente'].' - '.$Fila['nombre']?></option>
-<?
+<?php
 }
 ?>
 							</select>

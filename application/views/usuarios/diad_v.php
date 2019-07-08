@@ -35,7 +35,7 @@
 
 
 
-<?
+<?php
 $Rango = '01-'.date('m-Y').' al '.'15-'.date('m-Y');
 if(15 < date('d'))
 {
@@ -44,7 +44,7 @@ if(15 < date('d'))
 ?>
 
 
-<?
+<?php
 foreach($Salarios as $Fila)
 {
 ?>
@@ -103,7 +103,7 @@ foreach($Salarios as $Fila)
 
 <div class="quebrar_pagina">&nbsp;</div>
 
-<?
+<?php
 }
 ?>
 

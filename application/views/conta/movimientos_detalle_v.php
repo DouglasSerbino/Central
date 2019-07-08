@@ -25,24 +25,24 @@
 <br />
 
 <select id="mc_anho_cambia">
-<?
+<?php
 $Fecha_Fin = date('Y') + 2;
 for($i = 2015; $i <= $Fecha_Fin; $i++)
 {
 ?>
 	<option value="<?=$i?>"<?=($i==$Anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+<?php
 }
 ?>
 </select>
 
 <select id="mc_mes_inicio">
-<?
+<?php
 foreach($Meses_v as $iMes => $nMes)
 {
 ?>
 			<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></td>
-<?
+<?php
 }
 ?>
 </select>
@@ -51,7 +51,7 @@ foreach($Meses_v as $iMes => $nMes)
 &nbsp;
 <select name="mc_linea" id="mc_linea">
 	<option value="">--</option>
-<?
+<?php
 	foreach($Lineas as $Id_Mc_Linea => $Principal)
 	{
 		foreach($Principal as $Id_sMc_Linea => $SubMC)
@@ -60,7 +60,7 @@ foreach($Meses_v as $iMes => $nMes)
 			{
 ?>
 	<option value="<?=$Id_sMc_Linea?>"<?=($Id_Linea==$Id_sMc_Linea)?' selected="selected"':''?>><?=$SubMC['codigo'].' - '.$SubMC['linea']?></option>
-<?
+<?php
 			}
 		}
 	}
@@ -83,25 +83,25 @@ foreach($Meses_v as $iMes => $nMes)
 		<th class="derecha" style="width:10%;">Pedido</th>
 		<th style="width:6%;">&nbsp;</th>
 	</tr>
-<?
+<?php
 foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 {
 ?>
 	<tr>
 		<td><?=date('d-m-Y', strtotime($Datos['fecha']))?></td>
 		<td><?=$Datos['descripcion']?></td>
-<?
+<?php
 	if('101' == $Datos['linea'] || '109' == $Datos['linea'])
 	{
 ?>
 		<td><a href="/pedidos/pedido_detalle/index/<?=$Datos['mas_menos']?>" class="toolder" target="_blank"><?=$Datos['codigo']?><span>Ver Detalle</span></a></td>
-<?
+<?php
 	}
 	else
 	{
 ?>
 		<td><span class="toolder"><?=$Datos['codigo']?> [<?=$Datos['mas_menos']?>]<span><?=$Datos['linea']?></span></span></td>
-<?
+<?php
 	}
 	/*
 		<td class="derecha"><?=number_format($Datos['cantidad'], 2)?></td>
@@ -112,23 +112,23 @@ foreach($Movimientos as $Id_Mc_Movimiento => $Datos)
 		<td class="derecha"><?=$Datos['factura']?></td>
 		<td class="derecha"><?=$Datos['pedido']?></td>
 		<td>
-<?
+<?php
 	if('101' == $Datos['linea'] || '109' == $Datos['linea'])
 	{
 ?>
 			&nbsp;
-<?
+<?php
 	}
 	else
 	{
 ?>
 			<span info="<?=$Id_Mc_Movimiento?>" class="iconos ieliminar toolder"><span>Eliminar Movimiento</span></span>
-<?
+<?php
 	}
 ?>
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

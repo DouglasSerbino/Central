@@ -7,12 +7,12 @@
 				<td>Pa&iacute;s</td>
 				<td>
 				<select name="mpais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 					<option value="<?=$pCod?>"><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 				</select>
@@ -68,7 +68,7 @@ foreach($Mostrar_proveedor as $Datos_proveedor)
 				<td>
 					<select name="equipo">
 						<option value="0">Seleccionar</option>
-<?
+<?php
 foreach($Mostrar_equipos as $Datos_equipo)
 {
 	$id_equipo = $Datos_equipo["id_inventario_equipo"];

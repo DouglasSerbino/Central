@@ -161,12 +161,12 @@
 						<td>
 							<input type="text" name="dia1" id="dia1" size="5" value="<?=$Fechas['dia1']?>" />
 							<select name="mes1" id="mes1">
-<?
+<?php
 foreach($Meses as $Mes => $MNombre)
 {
 ?>
 								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -178,12 +178,12 @@ foreach($Meses as $Mes => $MNombre)
 						<td>
 							<input type="text" name="dia2" id="dia2" size="5" value="<?=$Fechas['dia2']?>" />
 							<select name="mes2" id="mes2">
-<?
+<?php
 foreach($Meses as $Mes => $MNombre)
 {
 ?>
 								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes2'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -195,12 +195,12 @@ foreach($Meses as $Mes => $MNombre)
 						<td>
 							<select name="pais_c" id="pais_c">
 								<option value="">Todos</option>
-<?
+<?php
 foreach($Paises_C as $iPais => $nPais)
 {
 ?>
 								<option value="<?=$iPais?>"<?=($Pais_C==$iPais)?' selected="selected"':''?>><?=$nPais?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -211,7 +211,7 @@ foreach($Paises_C as $iPais => $nPais)
 						<td>
 							<select name="puesto" id="puesto">
 								<option value="todos">Todos</option>
-<?
+<?php
 foreach($Usuarios as $Dpto_Usuarios)
 {
 	if(
@@ -224,16 +224,16 @@ foreach($Usuarios as $Dpto_Usuarios)
 	{
 ?>
 								<optgroup label="<?=$Dpto_Usuarios['dpto']?>">
-<?
+<?php
 		foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
 		{
 ?>
 									<option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
-<?
+<?php
 		}
 ?>
 								</optgroup>
-<?
+<?php
 	}
 }
 ?>
@@ -246,12 +246,12 @@ foreach($Usuarios as $Dpto_Usuarios)
 							<input type="hidden" name="cliente_tipo" id="cliente_tipo" value="todos" />
 							<select name="cliente" id="cliente">
 								<option value="todos">Todos</option>
-<?
+<?php
 foreach($Clientes as $Cliente)
 {
 ?>
 								<option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -294,7 +294,7 @@ foreach($bus_materiales as $Datos)
 					</tr>
 				</table>
 				
-<?
+<?php
 if(
 	'Sistemas' == $this->session->userdata('codigo')
 	//|| 'Gerencia' == $this->session->userdata('codigo')
@@ -304,7 +304,7 @@ if(
 				
 				<br /><br />
 				<input type="button" value="Modificar Prioridades" id="guar_prior" />
-<?
+<?php
 }
 ?>
 				<input type="submit" class="btn_bonito" value="Crear Reporte" />
@@ -312,7 +312,7 @@ if(
 		</tr>
 		<tr>
 			<td>
-<?
+<?php
 $Avanzar = array();
 foreach($Usuarios as $Dpto_Usuarios)
 {
@@ -370,7 +370,7 @@ if(isset($Carga['trabajos']))
 </form>
 
 
-<?
+<?php
 if($Mostar_Datos)
 {
 ?>
@@ -385,15 +385,15 @@ if($Mostar_Datos)
 		<th style="width: 330px;">Producto</th>
 		<th style="width: 90px;">Ingreso</th>
 		<th style="width: 90px;">Estimada</th>
-		<?
+		<?php
 if('finalizado' == $Trabajo)
 {
-?><th style="width: 90px;">Real</th><?
+?><th style="width: 90px;">Real</th><?php
 }
 ?>
 		<th>Ruta</th>
 	</tr>
-<?
+<?php
 $a=0;
 	foreach($Carga['trabajos'] as $Detalle)
 	{
@@ -470,7 +470,7 @@ $a=0;
 		</td>
 		<td>
 			
-<?
+<?php
 if(
 	'finalizado' != $Trabajo
 	&& 'Ventas' != $this->session->userdata('codigo')
@@ -484,11 +484,11 @@ if(
 	{
 ?>
 			<a href="javascript:ver_cambiar_fecha('<?=$Detalle['id_pedido']?>', '<?=$Detalle['codcl']?>-<?=$Detalle['proce']?>', '<?=$Detalle['entre'][2].'-'.$Detalle['entre'][1].'-'.$Detalle['entre'][0]?>');" class="iconos icalendario toolder"><span>Cambiar Fecha de Entrega</span></a>
-<?
+<?php
 	}
 ?>
 			<a href="javascript:finalizar_trabajo('<?=$Detalle['id_pedido']?>', '<?=$Detalle['codcl']?>-<?=$Detalle['proce']?>');" class="iconos iterminado toolder"><span>Dar por Terminado</span></a>
-<?
+<?php
 }
 ?>
 			
@@ -569,16 +569,16 @@ if(
 		</td>
 		<td><?=$Detalle['entra'][2].'-'.$Detalle['entra'][1].'-'.$Detalle['entra'][0]?></td>
 		<td class="<?=$Estado_Fecha?>"><?=$Detalle['entre'][2].'-'.$Detalle['entre'][1].'-'.$Detalle['entre'][0]?></td>
-		<?
+		<?php
 		if('finalizado' == $Trabajo)
 		{
-?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?
+?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?php
 		}
 ?>
 		<!--td style="clear: both;"></td-->
 		
 		<td>
-<?
+<?php
 		if(isset($Carga['ruta'][$Detalle['id_pedido']]))
 		{
 			foreach($Carga['ruta'][$Detalle['id_pedido']] as $Ruta)
@@ -600,21 +600,21 @@ if(
 							{
 								continue;
 							}
-?><span class="rut_<?=$Ruta2['est']?> toolder"><?=$Ruta2['ini']?><span><?=$Ruta2['usu']?>: <?=$Ruta2['est']?><br />Fecha Finalizado: <?=$Ruta2['fin']?></span></span><?
+?><span class="rut_<?=$Ruta2['est']?> toolder"><?=$Ruta2['ini']?><span><?=$Ruta2['usu']?>: <?=$Ruta2['est']?><br />Fecha Finalizado: <?=$Ruta2['fin']?></span></span><?php
 						}
 						
 					}
 				}
 				else
 				{
-?><span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><?=$Ruta['usu']?>: <?=$Ruta['est']?><br />Fecha Finalizado: <?=$Ruta['fin']?></span></span><?
+?><span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><?=$Ruta['usu']?>: <?=$Ruta['est']?><br />Fecha Finalizado: <?=$Ruta['fin']?></span></span><?php
 				}
 			}
 		}
 ?>
 		</td>
 	</tr>
-<?
+<?php
 	$a++;
 	}
 	
@@ -692,29 +692,29 @@ if('Flexo' != $Id_Cliente)
 		<td><?=$Detalle['prod']?></td>
 		<td><?=$Detalle['entra'][2].'-'.$Detalle['entra'][1].'-'.$Detalle['entra'][0]?></td>
 		<td class="<?=$Estado_Fecha?>"><?=$Detalle['entre'][2].'-'.$Detalle['entre'][1].'-'.$Detalle['entre'][0]?></td>
-		<?
+		<?php
 			if('finalizado' == $Trabajo)
 			{
-?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?
+?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?php
 			}
 ?>
 		<!--td style="clear: both;"></td-->
 		<!--td>&nbsp;</td-->
 		<td>
-<?
+<?php
 			foreach($Carga_Grupos['ruta'][$Detalle['id_pedido']] as $Ruta)
 			{
 				if('GR' != $Ruta['ini'])
 				{
 ?>
 			<span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><?=$Ruta['usu']?>: <?=$Ruta['est']?><br />Fecha Finalizado: <?=$Ruta['fin']?></span></span>
-<?
+<?php
 				}
 			}
 ?>
 		</td>
 	</tr>
-<?
+<?php
 		}
 	}
 }
@@ -723,7 +723,7 @@ if('Flexo' != $Id_Cliente)
 
 
 </div>
-<?
+<?php
 }
 ?>
 
@@ -755,7 +755,7 @@ if('Flexo' != $Id_Cliente)
 
 
 
-<?
+<?php
 $this->load->view('/scan/cargar_scan_v', $num_cajas);
 ?>
 
@@ -768,7 +768,7 @@ $this->load->view('/scan/cargar_scan_v', $num_cajas);
 	
 	
 	
-<?
+<?php
 
 if(
 	'Sistemas' == $this->session->userdata('codigo')
@@ -831,7 +831,7 @@ if(
 	});
 	
 	
-<?
+<?php
 }
 ?>
 	

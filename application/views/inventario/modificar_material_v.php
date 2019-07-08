@@ -1,4 +1,4 @@
-<?
+<?php
 if(count($Id_proveedor) != 0)
 {
 	//print_r($Id_proveedor);
@@ -37,12 +37,12 @@ if($Mostrar_materiales > 0)
 				<td>Pa&iacute;s</td>
 				<td>
 				<select name="mpais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 					<option value="<?=$pCod?>"<?=($pCod==$Datos_material["mat_pais"])?' selected="selected"':''?>><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 				</select>
@@ -65,13 +65,13 @@ foreach($Paises_C as $pCod => $pNomb)
 				<td>Tipo:</td>
 				<td>
 					<select name="tipo">
-						<option value="IN2" <? if($tipo == "IN2") echo "selected=\"selected\""; ?>>IN2</option>
-						<option value="PZA" <? if($tipo == "PZA") echo "selected=\"selected\""; ?>>PZA</option>
-						<option value="PLGO" <? if($tipo == "PLGO") echo "selected=\"selected\""; ?>>PLGO</option>
-						<option value="GAL" <? if($tipo == "GAL") echo "selected=\"selected\""; ?>>GAL</option>
-						<option value="ROL" <? if($tipo == "ROL") echo "selected=\"selected\""; ?>>ROL</option>
-						<option value="JGO" <? if($tipo == "JGO") echo "selected=\"selected\""; ?>>JGO</option>
-						<option value="RES" <? if($tipo == "RES") echo "selected=\"selected\""; ?>>RES</option>
+						<option value="IN2" <?php if($tipo == "IN2") echo "selected=\"selected\""; ?>>IN2</option>
+						<option value="PZA" <?php if($tipo == "PZA") echo "selected=\"selected\""; ?>>PZA</option>
+						<option value="PLGO" <?php if($tipo == "PLGO") echo "selected=\"selected\""; ?>>PLGO</option>
+						<option value="GAL" <?php if($tipo == "GAL") echo "selected=\"selected\""; ?>>GAL</option>
+						<option value="ROL" <?php if($tipo == "ROL") echo "selected=\"selected\""; ?>>ROL</option>
+						<option value="JGO" <?php if($tipo == "JGO") echo "selected=\"selected\""; ?>>JGO</option>
+						<option value="RES" <?php if($tipo == "RES") echo "selected=\"selected\""; ?>>RES</option>
 					</select>
 				</td>
 				<td>Proveedor:</td>
@@ -102,7 +102,7 @@ foreach($Mostrar_proveedor as $Datos_proveedor)
 				<td>
 					<select name="equipo">
 						<option value="0">Seleccionar</option>
-<?
+<?php
 foreach($Mostrar_equipos as $Datos_equipo)
 {
 	$id_equipo = $Datos_equipo["id_inventario_equipo"];

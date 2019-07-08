@@ -7,7 +7,7 @@ if(count($mostrar_hoja) != 0)
 </script>
 <div class="informacion">
 	<table>
-<?
+<?php
 foreach($Cliente_Procesos as $Datos)
 {
 ?>

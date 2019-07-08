@@ -47,7 +47,7 @@ foreach($Mostrar_Equipo as $Datos_equipo)
 		<th>UMB</th>
 		<th>Valor</th>
 	</tr>
-<?
+<?php
 $total_valor = 0;
 $fila_v = array();
 $existencias_v = array();
@@ -134,7 +134,7 @@ foreach ($existencias_v as $index => $valor)
 		<tr>
 			<th colspan="4">&nbsp;</th>
 			<th>Total</th>
-			<th>$<? echo number_format($total_valor, 2); ?></th>
+			<th>$<?php echo number_format($total_valor, 2); ?></th>
 		</tr>
 	
 	</table>

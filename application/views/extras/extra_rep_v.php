@@ -23,9 +23,9 @@
 if($this->session->userdata('codigo') != 'SAP')
 {
 ?>
-	<!-- input type="radio" name="tipo" id="presupuesto" value="presupuesto" <? if($tipo == "presupuesto") echo "checked=\"checked\""; ?> onclick="habi_desh('ha')" /><label for="presupuesto"><strong>Presupuesto</strong></label> &nbsp; 
-		<select id='pre_mes' name="pre_mes" <? if($tipo == "detalle") echo "disabled=\"disabled\""; ?>>
-<?
+	<!-- input type="radio" name="tipo" id="presupuesto" value="presupuesto" <?php if($tipo == "presupuesto") echo "checked=\"checked\""; ?> onclick="habi_desh('ha')" /><label for="presupuesto"><strong>Presupuesto</strong></label> &nbsp; 
+		<select id='pre_mes' name="pre_mes" <?php if($tipo == "detalle") echo "disabled=\"disabled\""; ?>>
+<?php
 $meses_v = array("", "Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 for($i = 1; $i <= 12; $i++)
 {
@@ -64,7 +64,7 @@ for($i = $inicio_a; $i <= $fin_a; $i++)
 		
 	</form>
 	
-<?
+<?php
 //Indica que debo mostrar los datos
 if($mostrar == 'ok')
 {
@@ -76,7 +76,7 @@ if($mostrar == 'ok')
 	
 	<strong>Horas Extras Ingresadas</strong><br />
 	
-<?
+<?php
 		$nombre_ant = "";
 		$horas_t1 = 0;
 		$horas_t2 = 0;
@@ -160,8 +160,8 @@ if($mostrar == 'ok')
 ?>
 		<tr>
 			<th>&nbsp;</th><th>Total:</th>
-			<th><? echo number_format($horas_t1, 2); ?> horas</th>
-			<th>$<? echo number_format($money_t1, 3); ?></th>
+			<th><?php echo number_format($horas_t1, 2); ?> horas</th>
+			<th>$<?php echo number_format($money_t1, 3); ?></th>
 		</tr>
 		<tr>
 			<th colspan="4">&nbsp;</th>
@@ -169,8 +169,8 @@ if($mostrar == 'ok')
 		<tr>
 			<th>&nbsp;</th>
 			<th>Total:</th>
-			<th><? echo number_format($horas_t2, 2); ?> horas</th>
-			<th>$<? echo number_format($money_t2, 3); ?></th></tr>
+			<th><?php echo number_format($horas_t2, 2); ?> horas</th>
+			<th>$<?php echo number_format($money_t2, 3); ?></th></tr>
 <?php
 	}
 ?>
@@ -178,7 +178,7 @@ if($mostrar == 'ok')
 	<br />
 	<a href="/extras/extra_rep_imp/index/<?=$dia1.'/'.$mes1.'/'.$anho1.'/'.$dia2.'/'.$mes2.'/'.$anho2?>" target="_blank"><strong>Imprimir Reporte</strong></a>
 	
-<?
+<?php
 	}
 	elseif($tipo == 'presupuesto')
 	{//Debo mostrar el presupuesto de las horas....
@@ -195,7 +195,7 @@ if($mostrar == 'ok')
 			<td><strong>Porcentaje</strong></td>
 			<td><strong>Total Horas</strong></td>
 		</tr>
-<?
+<?php
 		$tth = 0;
 		$ttm = 0;
 		$tp = 0;
@@ -238,11 +238,11 @@ if($mostrar == 'ok')
 			<th>Totales</th>
 			<th><?="$ ".number_format($tp, 2)?></th>
 			<th><?="$ ".number_format($ttm, 3)?></th>
-			<th><? if($tp > 0) echo number_format(($ttm * 100) / $tp, 2)." %"; else echo "0 %"; ?></th>
+			<th><?php if($tp > 0) echo number_format(($ttm * 100) / $tp, 2)." %"; else echo "0 %"; ?></th>
 			<th><?=number_format($tth, 2)?></th>
 		</tr>
 	</table>
-<?
+<?php
 	}
 }
 ?>

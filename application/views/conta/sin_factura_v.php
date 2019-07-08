@@ -33,7 +33,7 @@
 	
 	
 	<table class="tabular" style="width:100%;">
-<?
+<?php
 $Contador = 1;
 $Total_Venta = 0;
 foreach($Sin_Factura['clientes'] as $iCliente => $nCliente)
@@ -45,7 +45,7 @@ foreach($Sin_Factura['clientes'] as $iCliente => $nCliente)
 			<th class="derecha">Cotizado</th>
 			<th class="derecha">Opciones</th>
 		</tr>
-<?
+<?php
 	foreach($Sin_Factura['trabajos'][$iCliente] as $Fila)
 	{
 ?>
@@ -66,7 +66,7 @@ foreach($Sin_Factura['clientes'] as $iCliente => $nCliente)
 				</a>
 			</td>
 		</tr>
-<?
+<?php
 		$Contador++;
 		$Total_Venta += $Fila['venta'];
 	}

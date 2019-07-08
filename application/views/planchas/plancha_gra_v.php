@@ -16,7 +16,7 @@ $titulos = explode(',', $leyenda);
 	
 	<select name="cod_plancha" id="cod_plancha">
 		<option value="todo">Todos</option>
-<?
+<?php
 foreach($planchas as $Datos)
 {
 ?>
@@ -35,13 +35,13 @@ foreach($planchas as $Datos)
 		var p = $.plot(
 			$("#venta"),
 			[
-<?
+<?php
 $a = 0.5;
 foreach($datos as $Datos)
 {
 ?>
 				{ data: [[<?=$a.','.$Datos?>]], bars: { show: true } },
-<?
+<?php
 $a = $a + 1;
 }
 ?>

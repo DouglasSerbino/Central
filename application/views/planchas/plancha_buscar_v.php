@@ -7,13 +7,13 @@
 		<input type="text" value="<?=$Alto?>" name="alto" id='alto' size="9" /> &nbsp; Ancho: &nbsp; 
 		<input type="text" value="<?=$Ancho?>" name="ancho" id='ancho' size="9" /> &nbsp; 
 		<select name="codigo">
-<?
+<?php
 foreach($planchas as $Datos)
 {
 	$cod_plancha = $Datos["cod_plancha"];
 ?>
 			<option value="<?=$cod_plancha?>"<?=($Codigo == $cod_plancha)?' selected="selected"':''?>><?=$Datos["grosor"]."&nbsp;".$Datos["tipo"]?></option>
-<?php
+<?phpphp
 }
 
 ?>
@@ -21,7 +21,7 @@ foreach($planchas as $Datos)
 		<input type="submit" class="boton" value="Buscar" />
 		
 	</form>
-<?
+<?php
 $grosor = '';
 $tipo = '';
 $ubicacion = '';
@@ -37,7 +37,7 @@ if($buscar == "1")
 	
 	<hr width="80%" />
 	
-	<strong>Plancha: <? echo "$grosor &nbsp; $tipo &nbsp; $ubicacion"; ?> &nbsp; &nbsp; C&oacute;digo: <? echo $Codigo; ?></strong>
+	<strong>Plancha: <?php echo "$grosor &nbsp; $tipo &nbsp; $ubicacion"; ?> &nbsp; &nbsp; C&oacute;digo: <?php echo $Codigo; ?></strong>
 	<table class='tabular' style='width: 50%;'>
 		<tr>
 			<th >Cantidad</th>
@@ -47,7 +47,7 @@ if($buscar == "1")
 			<th>Tipo</th>
 			<th>Fecha</th>
 		</tr>
-<?
+<?php
 	foreach($retazos as $Datos)
 	{
 		if($Datos['cantidad'] != 0)
@@ -61,7 +61,7 @@ if($buscar == "1")
 			<td><?=$Datos["nombre_tipo"]?></td>
 			<td><?=$Datos['dia'].'-'.$Datos['mes'].'-'.$Datos['year'];?></td>
 		</tr>
-<?php	
+<?phpphp	
 		}
 	}
 }

@@ -84,7 +84,7 @@ foreach($Info_reprocesos as $Datos_pedidos)
 ?>
 	<table style="width: 95%;">
 	<tr>
-		<th colspan='4'><br />REPROCESOS EN EL MES DE <?=(isset($Meses[$Datos_pedidos['fecha']]))?strtoupper($Meses[$Datos_pedidos['fecha']]):date('M')?> (<?=count($Datos_pedidos['info'])?>)</th>
+		<th colspan='4'><br />REPROCESOS EN EL MES DE <?php=(isset($Meses[$Datos_pedidos['fecha']]))?strtoupper($Meses[$Datos_pedidos['fecha']]):date('M')?> (<?=count($Datos_pedidos['info'])?>)</th>
 	</tr>
 <?php
 	foreach($Datos_pedidos['info'] as $Datos_pedido)
@@ -222,7 +222,7 @@ if(count($informacion_materiales != 0))
 		<th>Cantidad</th>
 		<th>Tipo</th>
 	</tr>
-<?
+<?php
 if(0 < count($Total_Materiales))
 {
 	foreach($Total_Materiales as $Material)
@@ -234,7 +234,7 @@ if(0 < count($Total_Materiales))
 		<td><?=$Material['can']?></td>
 		<td><?=$Material['tip']?></td>
 	</tr>
-<?
+<?php
 	}
 }
 else
@@ -243,7 +243,7 @@ else
 	<tr>
 		<td colspan="4">No se reportaron materiales.</td>
 	</tr>
-<?
+<?php
 }
 //print_r($grafico_reprocesos);
 ?>

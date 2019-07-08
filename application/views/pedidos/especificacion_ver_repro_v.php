@@ -3,7 +3,7 @@
 
 <!-- ***************** -->
 <strong>Tipo de Impresi&oacute;n:</strong> &nbsp;
-<?
+<?php
 	if(0 == $Especs['general']['id_tipo_impresion'])
 	{
 		$Especs['general']['id_tipo_impresion'] = 1;
@@ -16,7 +16,7 @@
 		{
 ?>
 <strong><?=$Tipo['tipo_impresion']?></strong>
-<?
+<?php
 			break;
 		}
 	}
@@ -30,7 +30,7 @@
 <!-- ***************** -->
 <strong>Material Solicitado</strong>
 
-<?
+<?php
 foreach($Mat_Solicitado as $Material)
 {
 	if('&nbsp;' == $Material['material_solicitado'])
@@ -42,7 +42,7 @@ foreach($Mat_Solicitado as $Material)
 	{
 ?>
 &nbsp; &nbsp; <strong>&raquo;</strong><?=$Material['material_solicitado']?>
-<?
+<?php
 	}
 }
 ?>
@@ -61,7 +61,7 @@ foreach($Mat_Solicitado as $Material)
 		<th>BCM</th>
 		<th>Sticky</th>
 	</tr>
-<?
+<?php
 for($i = 1; $i <= 10; $i++)
 {
 	$Color = '';
@@ -92,7 +92,7 @@ for($i = 1; $i <= 10; $i++)
 		<td><?=$BCM?></td>
 		<td><?=$Sticky?></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

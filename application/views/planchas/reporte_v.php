@@ -12,36 +12,36 @@
 	
 	<div>
 		<select id="sel_cliente">
-<?
+<?php
 $Cliente = array();
 foreach($Clientes as $Datos)
 {
 	$Cliente[$Datos['id_cliente']] = $Datos['nombre'];
 ?>
 			<option value="<?=$Datos['id_cliente']?>"<?=($Datos['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Datos['codigo_cliente'].' - '.$Datos['nombre']?></option>
-<?
+<?php
 }
 ?>
 		</select>
 		
 		<select id="sel_anho">
-<?
+<?php
 for($i = 2013; $i <= date('Y'); $i++)
 {
 ?>
 			<option value="<?=$i?>"<?=($i==$Anho)?' selected="selected"':''?>><?=$i?></option>
-<?
+<?php
 }
 ?>
 		</select>
 		
 		<select id="sel_mes">
-<?
+<?php
 foreach($meses_v as $iMes => $nMes)
 {
 ?>
 			<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></option>
-<?
+<?php
 }
 ?>
 		</select>
@@ -67,7 +67,7 @@ foreach($meses_v as $iMes => $nMes)
 		<th>Lineaje</th>
 		<th>Entregado</th>
 	</tr>
-<?
+<?php
 foreach($Reales as $Id_Med => $Trabajo)
 {
 ?>
@@ -85,7 +85,7 @@ foreach($Reales as $Id_Med => $Trabajo)
 			<span class="datos" style="display:none;"><?=json_encode($Trabajo)?></span>
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -114,7 +114,7 @@ foreach($Reales as $Id_Med => $Trabajo)
 			<th style="width:40px;">75%</th>
 			<th style="width:40px;">100%</th>
 		</tr>
-<?
+<?php
 	$Colores_v = array('c', 'm', 'y', 'k', 'r', 'g', 'b');
 	foreach($Colores_v as $Index => $Color)
 	{
@@ -131,7 +131,7 @@ foreach($Reales as $Id_Med => $Trabajo)
 			<td id="<?=$Color?>_75" class="medi">0</td>
 			<td id="<?=$Color?>_100" class="medi">0</td>
 		</tr>
-<?
+<?php
 	}
 ?>
 	</table>

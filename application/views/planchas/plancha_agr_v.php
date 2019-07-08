@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/plancha.js?n=1"></script>
-<?
+<?php
 
 //=============Ingeso de Retazos==================
 foreach($planchas_especifica as $Datos)
@@ -14,7 +14,7 @@ foreach($planchas_especifica as $Datos)
 <div class="informacion">
 	<form name="miform" id='guardar' method="post" action="/planchas/plancha_agr/agregar_planchas" onsubmit="return validar('guardar');">
 		
-		<strong>Ingresar: &nbsp; <? echo "$altura &nbsp; $tipo"; ?></strong><br />
+		<strong>Ingresar: &nbsp; <?php echo "$altura &nbsp; $tipo"; ?></strong><br />
 		
 		<table>
 			<tr>
@@ -23,7 +23,7 @@ foreach($planchas_especifica as $Datos)
 				<td>Tipo:</td>
 				<td>
 					<select name="tipo">
-<?
+<?php
 foreach($plancha_tipo as $Datos)
 {
 ?>

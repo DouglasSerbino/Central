@@ -15,7 +15,7 @@
 			<th> &nbsp; Listado de Tipos de Planchas &nbsp; </th>
 			<th>&nbsp;</th>
 		</tr>
-<?
+<?php
 //=============Mostrar proveedores existentes==================
 
 $i = 1;

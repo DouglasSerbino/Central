@@ -1,5 +1,5 @@
 <body>
-<?
+<?php
 $cuerpo = "class=\"hojas-conf\" onload=\"menu_pagina_act('ventas');\"";
 ?>
 <div class="informacion">
@@ -10,7 +10,7 @@ $cuerpo = "class=\"hojas-conf\" onload=\"menu_pagina_act('ventas');\"";
 		
 		<form name="miformcheckes" action="/pedidos/hoja_tiempo_consumo/reportar_tiempo" method="post">
 <table>
-<?
+<?php
 
 $suma = 0;
 $checkes = 0;
@@ -31,7 +31,7 @@ foreach($procesos as $Informacion)
 	
 		<tr>
 			<td colspan='4'>
-				<strong><br />&raquo; <?=$Informacion['nombre_cliente']?></strong>
+				<strong><br />&raquo; <?php=$Informacion['nombre_cliente']?></strong>
 			</td>
 		</tr>
 <?php

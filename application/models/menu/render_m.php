@@ -32,7 +32,7 @@ class Render_m extends CI_Model {
 		//Guardare los menus en este array, prestar atencion a como se guardaran
 		//jerarquicamente
 		$Menu = array();
-		$Menu_Lat = array();
+		//$Menu_Lat = array();
 		$identificadores = array();
 		
 		foreach($Resultado->result_array() as $Fila)
@@ -43,15 +43,15 @@ class Render_m extends CI_Model {
 				$identificadores[] = $Fila['etiqueta'];
 				//Creo un indice con el id_menu y guardo el enlace principal
 				$Menu[$Fila['id_menu']]['principal'] = '<a href="/'.$Fila['enlace'].'"><span></span>'.$Fila['etiqueta'].'</a>';
-				$Menu_Lat[$Fila['id_menu']]['principal'] = '<span></span>'.$Fila['etiqueta'];
+				//$Menu_Lat[$Fila['id_menu']]['principal'] = '<span></span>'.$Fila['etiqueta'];
 				//Ademas de crear un elemento para el submenu
 				$Menu[$Fila['id_menu']]['submenu'] = '';
-				$Menu_Lat[$Fila['id_menu']]['submenu'] = '';
+				//$Menu_Lat[$Fila['id_menu']]['submenu'] = '';
 			}
 			else
 			{
 				$Menu[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
-				$Menu_Lat[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
+				//$Menu_Lat[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
 			}
 			
 		}
@@ -80,21 +80,21 @@ class Render_m extends CI_Model {
 			{//Si es el menu principal
 				//Creo un indice con el id_menu y guardo el enlace principal
 				$Menu[$Fila['id_menu']]['principal'] = '<a href="/'.$Fila['enlace'].'"><span></span>'.$Fila['etiqueta'].'</a>';
-				$Menu_Lat[$Fila['id_menu']]['principal'] = '<a href="/'.$Fila['enlace'].'"><span></span>'.$Fila['etiqueta'].'</a>';
+				//$Menu_Lat[$Fila['id_menu']]['principal'] = '<a href="/'.$Fila['enlace'].'"><span></span>'.$Fila['etiqueta'].'</a>';
 				//Ademas de crear un elemento para el submenu
 				$Menu[$Fila['id_menu']]['submenu'] = '';
-				$Menu_Lat[$Fila['id_menu']]['submenu'] = '';
+				//$Menu_Lat[$Fila['id_menu']]['submenu'] = '';
 			}
 			else
 			{
 				if(!isset($Menu[$Fila['id_menu_padre']]['submenu']))
 				{
 					$Menu[$Fila['id_menu_padre']]['submenu'] = '';
-					$Menu_Lat[$Fila['id_menu_padre']]['submenu'] = '';
+					//$Menu_Lat[$Fila['id_menu_padre']]['submenu'] = '';
 				}
 				//Si es el sub_menu voy agregando los elementos bajo el id de su grupo
 				$Menu[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
-				$Menu_Lat[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
+				//$Menu_Lat[$Fila['id_menu_padre']]['submenu'] .= '<li><a href="/'.$Fila['enlace'].'">'.$Fila['etiqueta'].'</a></li>';
 			}
 			
 		}
@@ -104,7 +104,7 @@ class Render_m extends CI_Model {
 		$a=0;
 		//Creacion del html
 		$Menu_Usuario = '<ul id="navegacion">';
-		$MenuLateral = '<ul id="menu-lateral">';
+		// $MenuLateral = '<ul id="menu-lateral">';
 		//Se recorre el array previamente creado
 		foreach($Menu as $Index => $Item)
 		{
@@ -136,18 +136,18 @@ class Render_m extends CI_Model {
 				//Se cierran las etiquetas de este grupo
 				$Menu_Usuario .= '</ul></li>';
 				
-				$MenuLateral .= '<li id="MLT_'.strtolower($clase).'" class="">'.$Menu_Lat[$Index]['principal'].'<ul>';
+				// $MenuLateral .= '<li id="MLT_'.strtolower($clase).'" class="">'.//$Menu_Lat[$Index]['principal'].'<ul>';
 				//Luego los submenus, si hubieren.
-				$MenuLateral .= $Menu_Lat[$Index]['submenu'];
+				// $MenuLateral .= //$Menu_Lat[$Index]['submenu'];
 				//Se cierran las etiquetas de este grupo
-				$MenuLateral .= '</ul></li>';
+				// $MenuLateral .= '</ul></li>';
 			}
 			
 			$a++;
 		}
 		//Se cierra la etiqueta principal
 		$Menu_Usuario .= '</ul>';
-		$MenuLateral .= '</ul>';
+		// $MenuLateral .= '</ul>';
 		
 		//Se almacena en una sesion
 		//Cada vez que el usuario cargue una pagina, su menu se tomara de las

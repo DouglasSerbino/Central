@@ -8,7 +8,7 @@ if(count($mostrar_hoja) != 0)
 <div class="informacion">
 	
 	<table>
-<?
+<?php
 foreach($Cliente_Procesos as $Datos)
 {
 ?>
@@ -95,7 +95,7 @@ foreach($mostrar_hoja as $Datos)
 	
 	<tr>
 		<td colspan="2"><br /><strong>2. PLANCHA POR COLOR</strong></td></tr>
-<?
+<?php
 
 foreach($mostrar_colores as $Datos)
 {
@@ -139,9 +139,9 @@ foreach($mostrar_colores as $Datos)
 	</tr>
 	
 	<tr><td colspan="2"><br /><strong>4. OBSERVACIONES</strong></td></tr>
-	<tr><td colspan="2"><table class="tabla_revision" width="90%"><tr><td><? echo $observacion; ?></td></tr></table></td></tr>
+	<tr><td colspan="2"><table class="tabla_revision" width="90%"><tr><td><?php echo $observacion; ?></td></tr></table></td></tr>
 	
-	<tr><td colspan="2"><br />Certificamos que el Producto se revis&oacute; de acuerdo al proceso adjunto por<br />Central Graphics: Planchas Offset <? echo $puesto; ?> en esta Fecha 
+	<tr><td colspan="2"><br />Certificamos que el Producto se revis&oacute; de acuerdo al proceso adjunto por<br />Central Graphics: Planchas Offset <?php echo $puesto; ?> en esta Fecha 
 	<?=$this->fechas_m->fecha_ymd_dmy($fecha_real); ?></td></tr>
 	
 	</table>

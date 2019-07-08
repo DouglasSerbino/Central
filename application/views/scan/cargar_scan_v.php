@@ -30,7 +30,7 @@
 		<strong>SELECCIONAR ARCHIVOS</strong>
 		<br>
 		
-		<?/*
+		<?php/*
 			 *Nota para el programador de turno.
 			 *Debido a que se han colocado estos tres input files manualmente,
 			 *manualmente se ha colocado su validacion en el javascript "acciones".

@@ -7,7 +7,7 @@
         <th><strong>Iniciales</strong></th>
         <th style="text-align:center;"><strong>Opciones</strong></th>
     </tr>
-<?
+<?php
 foreach($Departamentos as $Departamento)
 {
 ?>	
@@ -35,7 +35,7 @@ elseif($Departamento["activo"] == "n")
 ?>
 		</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

@@ -27,7 +27,7 @@
 			
 			<div id="contenido">	
 	
-<?
+<?php
 $nombre_ant = "";
 $total_horas = 0;
 

@@ -15,14 +15,14 @@
 	<br /><br />
 	
 	<strong>Cliente:</strong> <select name="cliente" id="cliente">
-<?
+<?php
 $Cliente = array();
 foreach($Clientes as $Datos)
 {
 	$Cliente[$Datos['id_cliente']] = $Datos['nombre'];
 ?>
 		<option value="<?=$Datos['id_cliente']?>"><?=$Datos['codigo_cliente'].' - '.$Datos['nombre']?></option>
-<?
+<?php
 }
 ?>
 	</select>
@@ -37,12 +37,12 @@ foreach($Clientes as $Datos)
 				<td>Compensaci&oacute;n</td>
 				<td>
 					<select name="compensacion" id="compensacion">
-<?
+<?php
 foreach($Compensacion as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -52,12 +52,12 @@ foreach($Compensacion as $Id => $Datos)
 				<td>Plancha</td>
 				<td>
 					<select name="plancha" id="plancha">
-<?
+<?php
 foreach($Plancha as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -67,12 +67,12 @@ foreach($Plancha as $Id => $Datos)
 				<td>Sistema</td>
 				<td>
 					<select name="sistema" id="sistema">
-<?
+<?php
 foreach($Sistema as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -82,12 +82,12 @@ foreach($Sistema as $Id => $Datos)
 				<td>Altura</td>
 				<td>
 					<select name="altura" id="altura">
-<?
+<?php
 foreach($Altura as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -97,12 +97,12 @@ foreach($Altura as $Id => $Datos)
 				<td>Trama</td>
 				<td>
 					<select name="trama" id="trama">
-<?
+<?php
 foreach($Trama as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -112,12 +112,12 @@ foreach($Trama as $Id => $Datos)
 				<td>Lineaje</td>
 				<td>
 					<select name="lineaje" id="lineaje">
-<?
+<?php
 foreach($Lineaje as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -151,7 +151,7 @@ foreach($Lineaje as $Id => $Datos)
 				<th>75%</th>
 				<th>100%</th>
 			</tr>
-<?
+<?php
 $Colores_v = array('C', 'M', 'Y', 'K', 'R', 'G', 'B');
 foreach($Colores_v as $Index => $Color)
 {
@@ -165,7 +165,7 @@ foreach($Colores_v as $Index => $Color)
 				<td><input type="text" size="5" name="<?=$Color_min?>_75" id="<?=$Color_min?>_75" class="requ num" value="" /></td>
 				<td><input type="text" size="5" name="<?=$Color_min?>_100" id="<?=$Color_min?>_100" class="requ num" value="" /></td>
 			</tr>
-<?
+<?php
 }
 ?>
 		</table>
@@ -196,7 +196,7 @@ foreach($Colores_v as $Index => $Color)
 <br />
 
 <select class="ver_grafico">
-<?
+<?php
 foreach($Referencias as $Id_Medicion => $Medicion)
 {
 	if('formulas' == $Id_Medicion)
@@ -216,7 +216,7 @@ foreach($Referencias as $Id_Medicion => $Medicion)
 </div>
 
 
-<?
+<?php
 $Contador = 1;
 foreach($Referencias as $Id_Medicion => $Medicion)
 {
@@ -235,7 +235,7 @@ foreach($Referencias as $Id_Medicion => $Medicion)
 			<th style="width:40px;">75%</th>
 			<th style="width:40px;">100%</th>
 		</tr>
-<?
+<?php
 	$Colores_v = array('c', 'm', 'y', 'k', 'r', 'g', 'b');
 	foreach($Colores_v as $Index => $Color)
 	{
@@ -258,7 +258,7 @@ foreach($Referencias as $Id_Medicion => $Medicion)
 			<td><?=$Medicion[$Color][75]?></td>
 			<td><?=$Medicion[$Color][100]?></td>
 		</tr>
-<?
+<?php
 	}
 ?>
 	</table>
@@ -269,7 +269,7 @@ foreach($Referencias as $Id_Medicion => $Medicion)
 	</div>
 	
 </div>
-<?
+<?php
 	$Contador++;
 }
 ?>

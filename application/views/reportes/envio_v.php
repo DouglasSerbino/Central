@@ -2,12 +2,12 @@
 <form action="/reportes/envio" method="post">
 	<select name="cliente" id="cliente">
 		<!--option value="todos">Todos</option-->
-<?
+<?php
 foreach($Clientes as $Cliente)
 {
 ?>
 		<option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
-<?
+<?php
 }
 ?>
 	</select>
@@ -26,7 +26,7 @@ foreach($Clientes as $Cliente)
 	})
 </script>
 
-<?
+<?php
 if(0 != $Id_Cliente)
 {
 	foreach($Envios['Notas'] as $Nota)
@@ -38,7 +38,7 @@ if(0 != $Id_Cliente)
 	<tr>
 		<th colspan="2"><a href="javascript:ventana_externa('/notas/nota_ver/index/<?=$Nota['id_nota_env']?>');"><?=$Nota['correlativo']?></a></th>
 	</tr>
-<?
+<?php
 		foreach($Envios['Trabajos'][$Nota['id_nota_env']] as $Trabajo)
 		{
 ?>
@@ -46,11 +46,11 @@ if(0 != $Id_Cliente)
 		<td style="width: 150px;"><?=$Trabajo['codigo_cliente']?>-<?=$Trabajo['proceso']?></td>
 		<td><?=$Trabajo['nombre']?></td>
 	</tr>
-<?
+<?php
 		}
 ?>
 </table>
-<?
+<?php
 	}
 }
 ?>

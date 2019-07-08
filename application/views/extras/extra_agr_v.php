@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/html/js/extra.js?n=1"></script>
 <style type="text/css" media="all">@import "/html/css/jquery.tooltip.screen.css";</style>
-<?
+<?php
 $hoy = date("Y-m-d");
 if($this->session->userdata('codigo') != 'SAP')
 {
@@ -15,7 +15,7 @@ if($this->session->userdata('codigo') != 'SAP')
 		<strong>Seleccionar Usuario</strong>
 		
 		<select name="id_usuario" id="id_usuario">
-<?
+<?php
 foreach($Usuarios as $Datos_usuario)
 {
 	$IdUsu = $Datos_usuario["id_usuario"];
@@ -29,7 +29,7 @@ foreach($Usuarios as $Datos_usuario)
 		<input type="button" class="boton" id="abrir" value="Mostrar" onclick="abrir_ventana(<?=$dia.','.$mes.','.$anho?>)" />
 	</div>
 	<hr width="80%" />
-<?
+<?php
 }
 $numero = count($buscar_extras);
 if($numero > 0)
@@ -37,7 +37,7 @@ if($numero > 0)
 ?>
 	<div class="informacion_cont">
 		
-		<strong>Horas Extras Ingresadas <? echo "$dia/$mes/$anho"; ?></strong>
+		<strong>Horas Extras Ingresadas <?php echo "$dia/$mes/$anho"; ?></strong>
 		
 		<table class="tabular">
 			<tr>
@@ -48,7 +48,7 @@ if($numero > 0)
 				<th style='width: 12%;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HORA</th>
 				<th>&nbsp;</th>
 			</tr>
-<?
+<?php
 	$o = 0;
 	$usu_adm = explode('-', $Administradores);
 	$total_m = 0;
@@ -115,7 +115,7 @@ if($this->session->userdata('codigo') != 'SAP')
 }
 ?>
 			</tr>
-<?
+<?php
 //Exploramos el array con los valores que obtenemos de la tabla extra_pedido.
 			foreach($Datos_extras['extra_pedido'] as $Datos_ext)
 			{
@@ -199,7 +199,7 @@ if($this->session->userdata('codigo') != 'SAP')
 }
 ?>
 	</div>
-<?
+<?php
 }
 ?>
 </div>

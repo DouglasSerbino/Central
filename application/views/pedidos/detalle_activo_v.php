@@ -29,7 +29,7 @@
 	
 	<br />
 	<a href="javascript:rechazar('<?=$Id_Pedido?>','<?=$Pedido_Usuario['id_peus']?>');" class="iconos irechazar toolder"><span>Rechazar Trabajo</span></a>
-<?
+<?php
 //Iniciar trabajo
 if(
 	'Asignado' == $Pedido_Usuario['estado']
@@ -39,21 +39,21 @@ if(
 {
 ?>
 	<a href="/pedidos/tiempo/accion/iniciar/<?=$Id_Pedido?>/<?=$Pedido_Usuario['id_peus']?>" class="iconos iiniciar toolder"><span>Iniciar Tiempo de Trabajo</span></a>
-<?
+<?php
 }
 //Pausar trabajo
 if('Procesando' == $Pedido_Usuario['estado'])
 {
 ?>
 	<a href="/pedidos/tiempo/accion/pausar/<?=$Id_Pedido?>/<?=$Pedido_Usuario['id_peus']?>" class="iconos ipausar toolder"><span>Pausar Desarrollo</span></a>
-<?
+<?php
 }
 //Continuar trabajo
 if('Pausado' == $Pedido_Usuario['estado'])
 {
 ?>
 	<a href="/pedidos/tiempo/accion/continuar/<?=$Id_Pedido?>/<?=$Pedido_Usuario['id_peus']?>" class="iconos icontinuar toolder"><span>Continuar Desarrollo</span></a>
-<?
+<?php
 }
 ?>
 	<a href="javascript:ver_agregar_scan('<?=$Proceso['id_proceso']?>-<?=$Id_Pedido?>');" class="iconos iscan toolder"><span>Archivos Adjuntos</span></a>
@@ -159,7 +159,7 @@ if(is_array($ruta_trabajo))
 			Finalizado: <?=($Fila['fecha_fin']!='0000-00-00 00:00:00')?date('d-m-Y H:i:s', strtotime($Fila['fecha_fin'])):'00-00-0000 00:00:00'?>.
 		</span>
 	</span>
-<?
+<?php
 	}
 }
 ?>
@@ -178,7 +178,7 @@ if(is_array($ruta_trabajo))
 
 
 <!--Tiempos-->
-<?
+<?php
 if(
 	'N/A' != $Pedido_Usuario['tiempo_asignado']
 	&& 'NaN' != $Pedido_Usuario['tiempo_asignado']
@@ -215,7 +215,7 @@ if(
 	<div id="tiempo_utilizado">
 		<div class="tinormal" style="width: <?=$Pixels?>px;"></div>
 	</div>
-<?
+<?php
 }
 ?>
 
@@ -237,7 +237,7 @@ Tipo Observaciones
 
 
 <form action="/pedidos/cotizacion_modif/index/<?=$Id_Pedido?>/activo" method="post" id="cotizacion_det_act" style="display:none;">
-<? $this->load->view('pedidos/cotizacion_v'); ?>
+<?php $this->load->view('pedidos/cotizacion_v'); ?>
 	<input type="button" value="Cancelar" onclick="$('#cotizacion_det_act').hide();" />
 	<input type="button" value="Actualizar Cotizaci&oacute;n" onclick="$('#cotizacion_det_act').submit();" />
 </form>
@@ -305,7 +305,7 @@ if(
 	}
 ?>
 			</div>
-<?
+<?php
 	$Muestra_Editar = ' display:none;';
 	if(
 		'Plani' == $this->session->userdata('codigo')
@@ -346,7 +346,7 @@ if(is_array($Observaciones))
 		<td><?=$fila["usuario"]?></td>
 		<td><?=nl2br($fila["observacion"])?></td>
 	</tr>
-<?
+<?php
 	}
 }
 ?>
@@ -376,7 +376,7 @@ if(is_array($Observaciones))
 		<td><?=$fila["usuario"]?></td>
 		<td><?=nl2br($fila["observacion"])?></td>
 	</tr>
-<?
+<?php
 	}
 }
 ?>
@@ -386,17 +386,17 @@ if(is_array($Observaciones))
 <div class="limpiar m15"></div>
 
 <!-- ** -->
-<?
+<?php
 $this->load->view('/pedidos/pedido_consumo_v');
 ?>
 
 <!--Formularios personalizados-->
 
-<?
+<?php
 $this->load->view('pedidos/rechazo_v.php');
 ?>
 
-<?
+<?php
 $this->load->view('/scan/cargar_scan_v', $num_cajas);
 ?>
 
@@ -453,14 +453,14 @@ for($i_m_t = 0; $i_m_t < 6; $i_m_t++)
 {
 	?>
 		<tr>
-			<td><input class="nombre_material" type="text" size="12" name="codigo_material_<? echo $i_m_t; ?>" id="codigo_material_<? echo $i_m_t; ?>" onblur="ver_material('_<? echo $i_m_t; ?>')" /></td>
+			<td><input class="nombre_material" type="text" size="12" name="codigo_material_<?php echo $i_m_t; ?>" id="codigo_material_<?php echo $i_m_t; ?>" onblur="ver_material('_<?php echo $i_m_t; ?>')" /></td>
 			<td>
-				<input class="nombre_material" type="text" size="50" name="nombre_material_<? echo $i_m_t; ?>" id="nombre_material_<? echo $i_m_t; ?>" value="" readonly="readonly" />
-				<input type="hidden" id="id_material_<? echo $i_m_t; ?>" name="id_material_<? echo $i_m_t; ?>" value="--" />
+				<input class="nombre_material" type="text" size="50" name="nombre_material_<?php echo $i_m_t; ?>" id="nombre_material_<?php echo $i_m_t; ?>" value="" readonly="readonly" />
+				<input type="hidden" id="id_material_<?php echo $i_m_t; ?>" name="id_material_<?php echo $i_m_t; ?>" value="--" />
 			</td>
 			<td>
-				<input class="nombre_material" type="text" size="12" name="cantidad_material_<? echo $i_m_t; ?>" id="cantidad_material_<? echo $i_m_t; ?>" />
-				<input type="checkbox" name="repro_material_<? echo $i_m_t; ?>" id="repro_material_<? echo $i_m_t; ?>" />
+				<input class="nombre_material" type="text" size="12" name="cantidad_material_<?php echo $i_m_t; ?>" id="cantidad_material_<?php echo $i_m_t; ?>" />
+				<input type="checkbox" name="repro_material_<?php echo $i_m_t; ?>" id="repro_material_<?php echo $i_m_t; ?>" />
 			</td>
 		</tr>
 <?php
@@ -494,7 +494,7 @@ for($i_m_t = 0; $i_m_t < 6; $i_m_t++)
 
 
 <div>
-<?
+<?php
 $Variables['Redireccion'] = 'pedi';
 $this->load->view('planchas/lecturas_pedido_v', $Variables);
 ?>

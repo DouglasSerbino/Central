@@ -1,4 +1,4 @@
-<?
+<?php
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 if($tipo == 'todos')
 {
@@ -40,7 +40,7 @@ else
 </div>
 
 <div id="contenido">
-<?
+<?php
 	foreach($buscar_extras as $Datos_extras)
 	{
 		

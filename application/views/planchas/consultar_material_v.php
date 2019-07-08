@@ -10,7 +10,7 @@
 		
 		Seleccione el Tipo de Plancha: &nbsp; 
 		<select name="codigo">
-<?
+<?php
 foreach($tipo_planchas as $Datos_planchas)
 {
    $cod_plancha = $Datos_planchas["cod_plancha"];
@@ -25,7 +25,7 @@ foreach($tipo_planchas as $Datos_planchas)
 		<input type="submit" class="boton" value="Crear Reporte" />
 		<!--input type="button" value="Guardar Detalle" onclick="plancha_historial()" class="boton" title="Esta accion afecta a todos los tipos de plancha" /-->
 	</form>
-<?
+<?php
 //Eleccion de un tipo de plancha.
 if($codigo != "0" and $codigo != 'ok')
 {
@@ -36,7 +36,7 @@ if($codigo != "0" and $codigo != 'ok')
 		$ubicacion = $Datos["ubicacion"];
 	}
 ?>	
-	<span>Plancha: <? echo "$plancha &nbsp; $tipo"; ?> &nbsp; C&oacute;digo: <?=$codigo?></span>
+	<span>Plancha: <?php echo "$plancha &nbsp; $tipo"; ?> &nbsp; C&oacute;digo: <?=$codigo?></span>
 	
 	<table class="tabular" style='width: 80%;'>
 		<tr>
@@ -52,7 +52,7 @@ if($codigo != "0" and $codigo != 'ok')
 			<td><a href="/planchas/consultar_material/index/<?=$codigo?>/nombre_tipo" title="Ordenar por Tipo de Plancha"><strong>Tipo</strong></a></td>
 			<td><a href="/planchas/consultar_material/index/<?=$codigo?>/fecha" title="Ordenar por Fecha de Ingreso"><strong>Fecha</strong></a></td>
 		</tr>
-<?
+<?php
 	$total = 0;
 	$i = 1;
 foreach($retazos_planchas as $Datos_planchas)
@@ -79,11 +79,11 @@ foreach($retazos_planchas as $Datos_planchas)
 ?>
 		<tr>
 			<td colspan="4">&nbsp;</td>
-			<td><strong><? echo $total; ?></strong></td>
+			<td><strong><?php echo $total; ?></strong></td>
 			<td colspan="2">&nbsp;</td>
 		</tr>
 	</table>
-<?
+<?php
 }
 ?>
 </div>

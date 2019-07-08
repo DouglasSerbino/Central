@@ -2,7 +2,7 @@
 	
 	<strong>Listado de trabajos pendientes ordenados por fecha de entrega</strong><br />
 	
-<?
+<?php
 $pedidos_aprobacion_v = array();
 foreach($Aprobacion as $Datos)
 {

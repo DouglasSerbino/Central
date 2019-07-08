@@ -13,7 +13,7 @@
 		<th><?=$Info_Proceso['nombre_proceso']?></th>
 	</tr>
 </table>
-<?php
+<?phpphp
 if(is_array($Observaciones))
 {
 	$Ped_Anterior = 0;
@@ -30,7 +30,7 @@ if(is_array($Observaciones))
 ?>
 </table>
 <br />
-<?
+<?php
 			}
 			
 			$Ped_Anterior = $fila['id_pedido'];
@@ -42,7 +42,7 @@ if(is_array($Observaciones))
 		<th style="width: 125px;">Usuario:</th>
 		<th>Observaci&oacute;n:</th>
 	</tr>
-<?
+<?php
 		}
 ?>
 	<tr>
@@ -50,7 +50,7 @@ if(is_array($Observaciones))
 		<td><?=$fila["usuario"]?></td>
 		<td><?=nl2br($fila["observacion"])?></td>
 	</tr>
-<?
+<?php
 	}
 }
 ?>

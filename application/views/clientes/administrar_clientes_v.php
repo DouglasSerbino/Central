@@ -14,13 +14,34 @@
 	.txt_encabezado.normal{
 		font-weight: normal;
 	}
+	.btn{
+		border-radius: 8px;
+		background-color: #bc933b;
+		color: white;
+		padding: 5px 15px;
+		text-align: center;
+		text-decoration: none;
+	
+	}
+	.btn:hover, .btn:active {
+  	background-color: lightblue;
+	}
+	.pull-right{
+		float: right;
+	}
+	a:link
+	{
+		text-decoration:none;
+	} 
 </style>
+
 
 Mostrar: 
 <select id="clie_acti_inac">
 		<option value="s">Activos</option>
 		<option value="n"<?=('n'==$Activo)?' selected="selected"':''?>>Inactivos</option>
 </select>
+<a class="btn pull-right" href="/clientes/agregar">Agregar Cliente</a>
 
 <br />
 

@@ -7,6 +7,7 @@
 	<meta name="author" content="Daniel Echeverria y Marvin Pocasangre" />
 	<title>Sistema de Seguimiento - Central Graphics</title>
 	<link rel="shortcut icon" href="/html/img/ico-cg.png" />
+	
 	<style type="text/css">
 		img{ border: none; }
 		body{ padding: 20px 0; background: #ffffff; font-family: verdana; font-size: 12px; line-height: 25px; color: #909090; text-align: left;}

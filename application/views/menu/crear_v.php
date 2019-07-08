@@ -15,12 +15,12 @@
 			<td>
 				<select name="grupo">
 					<option value="0">Principal</option>
-<?
+<?php
 foreach($Menu_Padre as $Menu)
 {
 ?>
 					<option value="<?=$Menu['id_menu']?>"><?=$Menu['etiqueta']?></option>
-<?
+<?php
 }
 ?>
 				</select>

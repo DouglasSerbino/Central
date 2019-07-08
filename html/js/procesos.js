@@ -147,9 +147,9 @@ function verifica_proceso()
 							
 							if('Agregar Pre-Ingreso' == $("#agr_pre_ingreso").val())
 							{
-								if(confirm('Desea copiar la informacion de la planificacion anterior para este trabajo?')){
+								//if(confirm('Desea copiar la informacion de la planificacion anterior para este trabajo?')){
 									copiar_especificaciones($('#codigo_cliente').val(), $('#proceso').val());
-								}
+								//}
 							}
 						}
 					}

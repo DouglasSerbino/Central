@@ -19,7 +19,7 @@
 <br />
 
 
-<?
+<?php
 $Revision = json_decode($Detalle['revision'], true);
 foreach ($Items_Revision as $Index => $Item)
 {
@@ -30,7 +30,7 @@ foreach ($Items_Revision as $Index => $Item)
 		<th style="width: 80%;"><?=$Item['item']?></th>
 		<th>Revisado</th>
 	</tr>
-<?
+<?php
 	foreach ($Item['sub_item'] as $SubIndex => $Sub_Item)
 	{
 ?>
@@ -38,11 +38,11 @@ foreach ($Items_Revision as $Index => $Item)
 		<td><?=$Sub_Item['sub_item']?></td>
 		<td><?=(isset($Revision[$SubIndex])?$Revision[$SubIndex]:'')?></td>
 	</tr>
-<?
+<?php
 	}
 ?>
 </table>
-<?
+<?php
 }
 ?>
 

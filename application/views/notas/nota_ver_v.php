@@ -1,4 +1,4 @@
-<?
+<?php
 foreach($nota_envio as $Datos_envio)
 {
 	$correlativo = $Datos_envio["correlativo"];
@@ -27,13 +27,13 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 <div id="encabezado" class='soy_encabezado'><img src="/html/img/lgtps/<?=$this->session->userdata('grupo')?>.png" width="125" alt="Logo CentralGraphics" /></div>
 	<div id="titulo" class='soy_titulo'>
-		NOTA DE ENVIO <strong>N&deg; <? echo $correlativo; ?></strong>
-		<div>CENTRAL GRAPHICS: <? echo $f["dia"]."-".$f["mes"]."-".$f["anho"]; ?></div>
+		NOTA DE ENVIO <strong>N&deg; <?php echo $correlativo; ?></strong>
+		<div>CENTRAL GRAPHICS: <?php echo $f["dia"]."-".$f["mes"]."-".$f["anho"]; ?></div>
 	</div>
 
 
 
-<?
+<?php
 $cliente = '';
 $id_cliente = '';
 if(count($nota_cliente) != 0)
@@ -171,7 +171,7 @@ foreach($especificacion as $Datos_especificacion)
 				<td align="center"><span><?=$nota_mat_ca[$index]?>&nbsp;</span></td>
 				<td><span><?=$nota_mat_ot[$index]?></span></td>
 			</tr>
-<?
+<?php
 				}
 			}
 			$a++;

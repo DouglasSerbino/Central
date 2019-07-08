@@ -1,23 +1,23 @@
 
 <form action="/inventario/consumos" method="post">
 	<select name="mes" id="mes">
-<?
+<?php
 foreach($Meses as $IMes => $MNombre)
 {
 ?>
 		<option value="<?=$IMes?>"<?=($IMes==$Mes)?' selected="selected"':''?>><?=$MNombre?></option>
-<?
+<?php
 }
 ?>
 	</select>
 	<input type="text" name="anho" id="anho" size="8" value="<?=$Anho?>" />
 	<select name="pais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 		<option value="<?=$pCod?>"<?=($pCod==$Pais)?' selected="selected"':''?>><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 	</select>
@@ -34,7 +34,7 @@ foreach($Paises_C as $pCod => $pNomb)
 		<th>Material</th>
 		<th>Consumo</th>
 	</tr>
-<?
+<?php
 foreach ($Consumos['Consolidado'] as $Material)
 {
 ?>
@@ -43,7 +43,7 @@ foreach ($Consumos['Consolidado'] as $Material)
 		<td><?=$Material['nombre_material']?></td>
 		<td class="derecha"><?=number_format($Material['total'], 0)?></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -59,7 +59,7 @@ foreach ($Consumos['Consolidado'] as $Material)
 		<!--th>Material</th-->
 		<th>Consumo</th>
 	</tr>
-<?
+<?php
 foreach ($Consumos['Detalle'] as $Material)
 {
 ?>
@@ -70,7 +70,7 @@ foreach ($Consumos['Detalle'] as $Material)
 		<!--td><?=$Material['nombre_material']?></td-->
 		<td class="derecha"><?=number_format($Material['cantidad'], 0)?></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

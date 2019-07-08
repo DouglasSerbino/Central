@@ -84,7 +84,7 @@
 	B&uacute;squeda: 
 	<select id="puesto">
 		<option value="0">Seleccionar</option>
-<?
+<?php
 foreach($Usuarios as $Dpto_Usuarios)
 {
 	if(
@@ -99,7 +99,7 @@ foreach($Usuarios as $Dpto_Usuarios)
 		{
 ?>
 		<option value="<?=$IUsuario?>"<?=($Id_Usuario==$IUsuario)?' selected="selected"':''?>><?=$NUsuario['usuario']?></option>
-<?
+<?php
 		}
 	}
 }
@@ -107,12 +107,12 @@ foreach($Usuarios as $Dpto_Usuarios)
 	</select>
 
 	<select id="mes">
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 ?>
 		<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></option>
-<?
+<?php
 }
 ?>
 	</select>
@@ -127,7 +127,7 @@ foreach($Meses as $iMes => $nMes)
 
 
 <br />
-<?
+<?php
 if(0 < $Id_Usuario)
 {
 ?>
@@ -137,7 +137,7 @@ if(0 < $Id_Usuario)
 
 	<br />
 
-<?
+<?php
 if($Mes == date('m') && $Anho == date('Y'))
 {
 ?>
@@ -160,7 +160,7 @@ if($Mes == date('m') && $Anho == date('Y'))
 			<div class="info_valor"></div>
 		</div>
 	</div>
-<?
+<?php
 }
 ?>
 
@@ -227,7 +227,7 @@ if($Mes == date('m') && $Anho == date('Y'))
 	</div>
 	
 </div>
-<?
+<?php
 }
 ?>
 
@@ -252,7 +252,7 @@ $('#btn_ir').click(function()
 	window.location = '/reportes/infografia/puestos/'+$('#puesto').val()+'/'+$('#anho').val()+'/'+$('#mes').val();
 });
 
-<?
+<?php
 if(0 < $Id_Usuario)
 {
 ?>
@@ -291,7 +291,7 @@ if(0 < $Id_Usuario)
 	});
 	
 
-<?
+<?php
 	if($Mes == date('m') && $Anho == date('Y'))
 	{
 ?>
@@ -326,7 +326,7 @@ if(0 < $Id_Usuario)
 		},
 		error: function(msg){ alert("Ocurrio un Error " + msg + ".<br />Haga una captura de pantalla para realizar una verificacion del problema."); }
 	});
-<?
+<?php
 	}
 ?>
 	
@@ -404,7 +404,7 @@ if(0 < $Id_Usuario)
 		});
 	}
 	//Fin ver_extras();
-<?
+<?php
 }
 ?>
 	

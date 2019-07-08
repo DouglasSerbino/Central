@@ -66,7 +66,7 @@ $a++;
 			<strong>Filtrar resultados por Cliente:</strong><br />
 			<select name="ver_cliente" id="ver_cliente" onchange="ver_hojas()">
 				<option value="">Todos</option>
-<?
+<?php
 foreach($procesos as $Informacion)
 {
 	$id_cliente = $Informacion['id_cliente'];

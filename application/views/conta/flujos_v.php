@@ -19,7 +19,7 @@ Rango de tiempo:
 
 
 
-<?
+<?php
 function mostrar($nMes, $Rango)
 {
 	
@@ -56,7 +56,7 @@ function mostrar($nMes, $Rango)
 <table class="tabular" style="width:100%;">
 	<tr>
 		<th rowspan="2">DESCRIPCION | SEMANAS</th>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -65,12 +65,12 @@ foreach($Meses as $iMes => $nMes)
 	}
 ?>
 		<th class="derecha" colspan="2"><?=substr($nMes, 0, 3)?></th>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -80,13 +80,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<th class="derecha">Proy.</th>
 		<th class="derecha">Real</th>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<td style="width:220px;">Saldo Inicial [Más]</td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -96,13 +96,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$0</td>
 		<td class="derecha">$0</td>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<td>INGRESOS</td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -121,13 +121,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$<?=number_format($Detalle['General']['Proyectado'][$iMes], 0)?></td>
 		<td class="derecha">$<?=number_format($Detalle['General']['Real'][$iMes], 0)?></td>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<th>CUENTAS POR COBRAR</th>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -146,13 +146,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<th class="derecha">$<?=number_format($Detalle['General']['Proyectado'][$iMes], 0)?></th>
 		<th class="derecha">$<?=number_format($Detalle['General']['Real'][$iMes], 0)?></th>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<td>EXTERIOR/ NACIONALES</td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -171,20 +171,20 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$<?=number_format($Detalle['General']['Proyectado'][$iMes], 0)?></td>
 		<td class="derecha">$<?=number_format($Detalle['General']['Real'][$iMes], 0)?></td>
-<?
+<?php
 }
 ?>
 	</tr>
 	
 	
 	
-<?
+<?php
 foreach($Detalle['Clientes'] as $Cod_Clie => $Datos)
 {
 ?>
 	<tr>
 		<td><?=$Datos['Nombre']?></td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -203,11 +203,11 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$<?=number_format($Datos['Proyectado'][$iMes], 0)?></td>
 		<td class="derecha">$<?=number_format($Datos['Real'][$iMes], 0)?></td>
-<?
+<?php
 }
 ?>
 	</tr>
-<?
+<?php
 }
 ?>
 	
@@ -219,7 +219,7 @@ foreach($Meses as $iMes => $nMes)
 	
 	<tr>
 		<th>SUB TOTAL DISPONIBLE [Menos]</th>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -229,13 +229,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<th class="derecha">$0</th>
 		<th class="derecha">$0</th>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<td>EGRESOS</td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -245,13 +245,13 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$0</td>
 		<td class="derecha">$0</td>
-<?
+<?php
 }
 ?>
 	</tr>
 	<tr>
 		<td>CUENTAS POR PAGAR</td>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -261,7 +261,7 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<td class="derecha">$0</td>
 		<td class="derecha">$0</td>
-<?
+<?php
 }
 ?>
 	</tr>
@@ -471,7 +471,7 @@ foreach($Meses as $iMes => $nMes)
 	</tr-->
 	<tr>
 		<th>TOTAL DISPONIBLE</th>
-<?
+<?php
 foreach($Meses as $iMes => $nMes)
 {
 	if(!mostrar($iMes, $Rango))
@@ -481,7 +481,7 @@ foreach($Meses as $iMes => $nMes)
 ?>
 		<th class="derecha">$0</th>
 		<th class="derecha">$0</th>
-<?
+<?php
 }
 ?>
 	</tr>

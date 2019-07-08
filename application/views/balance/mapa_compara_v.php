@@ -5,12 +5,12 @@
 	Mostrando:
 	<select name="mes_mapa" id="mes_mapa">
 		<option value="anual">Anual</option>
-	<?
+	<?php
 foreach($Meses as $iMes => $nMes)
 {
 	?>
 		<option value="<?=$iMes?>"<?=($iMes==$Mes)?' selected="selected"':''?>><?=$nMes?></option>
-	<?
+	<?php
 }
 	?>
 	</select>
@@ -39,13 +39,13 @@ foreach($Meses as $iMes => $nMes)
 </script>
 
 
-<?
+<?php
 foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 {
 ?>
 <br /><strong><?=$Perspectiva['Nom']?></strong><br />
 <div id="grafico<?=$Id_Perspectiva?>"></div>
-<?
+<?php
 	$Coma = false;
 	$Labels = '';
 	$Valores = '';
@@ -110,7 +110,7 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 		'series': ['<?=$Anho_Anterior?>','<?=$Ver_Anho?>']
 	});
 </script>
-<?
+<?php
 }
 ?>
 

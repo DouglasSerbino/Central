@@ -3,14 +3,14 @@
 	
 	<strong>OBSERVACIONES</strong>
 	
-<?
+<?php
 if(isset($Cancelar))
 {
 ?>
 	&nbsp; &nbsp;
 	<input type="checkbox" name="apro" id="apro" />
 	<label for="apro">Resaltar Cambios</label>
-<?
+<?php
 }
 ?>
 	
@@ -22,13 +22,13 @@ if(isset($Cancelar))
 			<td><textarea cols="70" rows="5" name="obs_observacion"></textarea></td>
 			<td>
 				<input type="submit" value="Guardar Observaci&oacute;n" />
-<?
+<?php
 if(isset($Cancelar))
 {
 ?>
 				<br />
 				<input type="button" value="Cancelar" />
-<?
+<?php
 }
 ?>
 			</td>

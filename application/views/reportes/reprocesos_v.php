@@ -21,7 +21,7 @@ foreach($Meses as $m => $Datos)
 }
 ?>
 		</select>&nbsp;&nbsp;
-		<input type="text" name="anho" size="8" value="<? echo $anho; ?>" /> &nbsp;
+		<input type="text" name="anho" size="8" value="<?php echo $anho; ?>" /> &nbsp;
 		<!--label for='anual'><strong>Reporte Anual</strong></label>
 		<input type='checkbox' id='anual' name='anual' <?=($anual=='si')?' checked="checked"':''?>-->
 		<select name='reproceso_razon' id='reproceso_razon'>

@@ -3,7 +3,7 @@
 <div id="contenido-conta">
 	
 	<table class="tabular" style="width:100%;">
-<?
+<?php
 $Contador = 1;
 $Total_Venta = 0;
 foreach($Sin_Cobro['clientes'] as $iCliente => $nCliente)
@@ -17,7 +17,7 @@ foreach($Sin_Cobro['clientes'] as $iCliente => $nCliente)
 			<th class="derecha">F.Cobro</th>
 			<th class="derecha">Opciones</th>
 		</tr>
-<?
+<?php
 	foreach($Sin_Cobro['trabajos'][$iCliente] as $Fila)
 	{
 ?>
@@ -40,7 +40,7 @@ foreach($Sin_Cobro['clientes'] as $iCliente => $nCliente)
 				</a>
 			</td>
 		</tr>
-<?
+<?php
 		$Contador++;
 		$Total_Venta += $Fila['venta'];
 	}

@@ -20,7 +20,7 @@
 	}
 </style>
 
-<?
+<?php
 //Mostrar o no la lista de productos.
 //Si es agregar, aparecera deshabilitada; si es modificar se muestra segun condicion
 $Mostrar_datos = ' style="display:none;"';
@@ -44,7 +44,7 @@ if(isset($Cotizacion))
 
 
 
-<?
+<?php
 //******************************************************//
 //     o        o                                                     
 // __     __        _  _  _     _   __   ,_  _|_  __,   _  _  _|_  _  
@@ -66,7 +66,7 @@ if(isset($Cotizacion))
 		</th>
 	</tr>
 	<tbody<?=$Mostrar_datos?> id="coti_trabajo">
-<?
+<?php
 
 $Artes_Items = array(
 	5 => 'Arte Cambio de Formato',
@@ -131,7 +131,7 @@ foreach($Artes_Items as $iArte => $nArte)
 			<th style="width: 100px;">Precio</th>
 			<th style="width: 100px;">Sub Total</th>
 		</tr>
-<?
+<?php
 foreach($Artes_Items as $iArte => $nArte)
 {
 ?>
@@ -143,7 +143,7 @@ foreach($Artes_Items as $iArte => $nArte)
 				<input type="hidden" name="alto_<?=$iArte?>" size="7" value="1" />
 			</td>
 			<td><input type="text" name="pulg_<?=$iArte?>" size="6" value="<?=isset($Cotizacion[$iArte][0]['pulgadas'])?$Cotizacion[$iArte][0]['pulgadas']:''?>" /></td>
-<?
+<?php
 $Precio = '';
 if(isset($Cotizacion[$iArte][0]['precio']))
 {
@@ -158,7 +158,7 @@ else
 }
 ?>
 			<td>$<input type="text" name="prec_<?=$iArte?>" size="6" value="<?=$Precio?>" /></td>
-<?
+<?php
 $Total = 0;
 if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulgadas']))
 {
@@ -167,7 +167,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 ?>
 			<td>$<input type="text" name="subt_<?=$iArte?>" size="7" readonly="readonly" value="<?=$Total?>" /></td>
 		</tr>
-<?
+<?php
 }
 ?>
 		<tr>
@@ -188,7 +188,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 			<th style="width: 80px;">Precio</th>
 			<th style="width: 80px;">Sub Total</th>
 		</tr>
-<?
+<?php
 	$Pulgadas_Total_Neg = 0;
 	for($i = 0; $i < 4; $i++)
 	{
@@ -234,7 +234,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 			<td>$<input type="text" name="prec_39_<?=$i?>" value="<?=$Coti['precio']?>" size="6"></td>
 			<td>$<input type="text" name="subt_39_<?=$i?>" value="<?=number_format($Coti['total'], 2)?>" size="7"></td>
 		</tr>
-	<?
+	<?php
 	}
 	?>
 		<tr>
@@ -255,7 +255,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 			<th style="width: 80px;">Precio</th>
 			<th style="width: 80px;">Sub Total</th>
 		</tr>
-	<?
+	<?php
 	$Pulgadas_Total_Pla = 0;
 	for($i = 0; $i < 4; $i++)
 	{
@@ -301,7 +301,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 			<td>$<input type="text" name="prec_29_<?=$i?>" value="<?=$Coti['precio']?>" size="6"></td>
 			<td>$<input type="text" name="subt_29_<?=$i?>" value="<?=number_format($Coti['total'], 2)?>" size="7"></td>
 		</tr>
-	<?
+	<?php
 	}
 	?>
 		<tr>
@@ -327,7 +327,7 @@ if(isset($Cotizacion[$iArte][0]['precio']) && isset($Cotizacion[$iArte][0]['pulg
 				<input type="hidden" name="alto_73" size="7" value="1" />
 			</td>
 			<td><input type="text" name="pulg_73" size="6" value="<?=isset($Cotizacion[73][0]['pulgadas'])?$Cotizacion[73][0]['pulgadas']:''?>" /></td>
-<?
+<?php
 $Precio = '';
 if(isset($Cotizacion[73][0]['precio']))
 {
@@ -342,7 +342,7 @@ else
 }
 ?>
 			<td>$<input type="text" name="prec_73" size="6" value="<?=$Precio?>" /></td>
-<?
+<?php
 $Total = 0;
 if(isset($Cotizacion[73][0]['precio']) && isset($Cotizacion[73][0]['pulgadas']))
 {
@@ -374,7 +374,7 @@ if(isset($Cotizacion[73][0]['precio']) && isset($Cotizacion[73][0]['pulgadas']))
 				<input type="hidden" name="alto_54" size="7" value="1" />
 			</td>
 			<td><input type="text" name="pulg_54" size="6" value="<?=isset($Cotizacion[54][0]['pulgadas'])?$Cotizacion[54][0]['pulgadas']:''?>" /></td>
-<?
+<?php
 $Precio = '';
 if(isset($Cotizacion[54][0]['precio']))
 {
@@ -389,7 +389,7 @@ else
 }
 ?>
 			<td>$<input type="text" name="prec_54" size="6" value="<?=$Precio?>" /></td>
-<?
+<?php
 $Total = 0;
 if(isset($Cotizacion[54][0]['precio']) && isset($Cotizacion[54][0]['pulgadas']))
 {
@@ -406,7 +406,7 @@ if(isset($Cotizacion[54][0]['precio']) && isset($Cotizacion[54][0]['pulgadas']))
 				<input type="hidden" name="alto_103" size="7" value="1" />
 			</td>
 			<td><input type="text" name="pulg_103" size="6" value="<?=isset($Cotizacion[103][0]['pulgadas'])?$Cotizacion[103][0]['pulgadas']:''?>" /></td>
-<?
+<?php
 $Precio = '';
 if(isset($Cotizacion[103][0]['precio']))
 {
@@ -421,7 +421,7 @@ else
 }
 ?>
 			<td>$<input type="text" name="prec_103" size="6" value="<?=$Precio?>" /></td>
-<?
+<?php
 $Total = 0;
 if(isset($Cotizacion[103][0]['precio']) && isset($Cotizacion[103][0]['pulgadas']))
 {

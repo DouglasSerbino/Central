@@ -146,7 +146,7 @@ a:hover{
 	font-size: 17px;
 	height: 30px;
 	background: #ecbe60;
-	padding: 12px 0px 0px 45px;
+	padding: 15px 0px 0px 45px;
 	border-bottom: 4px solid #aaa9a9;
 }
 
@@ -354,7 +354,7 @@ a:hover{
 	display: none;
 }
 .toolizq, .toolder{ 
-	position: relative;
+	/*position: relative;*/
 	vertical-align: middle;
 	cursor: pointer;
 }

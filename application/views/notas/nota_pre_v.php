@@ -1,7 +1,7 @@
 <?php
 //Establecemos la fecha actual.
 $fecha = date("d-m-Y");
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo "<?phpxml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -31,9 +31,9 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 <div id="contenedor-pagina">
 
 <div id="encabezado"><img src="/html/img/lgtps/<?=$this->session->userdata('grupo')?>.png" width="125" alt="<?=$this->session->userdata('grupo')?>" /></div>
-<div id="titulo">NOTA DE ENVIO &nbsp; &nbsp; <? echo $fecha; ?></div>
+<div id="titulo">NOTA DE ENVIO &nbsp; &nbsp; <?php echo $fecha; ?></div>
 <br />
-<?
+<?php
 //Exploramos el array para obtener el nombre del cliente y el Id.
 foreach($Clientes as $Datos_clientes)
 {

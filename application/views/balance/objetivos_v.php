@@ -75,7 +75,7 @@
 	
 <div id="tablas_objetivos">
 
-<?
+<?php
 foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 {
 ?>
@@ -91,16 +91,16 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 	<tr class="detalle">
 		<td style="width: 190px;">Objetivos Estrat&eacute;gicos</td>
 		<td>Indicadores</td>
-<?
+<?php
 	foreach($Meses as $iMes => $nMes)
 	{
 ?>
 		<td><?=$nMes?></td>
-<?
+<?php
 	}
 ?>
 	</tr>
-<?
+<?php
 	foreach($Perspectiva['Objs'] as $Id_Bsc_Objetivo => $Objetivo)
 	{
 ?>
@@ -113,20 +113,20 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 			<input type="hidden" value="<?=$Objetivo['Con']?>[co;<?=$Id_Perspectiva?>[co;<?=$Objetivo['Nom']?>[co;<?=$Objetivo['Ind']?>" id="hi_<?=$Id_Bsc_Objetivo?>" />
 		</td>
 		<td>[<?=$Objetivo['Con']?>] <?=$Objetivo['Ind']?></td>
-<?
+<?php
 		foreach($Datos[$Id_Bsc_Objetivo] as $Dato)
 		{
 ?>
 		<td class="mes"><!--span><?=$Dato?></span--><input type="text" value="<?=$Dato?>" /></td>
-<?
+<?php
 		}
 ?>
 	</tr>
-<?
+<?php
 	}
 ?>
 </table>
-<?
+<?php
 }
 ?>
 
@@ -158,12 +158,12 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 		<td>
 			<select id="mod_pertenece">
 				<option value="0">Principal</option>
-<?
+<?php
 foreach($Def_Objetivos as $Id_Bsc_Objetivo => $Perspectiva)
 {
 ?>
 				<option value="<?=$Id_Bsc_Objetivo?>"><?=$Perspectiva['Nom']?></option>
-<?
+<?php
 }
 ?>
 			</select>
@@ -211,12 +211,12 @@ foreach($Def_Objetivos as $Id_Bsc_Objetivo => $Perspectiva)
 		<td>
 			<select id="pertenece">
 				<option value="0">Principal</option>
-<?
+<?php
 foreach($Def_Objetivos as $Id_Bsc_Objetivo => $Perspectiva)
 {
 ?>
 				<option value="<?=$Id_Bsc_Objetivo?>"><?=$Perspectiva['Nom']?></option>
-<?
+<?php
 }
 ?>
 			</select>

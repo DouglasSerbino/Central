@@ -224,9 +224,8 @@ class Modificar_clientes_m extends CI_Model {
 	
 	function productos()
 	{
-		$Consulta = 'select id_producto, producto, activo from producto';
-		
-		$Resultado = $this->db->query($Consulta);
+
+		$Resultado = $this->db->get('producto');
 		
 		if(0 < $Resultado->num_rows())
 		{

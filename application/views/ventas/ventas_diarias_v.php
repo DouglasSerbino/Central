@@ -10,7 +10,7 @@
 		<input type="text" name="fecha" id="fecha" size="12" value="<?=$Fecha?>" readonly="readonly" />
 		&nbsp; <input type="Submit" class="boton" value="Ver" />
 	</form>
-<?php
+<?phpphp
 if($Fecha != '')
 {
 ?>
@@ -22,7 +22,7 @@ if($Fecha != '')
 			<th style='width: 10%; text-align: center;'>Facturado</th>
 			<th>N Factura</th>
 		</tr>
-<?
+<?php
 $suma = 0;
 foreach($mostrar_clientes as $Datos_clientes)
 {
@@ -31,7 +31,7 @@ foreach($mostrar_clientes as $Datos_clientes)
 		<tr>
 			<th colspan="5" style='background-color: #d7d7d7;'><?=$cliente?></th>
 		</tr>
-<?php		
+<?phpphp		
 		$suma_cli = 0;
 		$a = 0;
 		foreach($Datos_clientes['ventas'] as $Ventas_diarias)
@@ -50,7 +50,7 @@ foreach($mostrar_clientes as $Datos_clientes)
 			<td><strong><?=$Ventas_diarias["factura"]?></strong>
 			</td>
 		</tr>
-<?php	
+<?phpphp	
 		}
 ?>
 			<tr>
@@ -58,7 +58,7 @@ foreach($mostrar_clientes as $Datos_clientes)
 				<td><strong>$ <?=number_format($suma_cli, 2)?></strong><br /></td>
 				
 			</tr>
-<?php	
+<?phpphp	
 	}
 ?>
 			<tr>
@@ -66,7 +66,7 @@ foreach($mostrar_clientes as $Datos_clientes)
 				<td><br><strong>$ <?=number_format($suma, 2)?></strong></td>
 			</tr>
 	</table>
-<?php
+<?phpphp
 }
 ?>
 </div>

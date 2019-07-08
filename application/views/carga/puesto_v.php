@@ -1,10 +1,10 @@
 <form name="rango_fechas" action="/carga/puestos" method="post">
 	<select name="mes">
-<?
+<?php
 foreach($Meses as $iMes => $nMes){
 ?>
-		<option value="<? echo $iMes; ?>"<? echo ($Mes==$iMes)?' selected="selected"':''; ?>><? echo $nMes; ?></option>
-<?
+		<option value="<?php echo $iMes; ?>"<?php echo ($Mes==$iMes)?' selected="selected"':''; ?>><?php echo $nMes; ?></option>
+<?php
 }
 ?>
 	<option value='Anual' <?=('Anual'==$Mes)?' selected="selected"':''?>>Anual</option>
@@ -14,7 +14,7 @@ foreach($Meses as $iMes => $nMes){
 </form>
 
 
-<?
+<?php
 foreach($Usuarios as $Departamentos)
 {
 	
@@ -38,16 +38,16 @@ foreach($Usuarios as $Departamentos)
 		<th style="width: 100px;">Rechazos</th>
 		<th style="width: 105px;">Programado</th>
 		<th style="width: 160px;" colspan="2">Utilizado</th>
-<?
+<?php
 			if('s' == $Departamentos['tiempo'])
 			{
 ?>
 		<th style="width: 160px;" colspan="2">Disponible</th>
-<?
+<?php
 			}
 ?>
 	</tr>
-<?
+<?php
 	foreach($Departamentos['usuarios'] as $Id_Usuario => $Usuario)
 	{
 		if(isset($Trabajos[$Id_Usuario]))
@@ -132,21 +132,21 @@ foreach($Usuarios as $Departamentos)
 		<td><?=$TProgramado[$Id_Usuario]['horas']?></td>
 		<td><?=$Utili_Usuario?></td>
 		<td>(<?=$Utili_Porcentaje?>%)</td>
-<?
+<?php
 			if('s' == $Departamentos['tiempo'])
 			{
 ?>
 		<td><?=$Tiempo_Dispo?>h</td>
 		<td>(<?=$Tiempo_Porce?>%)</td>
-<?
+<?php
 			}
 ?>
 	</tr>
-<?
+<?php
 		}
 	}
 ?>
 </table>
-<?
+<?php
 }
 ?>

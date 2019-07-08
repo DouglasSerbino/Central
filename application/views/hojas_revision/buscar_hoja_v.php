@@ -1,4 +1,4 @@
-<?php
+<?phpphp
 if($limpiar == 'no')
 {
 	?>
@@ -10,7 +10,7 @@ if($limpiar == 'no')
 		<input type="submit" class="boton" value="Buscar" />
 	</form>
 </div>
-<?
+<?php
 }
 if(count($Cliente_Procesos) != 0)
 {
@@ -36,7 +36,7 @@ if(count($Cliente_Procesos) != 0)
 				<th>Hoja</th>
 				<th>Fecha de Revisi&oacute;n</th>
 			</tr>
-<?
+<?php
 foreach($Hojas_revision as $Datos)
 {
 	$fecha_entrada = $this->fechas_m->fecha_ymd_dmy($Datos["fecha"]);
@@ -49,13 +49,13 @@ foreach($Hojas_revision as $Datos)
 				</td>
 				<td><?=$fecha_entrada?></td>
 			</tr>
-<?php
+<?phpphp
 }
 ?>
 		</table>
 </div>
 
-<?php
+<?phpphp
 }
 else
 {
@@ -63,7 +63,7 @@ else
 	{
 ?>
 	No se encontro hoja de revision para el proceso <strong><?=$codigo_cliente.'-'.$proceso?></strong>
-<?php
+<?phpphp
 	}
 }
 ?>

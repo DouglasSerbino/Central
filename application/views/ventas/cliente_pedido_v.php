@@ -12,7 +12,7 @@
 			<th class="numero" style="width: 100px;">Factura</th>
 		</tr>
 		<tr>
-<?
+<?php
 $Total_Venta = 0;
 foreach($Vent_Clie as $Fila)
 {
@@ -24,7 +24,7 @@ foreach($Vent_Clie as $Fila)
 			<td class="numero vent100">$<?=number_format($Fila['venta'], 2)?></td>
 			<td class="numero"><?=$Fila['es_factura']?></td>
 		</tr>
-<?
+<?php
 }
 ?>
 		<tr>

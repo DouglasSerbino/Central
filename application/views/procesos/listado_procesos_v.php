@@ -1,5 +1,24 @@
 <script type="text/javascript" src="/html/js/procesos.js?n=1"></script>
-
+<style>
+    .btn{
+        border-radius: 8px;
+        background-color: #bc933b;
+        color: white;
+        padding: 5px 15px;
+        text-align: center;
+    
+    }
+    .btn:hover, .btn:active {
+    background-color: lightblue;
+    }
+    .pull-right{
+        float: right;
+    }
+    a:link
+    {
+        text-decoration:none;
+    } 
+</style>
 <form method="post" >
     <select id="id_cliente" name="id_cliente" onchange="listado_id_cliente()">
         <option value="">-- Seleccione --</option>
@@ -12,6 +31,7 @@
     }
 ?>
     </select>
+    <a class="btn pull-right" href="/ventas/preingreso">Crear Proceso</a>
     <br />
 		
 		P&aacute;ginas: <?=$Paginacion?>
@@ -38,7 +58,7 @@ foreach($Informacion_proc as $Procesos)
 }
 ?>
     </table>
-<?
+<?php
 }
 ?>    
 </form>

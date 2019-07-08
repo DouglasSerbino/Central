@@ -12,7 +12,7 @@
 	<div id="pend">
 		
 		<table class="tabular" style="width: 100%;">
-<?
+<?php
 foreach($Incompletas as $Id_Tarea => $Tarea)
 {
 	$f = $this->fechas_m->fecha_subdiv($Tarea['fecha_creada']);
@@ -22,12 +22,12 @@ foreach($Incompletas as $Id_Tarea => $Tarea)
 				<td>
 					<strong><?=$Tarea['solicitado']?> [<?=$Tarea['fecha_creada']?>]</strong>
 					<br />
-<?
+<?php
 if('central-g' == $this->session->userdata('grupo'))
 {
 ?>
 					<span id="tarea-<?=$Id_Tarea?>" class="iconos iterminado toolizq tarea_fin"><span>Finalizar tarea</span></span>
-<?
+<?php
 }
 ?>
 					<span id="tarea-<?=$Id_Tarea?>-tarea"><?=nl2br($Tarea['tarea'])?></span>
@@ -37,7 +37,7 @@ if('central-g' == $this->session->userdata('grupo'))
 					<strong>Fecha L&iacute;mite:</strong> <?=$Tarea['fecha_estimada']?>
 				</td>
 			</tr>
-<?
+<?php
 }
 ?>
 		</table>
@@ -50,7 +50,7 @@ if('central-g' == $this->session->userdata('grupo'))
 		<?=$Paginacion?>
 		
 		<table class="tabular" style="width: 100%;">
-<?
+<?php
 foreach($Finalizadas as $Tarea)
 {
 	$f = $this->fechas_m->fecha_subdiv($Tarea['fecha_creada']);
@@ -69,7 +69,7 @@ foreach($Finalizadas as $Tarea)
 					<strong class="raquo">&raquo;</strong> <?=nl2br($Tarea['observaciones'])?>
 				</td>
 			</tr>
-<?
+<?php
 }
 ?>
 	</table>

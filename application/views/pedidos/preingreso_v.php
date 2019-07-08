@@ -1,5 +1,3 @@
-
-
 <table class="tabular" style="width: 100%">
 	<tr>
 		<th style="width: 95px;">Proceso</th>
@@ -9,7 +7,7 @@
 		<th style="width: 120px;">F. Solicitado</th>
 		<th style="width: 80px;">&nbsp;</th>
 	</tr>
-<?
+<?php
 if(isset($Pedidos[0]))
 {
 	foreach($Pedidos[0] as $Index => $Datos)
@@ -32,14 +30,14 @@ if(isset($Pedidos[0]))
 			</a>
 		</td>
 		<td>
-<?
+<?php
 			if('Ventas' != $this->session->userdata('codigo'))
 			{
 ?>
 			<a href="/pedidos/modificar/index/<?=$Pedido['id_pedido']?>" class="iconos iruta toolizq">
 				<span>Ingresar Pedido</span>
 			</a>
-<?
+<?php
 			}
 ?>
 		</td>
@@ -47,13 +45,13 @@ if(isset($Pedidos[0]))
 		<td><?=$this->fechas_m->fecha_ymd_dmy($Pedido['fecha_entrada'])?></td>
 		<td><?=$this->fechas_m->fecha_ymd_dmy($Pedido['fecha_entrega'])?></td>
 		<td>
-<?
+<?php
 			if('Ventas' == $this->session->userdata('codigo'))
 			{
 ?>
 			<a href="/pedidos/especificacion/index/<?=$Pedido["id_pedido"]?>/m" class="iconos idocumento toolder"><span>Modificar Hoja de Planificaci&oacute;n</span></a>
 			<a href="/pedidos/tiempo/accion/finalizar/<?=$Pedido['id_pedido']?>/<?=$Pedido['id_peus']?>" class="iconos iterminado toolder"><span>Dar por Terminado</span></a>
-<?
+<?php
 			}
 			else
 			{
@@ -61,7 +59,7 @@ if(isset($Pedidos[0]))
 				{
 ?>
 		<strong>&nbsp;&nbsp;*</strong>
-<?
+<?php
 				}
 				else
 				{
@@ -73,7 +71,7 @@ if(isset($Pedidos[0]))
 ?>
 		</td>
 	</tr>
-<?
+<?php
 		}
 	}
 }
@@ -82,7 +80,7 @@ if(isset($Pedidos[0]))
 
 <br />
 
-<?
+<?php
 
 $this->load->view('pedidos/rechazo_v.php');
 

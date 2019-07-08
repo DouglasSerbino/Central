@@ -30,14 +30,14 @@
 	<tr><td>Cliente:</td><th><?=$Info_Proceso['nombre']?></th></tr>
 	<tr><td>Producto:</td><th><?=$Info_Proceso['nombre_proceso']?></th></tr-->
 	<tr>
-		<td><?
+		<td><?php
 if('' == $Miniatura)
 {
 	echo '&nbsp;';
 }
 else
 {
-?><img style="width: 85px;height: 85px;" src="<?=$Miniatura?>" /><?
+?><img style="width: 85px;height: 85px;" src="<?=$Miniatura?>" /><?php
 }
 ?></td>
 		<td>
@@ -45,7 +45,7 @@ else
 			&nbsp; <strong><?=$Info_Proceso['nombre_proceso']?></strong>
 			<br />
 			<?=$Info_Proceso['nombre']?>
-<?
+<?php
 if(
 	'Gerencia' == $this->session->userdata('codigo')
 	|| 'Sistemas' == $this->session->userdata('codigo')
@@ -54,7 +54,7 @@ if(
 {
 ?>
 			<br /><input type="button" value="Eliminar Proceso" id="elimina_proceso" />
-<?
+<?php
 }
 ?>
 		</td>
@@ -63,7 +63,7 @@ if(
 
 
 
-<?
+<?php
 if(
 	'Gerencia' == $this->session->userdata('codigo')
 	|| 'Sistemas' == $this->session->userdata('codigo')
@@ -87,7 +87,7 @@ if(
 	<input type="button" value="Eliminar Proceso" class="proceder" />
 	<input type="button" value="&raquo; CANCELAR &laquo;" class="cancelar" />
 </div>
-<?
+<?php
 }
 ?>
 
@@ -138,7 +138,7 @@ if(0 < count($Pedidos))
 			<strong><a href="/pedidos/pedido_detalle/index/<?=$Info_pedido['id_pedido']?>" title="Detalle de Pedido">Detalle</a></strong>
 		</td>
 		<td>
-<?
+<?php
 		if(
 			'Gerencia' == $this->session->userdata('codigo')
 			|| 'Plani' == $this->session->userdata('codigo')
@@ -150,7 +150,7 @@ if(0 < count($Pedidos))
 ?>
 			<a href="/pedidos/modificar/index/<?=$Info_pedido['id_pedido']?>" class="iconos iruta toolder"><span>Modificar Ruta de Trabajo</span></a>
 			<a href="/pedidos/especificacion/index/<?=$Info_pedido['id_pedido']?>/m" class="iconos idocumento toolder"><span>Modificar Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 			}
 			else
 			{
@@ -158,14 +158,14 @@ if(0 < count($Pedidos))
 				{
 ?>
 			<a href="/pedidos/especificacion/index/<?=$Info_pedido['id_pedido']?>/m" class="iconos idocumento toolder"><span>Modificar Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 					$Modifica_Plani = false;
 				}
 				else
 				{
 ?>
 			<a href="/pedidos/especificacion/ver/<?=$Info_pedido['id_pedido']?>/n" class="iconos idocumento toolder"><span>Ver Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 				}
 			}
 		}
@@ -173,7 +173,7 @@ if(0 < count($Pedidos))
 		{
 ?>
 			&nbsp;
-<?
+<?php
 		}
 		
 ?>
@@ -234,7 +234,7 @@ if(isset($Pedidos2))
 			<strong><a href="/pedidos/pedido_detalle/index/<?=$Info_pedido['id_pedido']?>" title="Detalle de Pedido">Detalle</a></strong>
 		</td>
 		<td>
-			<?
+			<?php
 			if(
 				'Gerencia' == $this->session->userdata('codigo')
 				|| 'Plani' == $this->session->userdata('codigo')
@@ -246,25 +246,25 @@ if(isset($Pedidos2))
 ?>
 			<a href="/pedidos/modificar/index/<?=$Info_pedido['id_pedido']?>" class="iconos iruta toolder"><span>Modificar Ruta de Trabajo</span></a>
 			<a href="/pedidos/especificacion/index/<?=$Info_pedido['id_pedido']?>/n" class="iconos idocumento toolder"><span>Modificar Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 				}
 				else
 				{
 ?>
 			<span class="iconos ivacio"></span>
-<?
+<?php
 					if($Modifica_Plani)
 					{
 ?>
 			<a href="/pedidos/especificacion/index/<?=$Info_pedido['id_pedido']?>/n" class="iconos idocumento toolder"><span>Modificar Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 						$Modifica_Plani = false;
 					}
 					else
 					{
 ?>
 			<a href="/pedidos/especificacion/ver/<?=$Info_pedido['id_pedido']?>/n" class="iconos idocumento toolder"><span>Ver Hoja de Planificaci&oacute;n</span></a>
-<?
+<?php
 					}
 				}
 			}
@@ -272,7 +272,7 @@ if(isset($Pedidos2))
 			{
 ?>
 			&nbsp;
-<?
+<?php
 			}
 ?>
 			<a href="javascript:ver_agregar_observacion('<?=$Info_pedido['id_pedido']?>');" class="iconos iobserva toolder"><span>Agregar Observaci&oacute;n</span></a>
@@ -288,12 +288,12 @@ if(isset($Pedidos2))
 
 
 <div id="form_observacion" class="sombra" style="display: none;">
-<?
+<?php
 $this->load->view('/observaciones/agregar_obs_v', array('Cancelar' => TRUE));
 ?>
 </div>
 
-<?
+<?php
 $this->load->view('/scan/cargar_scan_v', $num_cajas);
 
 if(
@@ -304,7 +304,7 @@ if(
 {
 ?>
 
-<?
+<?php
 }
 ?>
 
@@ -336,7 +336,7 @@ if(
 		$("[name=nfecha]").datepicker({dateFormat: 'yy-mm-dd', showButtonPanel: true});
 		
 		
-<?
+<?php
 if(
 	'Gerencia' == $this->session->userdata('codigo')
 	|| 'Sistemas' == $this->session->userdata('codigo')
@@ -361,7 +361,7 @@ if(
 		{
 			$('#div_elim_proceso').hide('blind');
 		});
-<?
+<?php
 }
 ?>
 		

@@ -19,7 +19,7 @@
 		<th>Fecha</th>
 		<th>Detalle</th>
 	</tr>
-<?
+<?php
 foreach($Historial as $Hoja)
 {
 ?>
@@ -28,7 +28,7 @@ foreach($Historial as $Hoja)
 		<td><?=$Hoja['fecha']?></td>
 		<td><a href="/hojas_revision/historial/detalle/<?=$Id_Pedido?>/<?=$Hoja['id_revision_pedido']?>">Detalle</a></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

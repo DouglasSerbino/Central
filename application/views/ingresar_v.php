@@ -55,7 +55,7 @@
 	
 	<div id="contenedor">
 		
-<?
+<?php
 $this->load->helper('url');
 $Url_Principal = site_url();
 $Url_Principal = str_replace('seguimiento.', '', $Url_Principal);

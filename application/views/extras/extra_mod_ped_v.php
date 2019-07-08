@@ -18,7 +18,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 <head>
 	<title>MODIFICAR EXTRAS</title>
-	<link href="<? echo "/html/css/comun.css"; ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo "/html/css/comun.css"; ?>" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="/html/js/extra.js?n=1"></script>
 	<script type="text/javascript" src="/html/js/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="/html/js/jquery-ui-1.8.17.js"></script>
@@ -28,7 +28,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 <body>
 <div class="informacion_chica">
 	<form name="miform" id='miform' action="/extras/extra_mod_ped/extra_mod_sql" method="post">
-<?
+<?php
 $inicio = "";
 $fin = "";
 if(isset($inicio_fin_extra))
@@ -51,20 +51,20 @@ else
 echo "			<input type=\"hidden\" name=\"id_usuario\" value=\"$id_usuario\" />\n";
 echo "			<input type=\"hidden\" name=\"id_extra\" value=\"$id_extra\" />\n";
 ?>
-		<strong>Agregar Trabajos para Horas Extras &nbsp; <? echo $fecha_mostrar; ?></strong>
+		<strong>Agregar Trabajos para Horas Extras &nbsp; <?php echo $fecha_mostrar; ?></strong>
 		
 		<table class="tabla_i">
-			<tr><th colspan="2"><? echo "$usu_nombre - $dpto"; ?></th></tr>
+			<tr><th colspan="2"><?php echo "$usu_nombre - $dpto"; ?></th></tr>
 			<tr><th colspan="2">
-				Inicio: <input type="text" name="inicio" id="inicio" size="6" value="<? echo $inicio; ?>" /> &nbsp;
-				Fin: <input type="text" name="fin" id="fin" size="6" value="<? echo $fin; ?>" /> *
+				Inicio: <input type="text" name="inicio" id="inicio" size="6" value="<?php echo $inicio; ?>" /> &nbsp;
+				Fin: <input type="text" name="fin" id="fin" size="6" value="<?php echo $fin; ?>" /> *
 			</th></tr>
 			<tr>
 				<th>Proceso</th>
 				<th>Descripci&oacute;n</th>
 				<th width="10%">Eliminar</th>
 			</tr>
-<?
+<?php
 
 $i = 0;
 foreach($mostrar_extras as $Datos_extras)
@@ -104,8 +104,8 @@ if(isset($comentario_extra_otro))
 }
 ?>
 		</table>
-		<input type="hidden" name="total" value="<? echo $i; ?>" />
-		<input type="hidden" name="fecha" value="<? echo $fecha_mandar; ?>" />
+		<input type="hidden" name="total" value="<?php echo $i; ?>" />
+		<input type="hidden" name="fecha" value="<?php echo $fecha_mandar; ?>" />
 		<input type="button" class="boton" value="Modificar" onclick="envia_form()" /><br />
 		
 		*Ingresar los tiempos en formatos de 24 horas.

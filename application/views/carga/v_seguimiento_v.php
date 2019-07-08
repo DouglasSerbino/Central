@@ -34,12 +34,12 @@
 						<td>
 							<input type="text" name="dia1" id="dia1" size="5" value="<?=$Fechas['dia1']?>" />
 							<select name="mes1" id="mes1">
-<?
+<?php
 foreach($Meses as $Mes => $MNombre)
 {
 ?>
 								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -51,12 +51,12 @@ foreach($Meses as $Mes => $MNombre)
 						<td>
 							<input type="text" name="dia2" id="dia2" size="5" value="<?=$Fechas['dia2']?>" />
 							<select name="mes2" id="mes2">
-<?
+<?php
 foreach($Meses as $Mes => $MNombre)
 {
 ?>
 								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes2'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?
+<?php
 }
 ?>
 							</select>
@@ -105,7 +105,7 @@ foreach($Meses as $Mes => $MNombre)
 </form>
 
 
-<?
+<?php
 if($Mostar_Datos)
 {
 ?>
@@ -120,16 +120,16 @@ if($Mostar_Datos)
 		<th style="width: 450px;">Producto</th>
 		<th style="width: 100px;">Ingreso</th>
 		<th style="width: 100px;">Estimada</th>
-		<?
+		<?php
 if('finalizado' == $Trabajo)
 {
-?><th style="width: 90px;">Real</th><?
+?><th style="width: 90px;">Real</th><?php
 }
 ?>
 		<th style="width: 55px;">&nbsp;</th>
 		<th style="width: 300px;">Ruta</th>
 	</tr>
-<?
+<?php
 	foreach($Carga['trabajos'] as $Detalle)
 	{
 		if('finalizado' != $Trabajo)
@@ -174,14 +174,14 @@ if('finalizado' == $Trabajo)
 ?>
 	<tr id="tr_ca_<?=$Detalle['id_pedido']?>">
 		<td>
-<?
+<?php
 	if($Detalle['url'] != '')
 	{
 ?>
 			<a href="<?=$Detalle['url']?>" class="thickbox" title='' >
 				<img width='30px' height='25px' src="<?=$Detalle['url']?>" title="<?=$Detalle['nombre_adjunto']?>" />
 			</a>
-<?
+<?php
 	}
 	else{ echo '&nbsp;'; }
 ?>
@@ -196,14 +196,14 @@ if('finalizado' == $Trabajo)
 		<td><?=$Detalle['prod']?></td>
 		<td><?=$Detalle['entra'][2].'-'.$Detalle['entra'][1].'-'.$Detalle['entra'][0]?></td>
 		<td class="<?=$Estado_Fecha?>"><?=$Detalle['entre'][2].'-'.$Detalle['entre'][1].'-'.$Detalle['entre'][0]?></td>
-		<?
+		<?php
 		if('finalizado' == $Trabajo)
 		{
-?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?
+?><td><?=$Detalle['reale'][2].'-'.$Detalle['reale'][1].'-'.$Detalle['reale'][0]?></td><?php
 		}
 ?>
 		<td>
-<?
+<?php
 if(
 	'finalizado' != $Trabajo
 	&& 'Ventas' != $this->session->userdata('codigo')
@@ -212,12 +212,12 @@ if(
 ?>
 			<a href="javascript:ver_cambiar_fecha('<?=$Detalle['id_pedido']?>', '<?=$Detalle['codcl']?>-<?=$Detalle['proce']?>', '<?=$Detalle['entre'][2].'-'.$Detalle['entre'][1].'-'.$Detalle['entre'][0]?>');" class="iconos icalendario toolder"><span>Cambiar Fecha de Entrega</span></a>
 			<a href="javascript:finalizar_trabajo('<?=$Detalle['id_pedido']?>', '<?=$Detalle['codcl']?>-<?=$Detalle['proce']?>');" class="iconos iterminado toolder"><span>Dar por Terminado</span></a>
-<?
+<?php
 }
 ?>
 		</td>
 		<td>
-<?
+<?php
 		if(isset($Carga['ruta'][$Detalle['id_pedido']]))
 		{
 			foreach($Carga['ruta'][$Detalle['id_pedido']] as $Ruta)
@@ -239,27 +239,27 @@ if(
 							{
 								continue;
 							}
-?><span class="rut_<?=$Ruta2['est']?> toolder"><?=$Ruta2['ini']?><span><?=$Ruta2['usu']?>: <?=$Ruta2['est']?><br />Fecha Finalizado: <?=$Ruta2['fin']?></span></span><?
+?><span class="rut_<?=$Ruta2['est']?> toolder"><?=$Ruta2['ini']?><span><?=$Ruta2['usu']?>: <?=$Ruta2['est']?><br />Fecha Finalizado: <?=$Ruta2['fin']?></span></span><?php
 						}
 						
 					}
 				}
 				else
 				{*/
-?><span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><?=$Ruta['usu']?>: <?=$Ruta['est']?><br />Fecha Finalizado: <?=$Ruta['fin']?></span></span><?
+?><span class="rut_<?=$Ruta['est']?> toolder"><?=$Ruta['ini']?><span><?=$Ruta['usu']?>: <?=$Ruta['est']?><br />Fecha Finalizado: <?=$Ruta['fin']?></span></span><?php
 				//}
 			}
 		}
 ?>
 		</td>
 	</tr>
-<?
+<?php
 	}
 ?>
 </table>
 
 </div>
-<?
+<?php
 }
 ?>
 

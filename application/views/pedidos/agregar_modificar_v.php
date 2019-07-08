@@ -26,14 +26,14 @@
 
 <table>
 	<tr>
-		<td rowspan="2"><?
+		<td rowspan="2"><?php
 if('' == $Miniatura)
 {
 	echo '&nbsp;';
 }
 else
 {
-?><img style="width: 85px;height: 85px;" src="<?=$Miniatura?>" /><?
+?><img style="width: 85px;height: 85px;" src="<?=$Miniatura?>" /><?php
 }
 ?></td>
 		<td>
@@ -55,7 +55,7 @@ else
 		<td>
 			Tipo de trabajo
 			<select name="tipo_trabajo">
-<?
+<?php
 //Tipo de trabajo (Modificar)
 $Tipo_Trab = 0;
 if(isset($Pedido['id_tipo_trabajo']))
@@ -67,14 +67,14 @@ foreach($Tipos_Trabajo as $Tipo)
 {
 ?>
 				<option value="<?=$Tipo['id_tipo_trabajo']?>"<?=($Tipo_Trab==$Tipo['id_tipo_trabajo'])?' selected="selected"':''?>><?=$Tipo['trabajo']?></option>
-<?
+<?php
 }
 ?>
 			</select>
 
 			<select name="id_usu_rechazo" id="id_usu_rechazo" style="display:none;">
 				<option value="0">Seleccionar Responsable</option>
-<?
+<?php
 //Usuario responsable del Rechazo (Modificar)
 $Usu_Rechazo = 0;
 if(isset($Pedido['id_responsable']))
@@ -86,7 +86,7 @@ foreach($Usuarios as $Usuario)
 {
 ?>
 				<option value="<?=$Usuario['id_usuario']?>"<?=($Usu_Rechazo==$Usuario['id_usuario'])?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
-<?
+<?php
 }
 ?>
 			</select>

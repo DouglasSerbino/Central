@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/hojas_revision.js?n=1"></script>
-<?
+<?php
 foreach($Cliente_Procesos as $Datos)
 {
 	$id_cliente = $Datos["codigo_cliente"];

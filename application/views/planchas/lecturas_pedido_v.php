@@ -26,12 +26,12 @@
 				<td>Compensaci&oacute;n</td>
 				<td>
 					<select name="compensacion" id="compensacion">
-<?
+<?php
 foreach($Compensacion as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -41,12 +41,12 @@ foreach($Compensacion as $Id => $Datos)
 				<td>Plancha</td>
 				<td>
 					<select name="plancha" id="plancha">
-<?
+<?php
 foreach($Plancha as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -56,12 +56,12 @@ foreach($Plancha as $Id => $Datos)
 				<td>Sistema</td>
 				<td>
 					<select name="sistema" id="sistema">
-<?
+<?php
 foreach($Sistema as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -71,12 +71,12 @@ foreach($Sistema as $Id => $Datos)
 				<td>Altura</td>
 				<td>
 					<select name="altura" id="altura">
-<?
+<?php
 foreach($Altura as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -86,12 +86,12 @@ foreach($Altura as $Id => $Datos)
 				<td>Trama</td>
 				<td>
 					<select name="trama" id="trama">
-<?
+<?php
 foreach($Trama as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -101,12 +101,12 @@ foreach($Trama as $Id => $Datos)
 				<td>Lineaje</td>
 				<td>
 					<select name="lineaje" id="lineaje">
-<?
+<?php
 foreach($Lineaje as $Id => $Datos)
 {
 ?>
 						<option value="<?=$Id?>"><?=$Datos?></option>
-<?
+<?php
 }
 ?>
 					</select>
@@ -135,7 +135,7 @@ foreach($Lineaje as $Id => $Datos)
 				<th>75%</th>
 				<th>100%</th>
 			</tr>
-<?
+<?php
 if(isset($Info_Proceso))
 {
 	$Proceso_Ped = $Info_Proceso['codigo_cliente'].'-'.$Info_Proceso['proceso'];
@@ -171,32 +171,32 @@ foreach($Colores_v as $Index => $Color)
 ?>
 			<tr>
 				<th><span class="lec_ref_form" col="<?=$Color_min?>"><?=$Color?></span></th>
-<?
+<?php
 foreach($Porcentajes as $Index => $Porce)
 {
 ?>
 				<td>
-<?
+<?php
 	if(isset($Medicion_Ped['ipl']))
 	{
 ?>
 					<a href="/mediciones/<?=$Medicion_Ped['ipl'].'/'.$Proceso_Ped.' '.$Colores_Nom_v[$Color]?> <?=$Porce?>.pdf" target="_blank"><?=$Medicion_Ped[$Color_min][$Index]?></a>
-<?
+<?php
 	}
 	else
 	{
 ?>
 					0
-<?
+<?php
 	}
 ?>
 					<input type="hidden" name="<?=$Color_min?>_<?=$Index?>" id="<?=$Color_min?>_<?=$Index?>" value="<?=$Medicion_Ped[$Color_min][$Index]?>" />
 				</td>
-<?
+<?php
 }
 ?>
 			</tr>
-<?
+<?php
 	}
 	else
 	{
@@ -209,7 +209,7 @@ foreach($Porcentajes as $Index => $Porce)
 				<td><input type="text" size="5" name="<?=$Color_min?>_75" id="<?=$Color_min?>_75" class="requ num" value="<?=$Medicion_Ped[$Color_min][75]?>" color="<?=$Color_min?>" /></td>
 				<td><input type="text" size="5" name="<?=$Color_min?>_100" id="<?=$Color_min?>_100" class="requ num" value="<?=$Medicion_Ped[$Color_min][100]?>" color="<?=$Color_min?>" /></td>
 			</tr>
-<?
+<?php
 	}
 }
 ?>
@@ -229,7 +229,7 @@ foreach($Porcentajes as $Index => $Porce)
 	
 	<div style="clear: both;margin-left:35px;height:350px;">
 		
-		<?
+		<?php
 if(isset($Medicion_Ped_Ant['tra']))
 {
 ?>
@@ -237,13 +237,13 @@ if(isset($Medicion_Ped_Ant['tra']))
 			<option value="ref">Lecturas de Referencia</option>
 			<option value="ant">Trabajos Anteriores</option>
 		</select>
-<?
+<?php
 }
 else
 {
 ?>
 		<input type="hidden" id="elije_referencia" value="ref" />
-<?
+<?php
 }
 ?>
 		
@@ -262,7 +262,7 @@ else
 
 <script>
 	var Color_Act = 'c';
-	var Mediciones = {<?
+	var Mediciones = {<?php
 $Contador = 1;
 foreach($Referencias as $Id_Medicion => $Medicion)
 {
@@ -301,7 +301,7 @@ foreach($Referencias as $Id_Medicion => $Medicion)
 
 	
 	var Formulas = <?=(isset($Referencias['formulas']))?json_encode($Referencias['formulas']):'[]'?>;
-	var Medi_Ped = "<?
+	var Medi_Ped = "<?php
 //Que parametros se utilizaran para poner "selected" en los selects?
 //Es posible utilizar los parametros del trabajo anterios;
 //Pero si ya se han guardado los parametros para este pedido deben utilizarse esos

@@ -1,20 +1,20 @@
 
 <select id="bsc_objetivo">
-<?
+<?php
 foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 {
 ?>
 	<optgroup label="<?=$Perspectiva['Nom']?>">
-<?
+<?php
 	foreach($Perspectiva['Objs'] as $Index => $Objetivo)
 	{
 ?>
 		<option value="<?=$Index?>"<?=($Id_Bsc_Objetivo==$Index)?' selected="selected"':''?>><?=$Objetivo['Nom']?> [<?=$Objetivo['Con']?>]</option>
-<?
+<?php
 	}
 ?>
 	</optgroup>
-<?
+<?php
 }
 ?>
 </select>
@@ -48,7 +48,7 @@ foreach($Def_Objetivos as $Id_Perspectiva => $Perspectiva)
 		<th style="width: 32%;">Real</th>
 		<th>Porcentaje</th>
 	</tr>
-<?
+<?php
 foreach($Datos[$Id_Bsc_Objetivo] as $Mes => $Valores)
 {
 	$Porcentaje = 0;
@@ -79,7 +79,7 @@ foreach($Datos[$Id_Bsc_Objetivo] as $Mes => $Valores)
 		<td><?=number_format($Valores['real'],2)?></td>
 		<td><?=number_format($Porcentaje, 2)?>%</td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

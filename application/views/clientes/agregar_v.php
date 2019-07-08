@@ -17,6 +17,41 @@
 		display: block;
 		margin-bottom: 5px;
 	}
+	.btn_add{
+		border-radius: 10px;
+		background-color: #bc933b;
+		color: white;
+		padding: 2px 5px;
+		text-align: center;
+		text-decoration: none;
+
+	
+	}
+	.btn_add:hover, .btn_add:active {
+  	background-color: lightblue;
+	}
+	.pull-right{
+		position: absolute;
+		 left: 1038px;
+	}
+	a:link
+	{
+		text-decoration:none;
+	}
+
+	.btn_del{
+		border-radius: 10px;
+		background-color: #7cc4a0;
+		color: white;
+		padding: 2px 7px;
+		text-align: center;
+		text-decoration: none;
+		
+	
+	}
+	.btn_del:hover, .btn_del:active {
+  	background-color: lightblue;
+	}
 </style>
 
 
@@ -29,12 +64,12 @@
 			<td>Oficina</td>
 			<td colspan="3">
 				<select name="cpais">
-<?
+<?php
 foreach($Paises_C as $pCod => $pNomb)
 {
 ?>
 					<option value="<?=$pCod?>"><?=$pNomb?></option>
-<?
+<?php
 }
 ?>
 				</select>
@@ -73,12 +108,9 @@ foreach($Paises_C as $pCod => $pNomb)
 		</tr>
 	</table>
 	
-	
-	
-	
 	<br />
 	<strong class="clie_titutlo">Informaci&oacute;n de Contacto</strong>
-	<span class="manita" info="contacto">[+] Agregar Contacto</span>
+	<span class="manita btn_add" info="contacto">+</span> Agregar Contacto
 
 	<table class="nopadding">
 		<thead>
@@ -97,7 +129,7 @@ foreach($Paises_C as $pCod => $pNomb)
 
 	<br /><br />
 	<strong class="clie_titutlo">M&aacute;quinas Impresoras</strong>
-	<span class="manita" info="maquina">[+] Agregar M&aacute;quina</span>
+	<span class="manita btn_add" info="maquina">+</span> Agregar M&aacute;quina
 
 	<table>
 		<thead>
@@ -112,7 +144,7 @@ foreach($Paises_C as $pCod => $pNomb)
 
 	<br /><br />
 	<strong class="clie_titutlo">Configuraci&oacute;n de Planchas</strong>
-	<span class="manita" info="plancha">[+] Agregar Plancha</span>
+	<span class="manita btn_add" info="plancha">+</span> Agregar Plancha
 
 	<table>
 		<thead>
@@ -128,10 +160,10 @@ foreach($Paises_C as $pCod => $pNomb)
 	
 	<br /><br />
 	<strong class="clie_titutlo">Listado de Anilox</strong>
-	<span class="manita" info="anilox">[+] Agregar Anilox</span>
+	<span class="manita btn_add" info="anilox">+</span> Agregar Anilox
 
 	<div id="info_anilox">
-<?
+<?php
 for($i = 1; $i <= 3; $i++)
 {
 ?>
@@ -140,7 +172,7 @@ for($i = 1; $i <= 3; $i++)
 			<input type="text" size="7" class="txt_encabezado" disabled="disabled" value="BCM" />
 			<input type="text" size="7" class="txt_encabezado" disabled="disabled" value="Cantidad" />
 		</div>
-<?
+<?php
 }
 ?>
 	</div>
@@ -149,21 +181,21 @@ for($i = 1; $i <= 3; $i++)
 
 	<br style="clear:both;" /><br />
 	<strong class="clie_titutlo">Listado de Productos</strong>
-<?
-if(isset($productos))
-{
-?>
-	<table id="cliente_productos">
-		<tr>
-			<th>Descripci&oacute;n</th>
-			<th>Precio</th>
-			<th>Concepto</th>
-			<th>Asignar</th>
-		</tr>
-<?
+<?php
+	if(isset($productos))
+	{
+		?>
+		<table id="cliente_productos">
+			<tr>
+				<th>Descripci&oacute;n</th>
+				<th>Precio</th>
+				<th>Unidad de medida</th>
+				<th>Asignar</th>
+			</tr>
+	<?php
 		foreach ($productos as $Datos) {
-?>
-		<tr id="tr-<?=$Datos['id_producto']?>">
+	?>
+			<tr id="tr-<?=$Datos['id_producto']?>">
 			<td><?=$Datos['producto']?></td>
 			<td>
 				<input type="text" name="clie_prod_precio[]" size="7" />
@@ -174,11 +206,11 @@ if(isset($productos))
 			</td>
 			<td><input type="checkbox" name="chk_clie_prod_<?=$Datos['id_producto']?>" info="tr-<?=$Datos['id_producto']?>" /></td>
 		</tr>
-<?
+	<?php
 		}
-?>
+	?>
 	</table>
-<?
+<?php
 }
 ?>
 	<br />
@@ -209,7 +241,7 @@ if(isset($productos))
 
 	//Agregar contactos
 	Filas['contacto'] = '<tr>';
-	Filas['contacto'] = Filas['contacto'] + '<td><strong>[-]</strong> <input type="text" name="clie_contacto[]" size="20" /></td>';
+	Filas['contacto'] = Filas['contacto'] + '<td><strong class="btn_del">-</strong> <input type="text" name="clie_contacto[]" size="20" /></td>';
 	Filas['contacto'] = Filas['contacto'] + '<td><input type="text" name="clie_cargo[]" size="20" /></td>';
 	Filas['contacto'] = Filas['contacto'] + '<td><input type="text" name="clie_email[]" size="20" /></td>';
 	Filas['contacto'] = Filas['contacto'] + '<td><input type="text" name="clie_tofic[]" size="9" /></td>';
@@ -222,7 +254,7 @@ if(isset($productos))
 	
 	//Agregar maquina
 	Filas['maquina'] = '<tr>';
-	Filas['maquina'] = Filas['maquina'] + '<td><strong>[-]</strong><input type="text" name="maquina[]" size="40" /></td>';
+	Filas['maquina'] = Filas['maquina'] + '<td><strong class="btn_del">-</strong><input type="text" name="maquina[]" size="40" /></td>';
 	Filas['maquina'] = Filas['maquina'] + '<td><input type="text" name="colores[]" size="5"/></td>';
 	Filas['maquina'] = Filas['maquina'] + '</tr>';
 
@@ -231,7 +263,7 @@ if(isset($productos))
 	
 	//Agregar plancha
 	Filas['plancha'] = '<tr>';
-	Filas['plancha'] = Filas['plancha'] + '<td><strong>[-]</strong><input type="text" name="altura[]" size="20" /></td>';
+	Filas['plancha'] = Filas['plancha'] + '<td><strong class="btn_del">-</strong><input type="text" name="altura[]" size="20" /></td>';
 	Filas['plancha'] = Filas['plancha'] + '<td><input type="text" name="lineaje[]" size="5" /></td>';
 	Filas['plancha'] = Filas['plancha'] + '<td><input type="text" name="marca[]" size="25" value="Kodak Flexcel NX" /></td>';
 	Filas['plancha'] = Filas['plancha'] + '</tr>';

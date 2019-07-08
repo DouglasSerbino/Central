@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/html/js/plancha.js?n=1"></script>
-<?
+<?php
 
 $Codigo_Plancha = '';
 if($codigo_pla <> "0")
@@ -68,7 +68,7 @@ if($codigo_pla <> "0")
 			<th>Tipo</th>
 			<th>&nbsp;</th>
 		</tr>
-<?
+<?php
 $i = 0;
 foreach($tipo_planchas as $Datos)
 {

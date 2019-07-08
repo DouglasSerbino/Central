@@ -87,7 +87,7 @@ if(is_array($ruta_trabajo))
 
 
 <form action="/pedidos/cotizacion_modif/index/<?=$Id_Pedido?>" method="post" id="cotizacion_ped_det" style="display:none;">
-<? $this->load->view('pedidos/cotizacion_v'); ?>
+<?php $this->load->view('pedidos/cotizacion_v'); ?>
 	<input type="button" value="Cancelar" onclick="$('#cotizacion_ped_det').hide();" />
 	<input type="button" value="Actualizar Cotizaci&oacute;n" onclick="$('#cotizacion_ped_det').submit();" />
 </form>
@@ -138,7 +138,7 @@ if(
 	}
 	?>
 			</div>
-<?
+<?php
 	$Muestra_Editar = ' display:none;';
 	if(
 		'Plani' == $this->session->userdata('codigo')
@@ -178,12 +178,12 @@ if(
 				&nbsp; &nbsp; &nbsp; &nbsp;
 				<select id="para_correito_select" disabled="disabled">
 					<option value="--">Seleccionar Contacto</option>
-<?
+<?php
 		foreach($Info_Cliente['contacto'] as $Cliente)
 		{
 ?>
 					<option value="<?=$Cliente['email']?>[.]<?=$Cliente['nombre']?>"><?=$Cliente['nombre']?> [<?=$Cliente['email']?>]</option>
-<?
+<?php
 		}
 ?>
 				</select>
@@ -195,7 +195,7 @@ if(
 				<input type="button" id="para_correito_cerrar" value="Cerrar" />
 				
 			</div>
-<?
+<?php
 	}
 ?>
 		</td>
@@ -251,7 +251,7 @@ if(is_array($Observaciones))
 	}
 	?>
 	</tr>
-<?
+<?php
 	}
 }
 ?>
@@ -261,7 +261,7 @@ if(is_array($Observaciones))
 <div class="limpiar m15"></div>
 
 <!-- ** -->
-<?
+<?php
 if('' == $this->session->userdata('id_cliente'))
 {
 	$this->load->view('/pedidos/pedido_consumo_v');
@@ -269,7 +269,7 @@ if('' == $this->session->userdata('id_cliente'))
 ?>
 
 
-<?
+<?php
 $this->load->view('/scan/cargar_scan_v', $num_cajas);
 ?>
 

@@ -94,7 +94,7 @@
 
 
 
-<?
+<?php
 $Total_Mensual = $Sin_Factura['mensual']['vendido'] + 0;
 $Total_Mensual += $Sin_Quedan['mensual']['vendido'];
 $Total_Mensual += $Sin_Pago['mensual']['vendido'];

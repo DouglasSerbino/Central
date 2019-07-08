@@ -10,7 +10,7 @@
 		<th>Elemento</th>
 		<th class="derecha">Opciones &nbsp; </th>
 	</tr>
-<?
+<?php
 foreach($Listado as $Datos)
 {
 ?>
@@ -22,7 +22,7 @@ foreach($Listado as $Datos)
 			<a href="/ruta/ruta_dinamica/modificar/<?=$Datos['id_ruta']?>" class="iconos ieditar toolder"><span>Modificar</span></a>
 			<a href="/ruta/ruta_dinamica/eliminar/<?=$Datos['id_ruta']?>" class="iconos ieliminar toolder"><span>Eliminar</span></a> &nbsp; 
 		</td>
-<?
+<?php
 }
 ?>
 	</tr>

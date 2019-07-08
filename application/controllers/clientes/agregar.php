@@ -38,6 +38,9 @@ class Agregar extends CI_Controller {
 		//Llamamos el modelo para poder modificar los datos.
 		$Variables['productos'] = $this->mod_clientes_m->productos();
 		
+		/*Se llama de la base de datos todos los productos, sin embargo desde el codigo
+		  Se quitan de los resultados que no cumplen los criterios definidos,
+		  Esto es una mala practica y genera perdidas de tiempo al seguir la logica del flujo*/
 		foreach($Variables['productos'] as $Index => $Datos)
 		{
 			if('n' == $Datos['activo'])
