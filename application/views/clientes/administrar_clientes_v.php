@@ -36,11 +36,13 @@
 </style>
 
 
-Mostrar: 
-<select id="clie_acti_inac">
-		<option value="s">Activos</option>
-		<option value="n"<?=('n'==$Activo)?' selected="selected"':''?>>Inactivos</option>
-</select>
+<div class="form-group form-inline">
+	<label>Mostrar:</label> 
+	<select class="form-control" id="clie_acti_inac">
+			<option value="s">Activos</option>
+			<option value="n"<?=('n'==$Activo)?' selected="selected"':''?>>Inactivos</option>
+	</select>
+</div>
 <a class="btn pull-right" href="/clientes/agregar">Agregar Cliente</a>
 
 <br />
@@ -161,7 +163,7 @@ for($i = 1; $i <= 3; $i++)
 
 <?=$Paginacion?>
 
-<table class="tabular" id='tabla' style="width:100%">
+<table class="tabular table table-hover table-bordered table-responsive" id='tabla' style="width:100%">
 		<tr>
 				<th>C&oacute;digo</th>
 				<th>Nombre</th>

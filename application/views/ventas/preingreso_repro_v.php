@@ -5,9 +5,7 @@
 <script src="/html/js/jquery-ui.min.js"></script> 
 <script src="/html/js/bootstrap.min.js"></script>
 <script src="/html/js/wizard.min.js"></script>
-
 <link href="/html/css/wizard.css" rel="stylesheet">
-
 
 <form name="form_espec_repro" id="form_espec_repro" action="/ventas/preingreso/ingresar" method="post">
 <input type="hidden" id="cliente" name="cliente" value="" />
@@ -23,8 +21,8 @@
     		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
     			<div class="panel-body">  
 
-    				<div class="container-fluid">            	                    	<!-- ***************** -->
-    					<table>
+    				<div class="container-fluid">         	                    	<!-- ***************** -->
+    					<table class="table table-condensed table-borderless">
     						<tr>
     							<td>C&oacute;d. Cliente:</td>
     							<td colspan="3"><input type="text" name="codigo_cliente" id="codigo_cliente" value="" onblur="vercliente(this.value)" size="10" /></td>
@@ -33,7 +31,7 @@
     							<td>Proceso:</td>
     							<td colspan="3">
     								<input type="text" name="proceso" id="proceso" value="" onblur="verifica_proceso()" />
-    								<input type="button" onclick="genera_correlativo()" value="Generar" class="boton" />
+    								<input type="button" onclick="genera_correlativo()" value="Generar" class="btn btn-info" />
     							</td>
     						</tr>
     						<tr>
@@ -45,16 +43,15 @@
     							<td colspan="3"><input type="text" name="producto" id="producto" value="" size="50" /></td>
     						</tr>
     						<tr>
-    							<td>Fecha Ingreso:</td>
+    							<td>Fecha Ingreso: </td>
     							<th><?=date('d-m-Y')?></th>
+    						</tr>
+    						<tr>
     							<td>Fecha Solicitado:</td>
-    							<td><input type="text" readonly="readonly" name="fecha_entrega" id="fecha_entrega" size="12" value="" /></td>
+    							<th><input type="text" readonly="readonly" name="fecha_entrega" id="fecha_entrega" size="12" value="" /></th>
     						</tr>
     					</table>
-    				</div>  
-
-
-
+    				</div> 
     				<div class="ui-widget" id="nuevo_proc" style="display: none;">
     					<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
     						<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
@@ -262,7 +259,7 @@
     					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     						<div class="panel-body"> 
     							<!-- ***************** -->
-    							<table style="width: 100%;">
+    							<table class="table table-borderless table-condensed">
     								<tr>
     									<!-- ***************** -->
     									<td style="width: 33%;">
@@ -368,7 +365,7 @@
     							<div class="panel-body">
     								<strong>Datos de Montaje</strong>
 
-    								<table>
+    								<table class="table table-bordered table-borderless">
     									<tr>
     										<td><input type="text" size="9" name="repet_ancho" id="repet_ancho" value="1" /></td>
     										<td>Repeticiones en Ancho</td>
@@ -559,7 +556,6 @@
     						</h4> </div>
     						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     							<div class="panel-body">
-    								<strong>Cotizaci&oacute;n</strong>
     								<input type="checkbox" name="cotizacion" id="cotizacion" style="display: none;" checked="checked" />
     								<div id="div_cotizaciones"></div>
 
@@ -615,7 +611,8 @@
 		
 		$('.mues_ocul_dp').click(function()
 		{
-			if($(this).attr('checked'))
+            
+			if($('#'+$(this).attr('id')).is(':checked'))
 			{
 				$('#div'+$(this).attr('id')).show();
 			}

@@ -43,6 +43,15 @@ class Prod_Cliente_m extends CI_Model {
 		return $Resultado->result_array();
 		
 	}
+
+	function modificar_producto($id_producto, $descripcion_producto){
+		$datos_actualizar = array(
+    		'producto' => $descripcion_producto
+		);
+		$this->db->where('id_producto', $id_producto);
+		$this->db->update('producto', $datos_actualizar);
+
+	}
 }
 
 /* Fin del archivo */

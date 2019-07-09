@@ -58,7 +58,7 @@ if(isset($Cotizacion))
 ?>
 
 
-<table class="tabular" style="width: 50%;">
+<table class="table table-condensed table-borderless tabular" style="width: 50%;">
 	<tr>
 		<th colspan="4">
 			<input type="checkbox" name="cotizacion" id="cotizacion" onclick="ver_cotizacion()"<?=$Checkbox?> />

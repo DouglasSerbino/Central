@@ -270,7 +270,7 @@ function buscar_cotizacion()
 		
 		var productos = JSON.parse(d);
 		
-		var nueva_tabla = '<table id="coti_trabajo" class="tbordes selecciones">';
+		var nueva_tabla = '<table id="coti_trabajo" class="table table-borderless table-condensed tbordes selecciones">';
 		nueva_tabla += '<tr><th>Material</th><th style="width:120px;">Precio</th><th style="width:80px;">Cantidad</th><th style="width:100px;">Total</th></tr>';
 		
 		for(var producto in productos['prod'])

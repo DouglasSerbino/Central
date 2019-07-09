@@ -38,7 +38,7 @@ foreach($Mostrar_Equipo as $Datos_equipo)
 	<option value="sin" <?=('sin'==$Cantidad)?' selected="selected"':''?>>Sin Existencias</option>
 </select>
 
-<table class="tabular" style="width: 100%">
+<table class="tabular table-condensed table table-bordered" style="width: 100%">
 	<tr>
 		<th>C&oacute;digo</th>
 		<th>Material</th>

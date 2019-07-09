@@ -13,7 +13,7 @@ foreach($planchas as $Datos)
 	$cod_plancha = $Datos["cod_plancha"];
 ?>
 			<option value="<?=$cod_plancha?>"<?=($Codigo == $cod_plancha)?' selected="selected"':''?>><?=$Datos["grosor"]."&nbsp;".$Datos["tipo"]?></option>
-<?phpphp
+<?php
 }
 
 ?>
@@ -61,7 +61,7 @@ if($buscar == "1")
 			<td><?=$Datos["nombre_tipo"]?></td>
 			<td><?=$Datos['dia'].'-'.$Datos['mes'].'-'.$Datos['year'];?></td>
 		</tr>
-<?phpphp	
+<?php	
 		}
 	}
 }
