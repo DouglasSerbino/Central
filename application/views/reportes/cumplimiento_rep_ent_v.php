@@ -33,7 +33,7 @@ $meses_v = array('01' => 'ENERO', '02' => 'FEBRERO', '03' => 'MARZO', '04' => 'A
 
 <div id="encabezado" class='soy_encabezado'><img src="/html/img/lgtps/<?=$this->session->userdata('grupo')?>_blanco.png" width="125" alt="<?=$this->session->userdata('grupo')?>" id="cloneme" /></div>
 
-<?
+<?php
 	$Pedidos_v = array();
 	$Promedio_Tiempo = 0;
 	$a = 1;
@@ -89,18 +89,18 @@ $meses_v = array('01' => 'ENERO', '02' => 'FEBRERO', '03' => 'MARZO', '04' => 'A
 	<caption>
 		<strong>
 			<?=(isset($Titulos_v[$tipo])?$Titulos_v[$tipo]:'')?>&nbsp; [ <?=count($Resultado_pedidos)?>]
-<?
+<?php
 if('atr' == $tipo)
 {
 ?>
 			<br />
 			<?=(count($Resultado_pedidos) != 0)?(number_format(($Promedio_Tiempo / count($Resultado_pedidos)), 2)):'0.00'?> D&iacute;as Promedio
-<?
+<?php
 }
 ?>
 		</strong>
 	</caption>
-<?
+<?php
 
 foreach($Pedidos_v as $Opcion => $info)
 {
@@ -129,7 +129,7 @@ foreach($Pedidos_v as $Opcion => $info)
 		<td style="text-align: right;"><?=date('d-m-Y', strtotime($D_A['fecha_entrega']))?></td>
 		<td style="text-align: right;"><?=date('d-m-Y', strtotime($D_A['fecha_reale']))?></td>
 	</tr>
-<?
+<?php
 $a++;
 	}
 }

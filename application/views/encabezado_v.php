@@ -30,7 +30,7 @@
 			}
 			#navcontent{
 				background: white;
-				position: fixed;
+				position: absolute;
 				width: 71.3%;
 
 			}

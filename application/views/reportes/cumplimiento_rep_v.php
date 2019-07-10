@@ -43,7 +43,7 @@ $meses_v = array('01' => 'ENERO', '02' => 'FEBRERO', '03' => 'MARZO', '04' => 'A
 		<div id="contenedor" >
 			<div id="titulo"><center>REPORTE GERENCIAL <?=($cod_cliente== 'gen')?' GENERAL':'<br >'.$Cliente['nombre'].' - '.$meses_v[$mes].'('.$anho.')'?></center></div>
 			<br /><br />
-<?
+<?php
 
 $Info = array();
 for($a= 1; $a <= 12; $a++)
@@ -124,7 +124,7 @@ for($a= 1; $a <= 12; $a++)
 								<center><strong>DETALLE DE TRABAJOS</strong></center>
 							</td>
 						</tr>
-						<?
+						<?php
 						foreach($Trabajos_finales as $Datos)
 						{
 							$id = $Datos['id_matsol'];
@@ -208,20 +208,20 @@ foreach($Info['entregas_tiempo'] as $mes => $informacion)
 {
 ?>
 		entregas_tiempo.push([<?=($mes+0)?>,<?=(isset($mes))?$informacion['tiempo_1']:0?>]),
-<?
+<?php
 }
 
 foreach($Info['entregas_atrasadas'] as $mes => $informacion)
 {
 ?>
 		entregas_atrasadas.push([<?=($mes+0)?>,<?=(isset($mes))?$informacion['atrasadas_1']:0?>]),
-<?
+<?php
 }
 foreach($Info['entregas_reprocesos'] as $mes => $informacion)
 {
 ?>
 		reprocesos.push([<?=($mes+0)?>,<?=(isset($mes))?$informacion['reprocesos_1']:0?>]),
-<?
+<?php
 }
 ?>
 		info = $.plot($('#grafico-linea'),

@@ -2,7 +2,11 @@
 <script type="text/javascript" src="/html/js/thickbox.js"></script>
 <link rel="stylesheet" href="/html/css/thickbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="/html/js/pedido.003.js?n=1"></script>
+<script src="/html/js/bootstrap.min.js"></script>
+<script src="/html/js/jquery.min.js"></script> 
+<script src="/html/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/html/css/pedido.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
 <style>
 	
@@ -145,10 +149,300 @@
 		cambio_scan($(this).attr('id'));
 	});
 </script>
+<!-- <table>
+ --><tr>
+<select id="departamento_areas">
+	<?php 
+	foreach ($Usuarios as $Dpto_Usuarios) {
+		if(
+			'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+			&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+			&& 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
+			&& 'Ventas' != $Dpto_Usuarios['dpto']
+			&& 'Grupo Externo' != $Dpto_Usuarios['dpto'])
+		{
+	?>
+		<option value="<?=$Dpto_Usuarios['id_dpto']?>"><?=$Dpto_Usuarios['dpto']?></option>
+	<?php 
+		}
+	}
+	?>
+</select>
+
+<select name="mes1" id="mes1">
+	<?php
+		foreach($Meses as $Mes => $MNombre)
+		{
+	?>
+		<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
+	<?php
+		}
+	?>
+</select>
+<input type="text" name="anho1" id="anho1" size="8" value="<?=$Fechas['anho1']?>" />
+</td>
+</tr>
+<button class="btn btn-sm btn-default">Ver Reporte</button>
+<!-- </table> -->
 
 
+<br>
+<br>
+<div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center"><i class="material-icons">group</i> 3</h3>
+                                	<h5 class="text-center">Operadores</h5>
+                                </div>
+                                <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
 
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center">62</h3>
+                                	<h5 class="text-center">Promedio de trabajos realizados</h5>
+                                </div>
 
+                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                </button>
+
+                                <div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+										   	<ul class="list-group">
+										   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+										   		<li class="list-group-item"> REYNALDO</li>
+										   		<li class="list-group-item"> ROBERTO</li> -->
+										   		<h5 class="text-center">CHRISTIAN</h5>
+										   		<h5 class="text-center">REYNALDO</h5>
+										   		<h5 class="text-center">ROBERTO</h5>
+										   	</ul>
+									   
+									    </div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                               <div class="panel-body">
+                                	<h3 class="text-center">0.00%</h3>
+                                	<h5 class="text-center">Promedio de rechazos</h5>
+                                </div>
+                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center">0.00%</h3>
+                                	<h5 class="text-center">Horas extras realizadas</h5>
+                                </div>
+                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center">85.00%</h3>
+                                	<h5 class="text-center">Meta: Indice global de productividad</h5>
+                                </div>
+                                <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center">63.85%</h3>
+                                	<h5 class="text-center">Real: Porcentaje de productividad</h5>
+                                </div>
+                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                               <div class="panel-body">
+                                	<h3 class="text-center">95:32</h3>
+                                	<h5 class="text-center">Promedio de horas utilizadas</h5>
+                                </div>
+                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+                            </div>
+                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                <div class="panel-body">
+                                	<h3 class="text-center">80:29</h3>
+                                	<h5 class="text-center">Promedio de horas disponibles</h5>
+                                </div>
+                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                	 	 <i class="material-icons">expand_more</i>
+                                	 </button>
+
+                                	<div class="collapse" id="collapseExample">
+									   <div class="card card-body">
+									   	<ul class="list-group">
+									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
+									   		<li class="list-group-item"> REYNALDO</li>
+									   		<li class="list-group-item"> ROBERTO</li> -->
+									   		<h5 class="text-center">CHRISTIAN</h5>
+									   		<h5 class="text-center">REYNALDO</h5>
+									   		<h5 class="text-center">ROBERTO</h5>
+									   	</ul>
+									   
+									  </div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
 
 
 <form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
@@ -211,31 +505,30 @@ foreach($Paises_C as $iPais => $nPais)
 						<td>
 							<select name="puesto" id="puesto">
 								<option value="todos">Todos</option>
-<?php
-foreach($Usuarios as $Dpto_Usuarios)
-{
-	if(
-		'Gerente de Grupo' != $Dpto_Usuarios['dpto']
-		&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
-		&& 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
-		&& 'Ventas' != $Dpto_Usuarios['dpto']
-		&& 'Grupo Externo' != $Dpto_Usuarios['dpto']
-	)
-	{
-?>
-								<optgroup label="<?=$Dpto_Usuarios['dpto']?>">
-<?php
-		foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
+	<?php
+		foreach($Usuarios as $Dpto_Usuarios)
 		{
-?>
-									<option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
-<?php
+		if(
+			'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+			&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+			&& 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
+			&& 'Ventas' != $Dpto_Usuarios['dpto']
+			&& 'Grupo Externo' != $Dpto_Usuarios['dpto'])
+		{
+	?>
+				<optgroup label="<?=$Dpto_Usuarios['dpto']?>">
+			<?php
+				foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
+				{
+			?>
+				<option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
+			<?php
+				}
+			?>
+				</optgroup>
+			<?php
+			}
 		}
-?>
-								</optgroup>
-<?php
-	}
-}
 ?>
 							</select>
 						</td>

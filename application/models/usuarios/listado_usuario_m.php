@@ -104,13 +104,27 @@ class Listado_Usuario_m extends CI_Model {
 			}
 			
 			$Consulta = '
-				select usu.id_usuario, usu.id_dpto, usu.usuario, usu.nombre,
-				usu.puesto, dpto.departamento, tiempo, usu.usu_prog, usu.activo
-				from usuario usu, departamentos dpto
-				where usu.id_dpto = dpto.id_dpto and usu.activo = "'.$Activos.'"
-				and id_grupo = "'.$this->session->userdata('id_grupo').'"
-				'.$Programable.'
-				order by dpto.id_dpto asc, usuario asc
+				select 
+					usu.id_usuario, 
+					usu.id_dpto, 
+					usu.usuario, 
+					usu.nombre,
+					usu.puesto, 
+
+					dpto.departamento, 
+					tiempo, 
+					usu.usu_prog, 
+					usu.activo,
+					dpto.id_dpto
+				
+				from 
+					usuario usu, 
+					departamentos dpto
+					where usu.id_dpto = dpto.id_dpto and usu.activo = "'.$Activos.'"
+					and id_grupo = "'.$this->session->userdata('id_grupo').'"'.$Programable.'
+				
+				order by 
+					dpto.id_dpto asc, usuario asc
 			';
 			
 			$Resultado = $this->db->query($Consulta);
@@ -118,6 +132,7 @@ class Listado_Usuario_m extends CI_Model {
 			foreach($Resultado->result_array() as $Fila)
 			{
 				$Dpto_Usuario[$Fila['id_dpto']]['dpto'] = $Fila['departamento'];
+				$Dpto_Usuario[$Fila['id_dpto']]['id_dpto'] = $Fila['id_dpto'];
 				$Dpto_Usuario[$Fila['id_dpto']]['tiempo'] = $Fila['tiempo'];
 				$Dpto_Usuario[$Fila['id_dpto']]['usuarios'][$Fila['id_usuario']]['activo'] = $Fila['activo'];
 				$Dpto_Usuario[$Fila['id_dpto']]['usuarios'][$Fila['id_usuario']]['nombre'] = $Fila['nombre'];
@@ -132,7 +147,7 @@ class Listado_Usuario_m extends CI_Model {
 			$Consulta = '
 				select id_usuario, usu.id_dpto, usu.usuario,
 				usu.nombre, usu.puesto, usu.usu_prog, tiempo
-				from usuario usu, departamentos dpto
+				from usuario usu, departamentos dpto, dpto.id_dpto
 				where usu.id_dpto = dpto.id_dpto and usu.activo = "'.$Activos.'"
 				and id_grupo = "'.$this->session->userdata('id_grupo').'"
 				and codigo = "'.$Departamento.'"
@@ -143,6 +158,7 @@ class Listado_Usuario_m extends CI_Model {
 			foreach($Resultado->result_array() as $Fila)
 			{
 				$Dpto_Usuario[$Fila['id_usuario']]['tiempo'] = $Fila['tiempo'];
+				$Dpto_Usuario[$Fila['id_dpto']]['id_dpto'] = $Fila['id_dpto'];
 				$Dpto_Usuario[$Fila['id_usuario']]['usuario'] = $Fila['usuario'];
 				$Dpto_Usuario[$Fila['id_usuario']]['nombre'] = $Fila['nombre'];
 				$Dpto_Usuario[$Fila['id_usuario']]['puesto'] = $Fila['puesto'];
