@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
+<script type="text/javascript" src="/html/js/datatable.min.js"></script>
 <style>
 	#vclie_contenedor{
 		display: none;
@@ -161,9 +163,10 @@ for($i = 1; $i <= 3; $i++)
 
 
 
-<?=$Paginacion?>
+<!-- <?=$Paginacion?> -->
 
-<table class="tabular table table-hover table-bordered table-responsive" id='tabla' style="width:100%">
+<table class="tabular table table-hover table-bordered table-responsive" id='clientes_list'>
+	<thead>
 		<tr>
 				<th>C&oacute;digo</th>
 				<th>Nombre</th>
@@ -172,6 +175,8 @@ for($i = 1; $i <= 3; $i++)
 				<th>Pa&iacute;s</th>
 				<th>Opciones</th>
 		</tr>
+	</thead>
+	<tbody>
 <?php
 foreach($Clientes as $Cliente)
 {
@@ -204,9 +209,10 @@ else
 		<?php
 }
 ?>
+</tbody>
 </table>
 
-<?=$Paginacion?>
+<!-- <?=$Paginacion?> -->
 
 
 
@@ -314,3 +320,32 @@ else
 
 </script>
 
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('#clientes_list').DataTable({
+				"lengthMenu": [[ 10, 25, 35, 50, -1], [ 10, 25, 35, 50, "Todo"]],
+                // "columnDefs": [
+                //                 { "width": "50%", "targets": 0 },
+                //                 { "width": "10%", "targets": 1 },
+                //                 { "width": "10%", "targets": 2 }
+                               
+                //               ],
+			    "language": {
+			    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "decimal": "",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "emptyTable": "No hay información",
+                "thousands": ",",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+		});
+	});
+</script>

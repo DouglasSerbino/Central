@@ -90,7 +90,7 @@ class Busquedad_clientes_m extends CI_Model {
 			where id_grupo = "'.$this->session->userdata["id_grupo"].'"
 			and cliente.activo = "'.$Activo.'"
 			order by codigo_cliente asc
-			limit '.$Inicio.', 50
+			
 		';
 		
 		//Ejecuto la consulta

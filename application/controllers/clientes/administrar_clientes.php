@@ -51,16 +51,16 @@ class Administrar_clientes extends CI_Controller {
 		$this->load->model('clientes/busquedad_clientes_m', 'busqu_cliente');
 		$Variables['Clientes'] = $this->busqu_cliente->rango_clientes($Inicio, $Activo);
 		
-		$Tt_Clientes = $this->busqu_cliente->total_clientes($Activo);
+		//$Tt_Clientes = $this->busqu_cliente->total_clientes($Activo);
 		
 		//Carga del modelo para la paginacion
-		$this->load->model('utilidades/paginacion_m', 'paginacion');
-		$Variables['Paginacion'] = $this->paginacion->paginar(
-			'/clientes/administrar_clientes/index/'.$Activo.'/',
-			$Tt_Clientes,
-			50,
-			$Pagina
-		);
+		// $this->load->model('utilidades/paginacion_m', 'paginacion');
+		// $Variables['Paginacion'] = $this->paginacion->paginar(
+		// 	'/clientes/administrar_clientes/index/'.$Activo.'/',
+		// 	$Tt_Clientes,
+		// 	50,
+		// 	$Pagina
+		// );
 
 
 

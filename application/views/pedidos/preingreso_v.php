@@ -1,4 +1,7 @@
-<table class="tabular" style="width: 100%">
+<link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
+<script type="text/javascript" src="/html/js/datatable.min.js"></script>
+<table id="pedidos_list" class="tabular table table-bordered table-hover">
+	<thead>
 	<tr>
 		<th style="width: 95px;">Proceso</th>
 		<th style="width: 80px;">&nbsp;</th>
@@ -7,6 +10,8 @@
 		<th style="width: 120px;">F. Solicitado</th>
 		<th style="width: 80px;">&nbsp;</th>
 	</tr>
+	</thead>
+	<tbody>
 <?php
 if(isset($Pedidos[0]))
 {
@@ -76,6 +81,7 @@ if(isset($Pedidos[0]))
 	}
 }
 ?>
+</tbody>
 </table>
 
 <br />
@@ -87,3 +93,32 @@ $this->load->view('pedidos/rechazo_v.php');
 
 ?>
 
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('#pedidos_list').DataTable({
+				"lengthMenu": [[ 10, 25, 35, 50, -1], [ 10, 25, 35, 50, "Todo"]],
+                // "columnDefs": [
+                //                 { "width": "50%", "targets": 0 },
+                //                 { "width": "10%", "targets": 1 },
+                //                 { "width": "10%", "targets": 2 }
+                               
+                //               ],
+			    "language": {
+			    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "decimal": "",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "emptyTable": "No hay información",
+                "thousands": ",",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+		});
+	});
+</script>

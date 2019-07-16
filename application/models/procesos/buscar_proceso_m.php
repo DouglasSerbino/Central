@@ -249,7 +249,7 @@ class Buscar_proceso_m extends CI_Model {
 	{
 		
 		$Consulta = '
-			select proc.id_proceso, cli.id_cliente, proc.proceso, cli.nombre,
+			select proc.id_proceso, cli.id_cliente as id_cliente, proc.proceso, cli.nombre,
 			proc.nombre as nombre_proceso, codigo_cliente, cli.id_grupo, proc.id_proceso
 			FROM procesos proc, cliente cli, pedido ped
 			WHERE proc.id_cliente = cli.id_cliente

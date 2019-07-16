@@ -25,7 +25,7 @@
 
 <script type="text/javascript" src="/html/js/pedido.003.js?n=1"></script>
 
-<table>
+<table class="table table-borderless">
 	<!--tr><td>Proceso:</td><th><?=$Info_Proceso['codigo_cliente'].'-'.$Info_Proceso['proceso']?></th></tr>
 	<tr><td>Cliente:</td><th><?=$Info_Proceso['nombre']?></th></tr>
 	<tr><td>Producto:</td><th><?=$Info_Proceso['nombre_proceso']?></th></tr-->
@@ -96,7 +96,8 @@ if(
 
 <br />
 
-<table class="tabular" style="width: 100%;">
+<table class="tabular table table-bordered table-hover">
+	<thead>
 	<tr>
 		<th>Fecha Ingreso</th>
 		<th>Fecha Estimada</th>
@@ -104,6 +105,8 @@ if(
 		<th>&nbsp;</th>
 		<th style="width: 150px;">Opciones</th>
 	</tr>
+	</thead>
+	<tbody>
 <?php
 $Modifica_Plani = true;
 $mostrar_icono_revivir = 'si';
@@ -226,6 +229,7 @@ if(isset($Pedidos2))
 			}
 			
 ?>
+</tbody>
 	<tr>
 		<td><?=$fecha_entrada[2].'-'.$fecha_entrada[1].'-'.$fecha_entrada[0]?></td>
 		<td><?=$fecha_entrega[2].'-'.$fecha_entrega[1].'-'.$fecha_entrega[0]?></td>

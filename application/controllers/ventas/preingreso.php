@@ -39,7 +39,20 @@ class Preingreso extends CI_Controller {
 				$Variables['Mensaje'] = 'El Pre-Ingreso fue agregado exitosamente.';
 			}
 		}
+
+		//Necesito la informacion del proceso a agregar
+		//$this->load->model('procesos/buscar_proceso_m', 'info');
+		//$Variables['Info_Proceso'] = $this->info->id_proceso(800);
+		$this->load->model('procesos/buscar_proceso_m', 'buscar_proc');
+		$Proceso = $this->buscar_proc->busqueda_pedido($Id_Pedido);
+
 		
+		//Si quieren hacer trampa
+		// if('' == $Variables['Info_Proceso'])
+		// {
+		// 	show_404();
+		// 	exit();
+		// }
 		
 		
 		//Tipos de impresion para las especificaciones
@@ -62,7 +75,24 @@ class Preingreso extends CI_Controller {
 		$Variables['Tipo_Acabado'] = $this->matdigi->tipo_impd_acabado();
 		$Variables['Tipo_Material'] = $this->matdigi->tipo_impd_material();
 		
+		//Listado de las rutas validas para este cliente
+		$this->load->model('ruta/ruta_dinamica_m', 'rutad');
+		$Variables['Detalle_Rutas'] = $this->rutad->detalle_rutas($Proceso['id_cliente']);
 		
+		//Ruta Actual
+		$Variables['Ruta_Actual'] = array();
+
+		//Departamentos
+		//Modulo para obtener el listado de los departamentos
+		$this->load->model('departamentos/listado_m', 'departamentos');
+		//Listado de departamentos activos y con formato especial
+		$Variables['Departamentos'] = $this->departamentos->buscar_dptos('s','si');
+		//Departamento Usuario
+		//Modulo para obtener el listado de los usuarios
+		$this->load->model('usuarios/listado_usuario_m', 'usuarios');
+		//Solicito la informacion completa
+		$Variables['Usuarios'] = $this->usuarios->listado('s');
+		$Variables['Dpto_Usuario'] = $this->usuarios->departamento_usuario();
 		
 		$this->load->view('encabezado_v', $Variables);
 		$this->load->view('ventas/preingreso_repro_v', $Variables);

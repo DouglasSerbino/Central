@@ -52,6 +52,14 @@ class Prod_Cliente_m extends CI_Model {
 		$this->db->update('producto', $datos_actualizar);
 
 	}
+
+	function ingresar_producto($descripcion_producto){
+		$datos_insertar = array(
+   			'producto' => $descripcion_producto ,
+   			'activo' => 's' ,
+		);
+		$this->db->insert('producto', $datos_insertar); 
+	}
 }
 
 /* Fin del archivo */

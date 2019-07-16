@@ -7,6 +7,8 @@
 <script src="/html/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/html/css/pedido.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="/html/js/jquery.counterup.min.js"></script>
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
 <style>
 	
@@ -196,7 +198,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><i class="material-icons">group</i> 3</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/operadores.png"><span class="counter">3</span></h3>
                                 	<h5 class="text-center">Operadores</h5>
                                 </div>
                                 <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -227,7 +229,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center">62</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/trabajos.png"><span class="counter"> 62</span></h3>
                                 	<h5 class="text-center">Promedio de trabajos realizados</h5>
                                 </div>
 
@@ -259,7 +261,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                <div class="panel-body">
-                                	<h3 class="text-center">0.00%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/rechazos.png"><span class="counter">0.00</span>%</h3>
                                 	<h5 class="text-center">Promedio de rechazos</h5>
                                 </div>
                                 <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -291,7 +293,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center">0.00%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/extras.png"><span class="counter">0.00</span>%</h3>
                                 	<h5 class="text-center">Horas extras realizadas</h5>
                                 </div>
                                 <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -323,7 +325,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center">85.00%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/metaprod.png"><span class="counter" >85.00</span>%</h3>
                                 	<h5 class="text-center">Meta: Indice global de productividad</h5>
                                 </div>
                                 <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -355,7 +357,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center">63.85%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/realprod.png"><span class="counter">63.85</span>%</h3>
                                 	<h5 class="text-center">Real: Porcentaje de productividad</h5>
                                 </div>
                                 <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -387,7 +389,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                <div class="panel-body">
-                                	<h3 class="text-center">95:32</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/utilizadas.png"><span class="counter">95:32</span></h3>
                                 	<h5 class="text-center">Promedio de horas utilizadas</h5>
                                 </div>
                                 <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -418,7 +420,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center">80:29</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/disponibles.png"><span class="counter">80:29</span></h3>
                                 	<h5 class="text-center">Promedio de horas disponibles</h5>
                                 </div>
                                 <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -1138,3 +1140,30 @@ if(
 		background: #000000;
 	}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var counters = $(".counter");
+  var countersQuantity = counters.length;
+  var counter = [];
+
+  for (i = 0; i < countersQuantity; i++) {
+    counter[i] = parseInt(counters[i].innerHTML);
+  }
+
+  var count = function(start, value, id) {
+    var localStart = start;
+    setInterval(function() {
+      if (localStart < value) {
+        localStart++;
+        counters[id].innerHTML = localStart;
+      }
+    }, 15);
+  }
+
+  for (j = 0; j < countersQuantity; j++) {
+    count(0, counter[j], j);
+  }
+});
+</script>

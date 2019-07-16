@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/html/js/administracion.js?n=1"></script>
 <div class='informacion'>
-	<table class='tabular' style='width: 95%;'>
+	<table class="table table-bordered table-condensed table-hover" class='tabular' style='width: 95%;'>
 		<tr>
 			<th style='width: 5%;'><strong>Grupo</strong></th>
 			<th colspan='2' style='width: 25%;'><strong>Departamento</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Usuario</strong></th>

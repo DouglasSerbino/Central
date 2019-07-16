@@ -62,27 +62,27 @@
 						<tr>
 							<td>C&oacute;digo:*</td>
 							<td>
-								<input type="text" name="codigo" size="7" class="requ no_raros" maxlength="7" />
+								<input type="text" name="codigo" size="7" class="requ no_raros" maxlength="7" required="required" />
 							</td>
 							<td>Empresa:*</td>
 							<td>
-								<input type="text" name="nombre" size="35" class="requ" />
+								<input type="text" name="nombre" size="35" class="requ" required="required" />
 							</td>
 						</tr>
 						<tr>
 							<td>NIT:*</td>
 							<td>
-								<input type="text" name="nit" size="20" class="requ" />
+								<input type="text" name="nit" size="20" class="requ" required="required"/>
 							</td>
 							<td>D&iacute;as Cr&eacute;dito:*</td>
 							<td>
-								<input type="text" name="credito" size="5" class="requ" />
+								<input type="text" name="credito" size="5" class="requ" required="required"/>
 							</td>
 						</tr>
 						<tr>
 							<td>Direcci&oacute;n:*</td>
 							<td>
-								<input type="text" name="direccion" size="35" class="requ" />
+								<input type="text" name="direccion" size="35" class="requ" required="required"/>
 							</td>
 							<td>Web</td>
 							<td>
@@ -198,9 +198,14 @@
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
 									Listado de Productos
 								</a>
-							</h4> </div>
+							</h4>
+						</div>
 							<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body"> 
+							    <!-- <span class="manita btn btn-sm  btn-success" info="producto" onclick="presionado()">+</span> A -->
+							    <button type="button" class="manita btn btn-sm  btn-success" data-toggle="modal" data-target="#exampleModal">	+
+								</button> Agregar Producto
+
 									<?php									if(isset($productos))
 									{
 										?>
@@ -238,18 +243,41 @@
 					</div>
 
 				</form>
+
+<!-- MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ingreso de producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<table class="table table-borderless table-condensed">
+      		<tr>
+      			<th>Nombre del producto: </th>
+      			<th><input type="text" name="nombre_producto" id="nombre_producto_nuevo"></th>
+      		</tr>
+      	</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="guardarProducto()">Guardar Producto</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal -->
 <script>
-
-					
-
-					$('[name="codigo"]').focus();
-
-
-					$('[name="cpais"]').change(function()
-					{
-						$('#span_pais').removeClass();
-						$('#span_pais').addClass('pais_'+$(this).val());
-					});
+$('[name="codigo"]').focus();
+$('[name="cpais"]').change(function()
+{
+	$('#span_pais').removeClass();
+	$('#span_pais').addClass('pais_'+$(this).val());
+});
 
 
 //Almacenar las filas
@@ -356,8 +384,6 @@ $('#cliente_productos [type="checkbox"]').click(function()
 	function guardarCliente(){
 		$('#agregar_clientes').submit();
 	}
-
-	onbl
 	function modificarProducto(id_producto){
 		$.ajax({
 			url: '/productos/producto/modificarProducto',
@@ -377,4 +403,20 @@ $('#cliente_productos [type="checkbox"]').click(function()
 		});
 		
 	}
+	function guardarProducto(){
+		$.ajax({
+			url: '/productos/producto/agregarProductoNuevo',
+			type: 'POST',
+			data: {'descripcion_producto': $('#nombre_producto_nuevo').val() },
+			success : function(response){
+				$('#exampleModal').modal('hide');
+				console.log(response); 
+				alert(response);
+				$("#cliente_productos").load(location.href + " #cliente_productos");
+			},
+		});
+		
+		
+	}
 </script>
+

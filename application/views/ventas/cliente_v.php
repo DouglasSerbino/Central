@@ -3,9 +3,9 @@
 <div id="datos_vent_clie">
 
 
-<table class="tabular">
-	<tr style='height: 25px;'>
-		<th rowspan="2" class="vent250">Cliente</th>
+<table class="tabular table table-bordered table-hover table">
+	<tr>
+		<th rowspan="2" >Cliente</th>
 <?php
 
 $Total_Venta = 0;

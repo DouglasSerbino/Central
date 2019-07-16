@@ -1,4 +1,9 @@
-<table class="tabular" style="width:100%;">
+<link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
+<script type="text/javascript" src="/html/js/datatable.min.js"></script>
+<table id="departamentos_list" class="tabular table-condensed table-hover table table-bordered">
+	<thead>
+		
+	
     <tr>
         <th><strong>Codigo</strong></th>
         <th><strong>Departamento</strong></th>
@@ -7,6 +12,10 @@
         <th><strong>Iniciales</strong></th>
         <th style="text-align:center;"><strong>Opciones</strong></th>
     </tr>
+    </thead>
+   <tbody>
+   	
+ 
 <?php
 foreach($Departamentos as $Departamento)
 {
@@ -38,4 +47,35 @@ elseif($Departamento["activo"] == "n")
 <?php
 }
 ?>
+  </tbody>
 </table>
+
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('#departamentos_list').DataTable({
+				"lengthMenu": [[ 10, 25, 35, 50, -1], [ 10, 25, 35, 50, "Todo"]],
+                // "columnDefs": [
+                //                 { "width": "50%", "targets": 0 },
+                //                 { "width": "10%", "targets": 1 },
+                //                 { "width": "10%", "targets": 2 }
+                               
+                //               ],
+			    "language": {
+			    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "decimal": "",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "emptyTable": "No hay información",
+                "thousands": ",",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+		});
+	});
+</script>

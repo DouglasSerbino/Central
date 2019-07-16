@@ -1,4 +1,6 @@
 <script type="text/javascript" src="/html/js/inventario.js?n=1"></script>
+<link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
+<script type="text/javascript" src="/html/js/datatable.min.js"></script>
 <link rel="stylesheet" href="/html/css/pedido.css" />
 <strong>Filtros:</strong> &nbsp;
 
@@ -38,7 +40,10 @@ foreach($Mostrar_Equipo as $Datos_equipo)
 	<option value="sin" <?=('sin'==$Cantidad)?' selected="selected"':''?>>Sin Existencias</option>
 </select>
 
-<table class="tabular table-condensed table table-bordered" style="width: 100%">
+<table id="materiales_list" class="tabular table-condensed table table-bordered">
+	<thead>
+		
+	
 	<tr>
 		<th>C&oacute;digo</th>
 		<th>Material</th>
@@ -47,6 +52,8 @@ foreach($Mostrar_Equipo as $Datos_equipo)
 		<th>UMB</th>
 		<th>Valor</th>
 	</tr>
+	</thead>
+	<tbody>
 <?php
 $total_valor = 0;
 $fila_v = array();
@@ -131,12 +138,17 @@ foreach ($existencias_v as $index => $valor)
 	}
 }
 ?>
+	
+</tbody>
+<tfoot>
+	
+
 		<tr>
 			<th colspan="4">&nbsp;</th>
 			<th>Total</th>
 			<th>$<?php echo number_format($total_valor, 2); ?></th>
 		</tr>
-	
+</tfoot>	
 	</table>
 	
 </div>
@@ -144,3 +156,33 @@ foreach ($existencias_v as $index => $valor)
 <?php
 }
 ?>
+
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('#materiales_list').DataTable({
+				"lengthMenu": [[ 10, 25, 35, 50, -1], [ 10, 25, 35, 50, "Todo"]],
+                // "columnDefs": [
+                //                 { "width": "50%", "targets": 0 },
+                //                 { "width": "10%", "targets": 1 },
+                //                 { "width": "10%", "targets": 2 }
+                               
+                //               ],
+			    "language": {
+			    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "decimal": "",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "emptyTable": "No hay información",
+                "thousands": ",",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+		});
+	});
+</script>
