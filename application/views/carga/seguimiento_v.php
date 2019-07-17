@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <script src="/html/js/jquery.counterup.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
+<script type="text/javascript" src="/html/js/datatable.min.js"></script>
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
 <style>
 	
@@ -151,9 +153,9 @@
 		cambio_scan($(this).attr('id'));
 	});
 </script>
-<!-- <table>
- --><tr>
-<select id="departamento_areas">
+<!--INICIO NUEVA SECCION-->
+<tr>
+<select id="departamento_consulta">
 	<?php 
 	foreach ($Usuarios as $Dpto_Usuarios) {
 		if(
@@ -171,7 +173,7 @@
 	?>
 </select>
 
-<select name="mes1" id="mes1">
+<select name="mes_consulta" id="mes_consulta">
 	<?php
 		foreach($Meses as $Mes => $MNombre)
 		{
@@ -181,11 +183,12 @@
 		}
 	?>
 </select>
-<input type="text" name="anho1" id="anho1" size="8" value="<?=$Fechas['anho1']?>" />
+<input type="text" name="ano_consulta" id="ano_consulta" size="8" value="<?=$Fechas['anho1']?>" />
 </td>
 </tr>
-<button class="btn btn-sm btn-default">Ver Reporte</button>
-<!-- </table> -->
+
+<button id="informacion" class="btn btn-sm btn-default" onclick="cargarInfo();">Ver Reporte</button>
+<!--FIN NUEVA SECCION-->
 
 
 <br>
@@ -198,7 +201,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/operadores.png"><span class="counter">3</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/operadores.png"><span class="counter" id="operadores_num">0</span></h3>
                                 	<h5 class="text-center">Operadores</h5>
                                 </div>
                                 <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -207,13 +210,8 @@
 
                                 	<div class="collapse" id="collapseExample">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
+									   	<ul id="listado_operadores" class="list-group">
+									   		
 									   	</ul>
 									   
 									  </div>
@@ -229,24 +227,17 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/trabajos.png"><span class="counter"> 62</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/trabajos.png"><span id="trabajos_num" class="counter"> 0</span></h3>
                                 	<h5 class="text-center">Promedio de trabajos realizados</h5>
                                 </div>
 
-                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="modal" data-target="#exampleModal">
                                 	 	 <i class="material-icons">expand_more</i>
                                 </button>
 
                                 <div class="collapse" id="collapseExample">
 									   <div class="card card-body">
-										   	<ul class="list-group">
-										   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-										   		<li class="list-group-item"> REYNALDO</li>
-										   		<li class="list-group-item"> ROBERTO</li> -->
-										   		<h5 class="text-center">CHRISTIAN</h5>
-										   		<h5 class="text-center">REYNALDO</h5>
-										   		<h5 class="text-center">ROBERTO</h5>
-										   	</ul>
+										   	
 									   
 									    </div>
 								</div>
@@ -261,23 +252,16 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/rechazos.png"><span class="counter">0.00</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/rechazos.png"><span id="rechazos_num" class="counter">0</span></h3>
                                 	<h5 class="text-center">Promedio de rechazos</h5>
                                 </div>
-                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
+									   	
 									   
 									  </div>
 									</div>
@@ -293,23 +277,16 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/extras.png"><span class="counter">0.00</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/extras.png"><span id="extras_num" class="counter">0</span></h3>
                                 	<h5 class="text-center">Horas extras realizadas</h5>
                                 </div>
-                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
+									   	
 									   
 									  </div>
 									</div>
@@ -325,23 +302,16 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/metaprod.png"><span class="counter" >85.00</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/metaprod.png"><span class="counter" >00.00</span>%</h3>
                                 	<h5 class="text-center">Meta: Indice global de productividad</h5>
                                 </div>
-                                <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
+									   	
 									   
 									  </div>
 									</div>
@@ -357,23 +327,16 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/realprod.png"><span class="counter">63.85</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/realprod.png"><span class="counter">00.00</span>%</h3>
                                 	<h5 class="text-center">Real: Porcentaje de productividad</h5>
                                 </div>
-                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
+									   	
 									   
 									  </div>
 									</div>
@@ -389,23 +352,16 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/utilizadas.png"><span class="counter">95:32</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/utilizadas.png"><span class="counter">00:00</span></h3>
                                 	<h5 class="text-center">Promedio de horas utilizadas</h5>
                                 </div>
-                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
+									   	
 									   
 									  </div>
 									</div>
@@ -420,23 +376,15 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/disponibles.png"><span class="counter">80:29</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/disponibles.png"><span class="counter">00:00</span></h3>
                                 	<h5 class="text-center">Promedio de horas disponibles</h5>
                                 </div>
-                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
                                 	 	 <i class="material-icons">expand_more</i>
                                 	 </button>
 
-                                	<div class="collapse" id="collapseExample">
+                                	<div class="collapse" id="">
 									   <div class="card card-body">
-									   	<ul class="list-group">
-									   	<!-- 	<li class="list-group-item"> CHRISTIAN</li>
-									   		<li class="list-group-item"> REYNALDO</li>
-									   		<li class="list-group-item"> ROBERTO</li> -->
-									   		<h5 class="text-center">CHRISTIAN</h5>
-									   		<h5 class="text-center">REYNALDO</h5>
-									   		<h5 class="text-center">ROBERTO</h5>
-									   	</ul>
 									   
 									  </div>
 									</div>
@@ -1049,6 +997,44 @@ if('Flexo' != $Id_Cliente)
 </div>
 
 
+<!-- MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Trabajos Realizados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<table id="trabajos_list" class="table table-borderless table-condensed">
+      		<thead>
+      				<th>Proceso</th>
+      				<th>Trabajo</th>
+      				<th>Ingreso</th>
+      				<th>Entrega</th>
+      				<th>Entregado</th>
+      		</thead>
+      		<tbody>
+      			
+      		</tbody>
+      		<!-- <tr>
+      			<th>Nombre del producto: </th>
+      			<th><input type="text" name="nombre_producto" id="nombre_producto_nuevo"></th>
+      		</tr> -->
+      	</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal -->
+
+
 
 <?php
 $this->load->view('/scan/cargar_scan_v', $num_cajas);
@@ -1142,28 +1128,73 @@ if(
 </style>
 
 <script type="text/javascript">
-$(document).ready(function() {
+	function contador(){
+	  var counters = $(".counter");
+	  var countersQuantity = counters.length;
+	  var counter = [];
 
-  var counters = $(".counter");
-  var countersQuantity = counters.length;
-  var counter = [];
+	  for (i = 0; i < countersQuantity; i++) {
+	    counter[i] = parseInt(counters[i].innerHTML);
+	  }
 
-  for (i = 0; i < countersQuantity; i++) {
-    counter[i] = parseInt(counters[i].innerHTML);
-  }
+	  var count = function(start, value, id) {
+	    var localStart = start;
+	    setInterval(function() {
+	      if (localStart < value) {
+	        localStart++;
+	        counters[id].innerHTML = localStart;
+	      }
+	    }, -1);
+	  }
 
-  var count = function(start, value, id) {
-    var localStart = start;
-    setInterval(function() {
-      if (localStart < value) {
-        localStart++;
-        counters[id].innerHTML = localStart;
-      }
-    }, 15);
-  }
+	  for (j = 0; j < countersQuantity; j++) {
+	    count(0, counter[j], j);
+	  }
+	}
+</script>
+<script type="text/javascript">
+	function cargarInfo(){
+		$('#listado_operadores').empty();
+		$.ajax({
+			url: '/carga/seguimiento/obtenerDatos',
+			type: 'POST',
+			data: {'departamento': $('#departamento_consulta').val(),
+				   'mes': $('#mes_consulta').val(),
+				   'ano': $('#ano_consulta').val().trim()
+			},
+			success : function(response){
+				$('#operadores_num').text(response.operadores.length);
+				$('#trabajos_num').text(response.trabajos.length);
+				$('#rechazos_num').text(response.rechazos.length);
+				$('#extras_num').text(response.extras[0]["total_h"]);
 
-  for (j = 0; j < countersQuantity; j++) {
-    count(0, counter[j], j);
-  }
-});
+
+				//contador();
+				for (var i = 0; i < response.operadores.length; i++) {
+					$('#listado_operadores').append('<button type="button" class="list-group-item list-group-item-action" onclick="infoEmpleado('+response.operadores[i]["id_usuario"]+')" >'+ response.operadores[i]["nombre"] +'</button> ');
+				}
+				
+			},
+			error: function(msg){ console.log("Ocurrio un Error"); }
+		});
+		
+	}
+</script>
+<script>
+	function infoEmpleado(id_empleado){
+		$.ajax({
+			url: '/carga/seguimiento/obtenerDatosUsuario',
+			type: 'POST',
+			data: {'empleado': id_empleado,
+				   'mes': $('#mes_consulta').val(),
+				   'ano': $('#ano_consulta').val().trim()
+				  },
+		success : function(response){
+				$('#trabajos_num').text(response.trabajos.length);
+				$('#rechazos_num').text(response.rechazos.length);
+				$('#extras_num').text(response.extras[0]["total_h"]);
+			},
+			error: function(msg){ console.log("Ocurrio un Error"); }
+		});
+	}
 </script>

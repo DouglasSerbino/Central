@@ -38,6 +38,7 @@ class Producto extends CI_Controller {
 		 *Si es asi no puede porque esta informacion es confidencial.
 		*/
 		$this->ver_sesion_m->no_clientes();
+		//Obtenemos las variables enviadas por POST
 		$descripcion_producto = $this->seguridad_m->mysql_seguro($this->input->post('descripcion_producto'));
 
 		$this->load->model('productos/prod_cliente_m', 'producto');

@@ -414,6 +414,7 @@ $('#cliente_productos [type="checkbox"]').click(function()
 				alert(response);
 				$("#cliente_productos").load(location.href + " #cliente_productos");
 			},
+			
 		});
 		
 		

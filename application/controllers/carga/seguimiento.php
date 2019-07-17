@@ -153,6 +153,64 @@ class Seguimiento extends CI_Controller {
 		//Se carga el pie de pagina
 		$this->load->view('pie_v');
 	}
+
+	public function obtenerDatos(){
+		$Permitido = array('Gerencia' => '', 'Plani' => '', 'Sistemas' => '', 'Ventas' => '');
+		$this->ver_sesion_m->acceso($Permitido);
+
+		/*
+		 *Verificaremos si un cliente quiere acceder a esta pagina
+		 *Si es asi no puede porque esta informacion es confidencial.
+		*/
+		$this->ver_sesion_m->no_clientes();
+		
+		
+		//Obtenemos las variables enviadas por POST
+		$departamento = $this->seguridad_m->mysql_seguro($this->input->post('departamento'));
+		$mes = $this->seguridad_m->mysql_seguro($this->input->post('mes'));
+		$ano = $this->seguridad_m->mysql_seguro($this->input->post('ano'));
+
+		$this->load->model('carga/seguimiento_m', 'seguimiento');
+		$operadores = $this->seguimiento->obtenerOperadores($departamento);
+		$trabajos_realizados = $this->seguimiento->obtenerTrabajosRealizados($departamento,$mes,$ano);
+		$rechazos = $this->seguimiento->obtenerRechazos($departamento,$mes,$ano);
+		$horas_extras = $this->seguimiento->obtenerHorasExtras($departamento,$mes,$ano);
+
+		$infoarray = array('operadores'=>$operadores,'trabajos'=>$trabajos_realizados,'rechazos'=>$rechazos,'extras'=>$horas_extras);
+
+		//add the header here
+	    header('Content-Type: application/json');
+	    echo json_encode($infoarray);
+	}
+
+	public function obtenerDatosUsuario(){
+
+		$Permitido = array('Gerencia' => '', 'Plani' => '', 'Sistemas' => '', 'Ventas' => '');
+		$this->ver_sesion_m->acceso($Permitido);
+
+		/*
+		 *Verificaremos si un cliente quiere acceder a esta pagina
+		 *Si es asi no puede porque esta informacion es confidencial.
+		*/
+		$this->ver_sesion_m->no_clientes();
+		
+		//Obtenemos las variables enviadas por POST
+		$usuario = $this->seguridad_m->mysql_seguro($this->input->post('empleado'));
+		$mes = $this->seguridad_m->mysql_seguro($this->input->post('mes'));
+		$ano = $this->seguridad_m->mysql_seguro($this->input->post('ano'));
+
+		$this->load->model('carga/seguimiento_m', 'seguimiento');
+		$trabajos_realizados = $this->seguimiento->obtenerTrabajosRealizadosUsuario($usuario,$mes,$ano);
+		$rechazos = $this->seguimiento->obtenerRechazosUsuario($usuario,$mes,$ano);
+		$horas_extras = $this->seguimiento->obtenerHorasExtrasUsuario($usuario,$mes,$ano);
+
+		$infoarray = array('trabajos'=>$trabajos_realizados,'rechazos'=>$rechazos,'extras'=>$horas_extras);
+
+		//add the header here
+	    header('Content-Type: application/json');
+	    echo json_encode($infoarray);
+
+	}
 }
 
 /* Fin del archivo */

@@ -373,6 +373,103 @@ class Seguimiento_m extends CI_Model {
 		
 		return $Resultado->result_array();
 	}
+
+
+
+	/*Metodos para extraer informaciona 
+	 *acerca de los datos de administracion 
+	 *de la produccion
+	*/
+
+	function obtenerOperadores($departamento){
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->join('departamentos', 'departamentos.id_dpto = usuario.id_dpto');
+		$this->db->where('departamentos.id_dpto', $departamento);
+		$this->db->where('usuario.activo', "s");
+		$query = $this->db->get();
+		$operadores = $query->result_array();
+		return $operadores;
+
+	}
+
+	function obtenerTrabajosRealizados($departamento,$mes,$ano){
+		$this->db->select('*');
+		$this->db->from('cliente as c');
+		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
+		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
+		$this->db->join('pedido_usuario as pu', 'pd.id_pedido = pu.id_pedido');
+		$this->db->join('usuario as u', 'pu.id_usuario = u.id_usuario');
+		$this->db->join('departamentos as d', 'u.id_dpto = d.id_dpto');
+		$this->db->where('pu.estado', "Terminado");
+		$this->db->where('u.activo', "s");
+		$this->db->where('d.id_dpto', $departamento);
+		$this->db->where('pu.fecha_fin BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
+		$query = $this->db->get();
+		$trabajos = $query->result_array();
+		return $trabajos;
+	}
+
+	function obtenerRechazos($departamento,$mes,$ano){
+		$this->db->select('*');
+		$this->db->from('cliente as c');
+		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
+		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
+		$this->db->join('pedido_rechazo as pr', 'pd.id_pedido = pr.id_pedido');
+		$this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:00" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
+		$query = $this->db->get();
+		$rechazos = $query->result_array();
+		return $rechazos;
+
+	}
+
+	function obtenerHorasExtras($departamento,$mes,$ano){
+		$this->db->select_sum('total_h');
+		$this->db->from('extra');
+		$query = $this->db->get();
+		$extras = $query->result_array();
+		return $extras;
+	}
+
+
+	/*Metodos para extraer la informacion respectiva a cada usuario*/
+	function obtenerTrabajosRealizadosUsuario($id_usuario,$mes,$ano){
+		$this->db->select('*');
+		$this->db->from('cliente as c');
+		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
+		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
+		$this->db->join('pedido_usuario as pu', 'pd.id_pedido = pu.id_pedido');
+		$this->db->join('usuario as u', 'pu.id_usuario = u.id_usuario');
+		$this->db->where('pu.estado', "Terminado");
+		$this->db->where('u.activo', "s");
+		$this->db->where('pu.id_usuario', $id_usuario);
+		$this->db->where('pu.fecha_fin BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
+		$query = $this->db->get();
+		$trabajos = $query->result_array();
+		return $trabajos;
+	}
+
+	function obtenerRechazosUsuario($id_usuario,$mes,$ano){
+		$this->db->select('*');
+		$this->db->from('cliente as c');
+		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
+		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
+		$this->db->join('pedido_rechazo as pr', 'pd.id_pedido = pr.id_pedido');
+		$this->db->where('pr.id_usuario', $id_usuario);
+		$this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:00" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
+		$query = $this->db->get();
+		$rechazos = $query->result_array();
+		return $rechazos;
+	}
+
+	function obtenerHorasExtrasUsuario($id_usuario,$mes,$ano){
+		$this->db->select_sum('total_h');
+		$this->db->from('extra');
+		$this->db->where('id_usuario', $id_usuario);
+		$query = $this->db->get();
+		$extras = $query->result_array();
+		return $extras;
+	}
 	
 }
 

@@ -126,8 +126,8 @@ class Trabajos extends CI_Controller {
 			INNER JOIN  pedido pd ON p.id_proceso = pd.id_proceso
 			INNER JOIN pedido_rechazo pr ON pd.id_pedido = pr.id_pedido
 			WHERE pr.id_usuario = "'.$Id_Usuario.'"
-			AND fecha BETWEEN "'.$Anho.'-'.$Mes.'-01 00:00:00" AND fecha <= "'.$Anho.'-'.$Mes.'-31 23:59:59"
-			ORDER BY fecha_entrega ASC, pd.id_pedido ASC
+			AND pr.fecha BETWEEN "'.$Anho.'-'.$Mes.'-01 00:00:00" AND "'.$Anho.'-'.$Mes.'-31 23:59:59"
+			ORDER BY pd.fecha_entrega ASC, pd.id_pedido ASC
 		';
 		$Resultado = $this->db->query($Consulta);
 
@@ -160,12 +160,11 @@ class Trabajos extends CI_Controller {
 
 
 		$Consulta = '
-			select fecha, inicio, fin, total_h
-			from extra
-			where id_usuario = "'.$Id_Usuario.'"
-			and fecha >= "'.$Anho.'-'.$Mes.'-01"
-			and fecha <= "'.$Anho.'-'.$Mes.'-31"
-			order by fecha asc
+			SELECT fecha, inicio, fin, total_h
+			FROM extra
+			WHERE id_usuario = "'.$Id_Usuario.'"
+			AND fecha BETWEEN "'.$Anho.'-'.$Mes.'-01" AND "'.$Anho.'-'.$Mes.'-31"
+			ORDER BY fecha ASC
 		';
 		$Resultado = $this->db->query($Consulta);
 
