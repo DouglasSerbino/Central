@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="/html/js/carga.js?n=1"></script>
 <script type="text/javascript" src="/html/js/thickbox.js"></script>
 <link rel="stylesheet" href="/html/css/thickbox.css" type="text/css" media="screen" />
@@ -11,6 +12,8 @@
 <script src="/html/js/jquery.counterup.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
 <script type="text/javascript" src="/html/js/datatable.min.js"></script>
+<script type="text/javascript" src="/html/js/jquery.flot.js"></script>
+<script type="text/javascript" src="/html/js/jquery.flot.pie.js"></script>
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
 <style>
 	
@@ -393,6 +396,8 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <strong>Tiempos y rechazos</strong>
+				<div id="grafico-linea" style="width:800px;height:300px;"></div>
 
 
 <form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
@@ -1192,7 +1197,7 @@ if(
 		success : function(response){
 				$('#trabajos_num').text(response.trabajos.length);
 				$('#rechazos_num').text(response.rechazos.length);
-				$('#extras_num').text(response.extras[0]["total_h"]);
+				response.extras[0]["total_h"] > 0 ? $('#extras_num').text(response.extras[0]["total_h"]) : $('#extras_num').text(0);
 				$('#utilizadas_num').text((response.utilizadas[0]["tiempo"]/60).toFixed(2));
 				$('#disponibles_num').text((133-(response.utilizadas[0]["tiempo"]/60)).toFixed(2));
 				$('#esperado_num,').text((((response.utilizadas[0]["tiempo"]/60)*100)/133).toFixed(2));
@@ -1202,3 +1207,94 @@ if(
 		});
 	}
 </script>
+
+
+<script language='javascript' type='text/javascript'>
+		
+		var entregas_tiempo = [];
+		var entregas_atrasadas = [];
+		var reprocesos = [];
+		var info = '';
+
+		info = $.plot($('#grafico-linea'),
+			[
+				{
+					data: reprocesos,
+					points: { show: true },
+					label: 'Porcentaje de Reprocesos'
+				}
+			],
+			{
+				xaxis:
+				{
+					min: 0,
+					ticks:
+					[
+						[0, ""],
+						[1, "Ene"], [2, "Feb"], [3, "Mar"], [4, "Abr"],
+						[5, "May"], [6, "Jun"], [7, "Jul"], [8, "Ago"],
+						[9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dic"],
+						[13, ""]
+					],
+					max: 13
+				},
+				series:
+				{
+					lines: { show: true },
+					points: { show: true }
+				},
+				grid: { hoverable: true },
+				yaxis:
+				{
+					tickFormatter: function(valor, axis)
+					{
+						return formatNumber(valor, '');
+					},
+					max: 3
+				}
+			}
+		);
+		
+		function showTooltip(x, y, contents)
+		{
+			$('<div id="tooltip">' + contents + '</div>').css(
+			{
+				position: 'absolute',
+				display: 'none',
+				top: y + 10,
+				left: x + 10,
+				border: '1px solid #fdd',
+				padding: '2px',
+				'background-color': '#fee',
+				opacity: 0.80
+			}).appendTo("body").fadeIn(200);
+		}
+		
+		var total_item = info.getData();
+		total_item = total_item.length;
+		for(z = 0; z < total_item; z++)
+		{
+			$.each(info.getData()[z].data, function(i, el, infor)
+			{
+				if('' != el)
+				{
+					var o = info.pointOffset({x: el[0], y: el[1]});
+					var mas = '';
+					if(100 == el[1])
+					{
+						mas = '+';
+					}
+					$('<div class="data-point-label">' + el[1] + mas + '</div>').css(
+					{
+						position: 'absolute',
+						left: o.left + 4,
+						top: o.top - 17,
+						display: 'none',
+						"font-size": "12px"
+					}).appendTo(info.getPlaceholder()).fadeIn('slow');
+				}
+			});
+		}
+		
+	</script>
+
