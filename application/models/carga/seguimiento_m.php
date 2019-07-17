@@ -411,21 +411,40 @@ class Seguimiento_m extends CI_Model {
 	}
 
 	function obtenerRechazos($departamento,$mes,$ano){
+
+		// if('Anual' == $Mes)
+		// {
+		// 	$SQL = 'fecha >= "'.$Anho.'-01-01 00:00:01"
+		// 					and fecha <= "'.$Anho.'-12-31 23:59:59"';
+		// }
+		// else
+		// {
+		// 	$SQL = 'fecha >= "'.$Anho.'-'.$Mes.'-01 00:00:01"
+		// 					and fecha <= "'.$Anho.'-'.$Mes.'-31 23:59:59"';
+		// }
+
+
 		$this->db->select('*');
-		$this->db->from('cliente as c');
-		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
-		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
-		$this->db->join('pedido_rechazo as pr', 'pd.id_pedido = pr.id_pedido');
-		$this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:00" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
+		$this->db->from('pedido_rechazo as pr');
+		$this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:01" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
 		$query = $this->db->get();
 		$rechazos = $query->result_array();
 		return $rechazos;
+
+		// $Consulta = '
+		// 	select count(distinct fecha) as tt_rechazos, id_usuario
+		// 	from pedido_rechazo
+		// 	where  '.$SQL.'
+		// 	'.$Condicion.'
+		// 	group by id_usuario
+		// ';
 
 	}
 
 	function obtenerHorasExtras($departamento,$mes,$ano){
 		$this->db->select_sum('total_h');
 		$this->db->from('extra');
+		$this->db->where('fecha BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
 		$query = $this->db->get();
 		$extras = $query->result_array();
 		return $extras;
@@ -464,11 +483,29 @@ class Seguimiento_m extends CI_Model {
 
 	function obtenerHorasExtrasUsuario($id_usuario,$mes,$ano){
 		$this->db->select_sum('total_h');
-		$this->db->from('extra');
-		$this->db->where('id_usuario', $id_usuario);
+		$this->db->from('extra as ex');
+		$this->db->join('usuario as u', 'ex.id_usuario = u.id_usuario');
+		$this->db->where('ex.id_usuario', $id_usuario);
+		$this->db->where('ex.fecha BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
 		$query = $this->db->get();
 		$extras = $query->result_array();
 		return $extras;
+	}
+
+	function obtenerTiempoUtilizadoUsuario($id_usuario,$mes,$ano){
+		
+
+		$this->db->select_sum('pt.tiempo');
+		$this->db->from('pedido_tiempos as pt');
+		$this->db->join('usuario as u', 'pt.id_usuario = u.id_usuario');
+		$this->db->where('pt.id_usuario', $id_usuario);
+		$this->db->where('pt.inicio BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
+		$this->db->where('SUBSTRING(pt.inicio, 12, 2) < 17');
+		$this->db->where('u.id_grupo', $this->session->userdata('id_grupo'));
+		$query = $this->db->get();
+		$utilizado = $query->result_array();
+		return $utilizado;
+		
 	}
 	
 }

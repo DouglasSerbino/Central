@@ -334,13 +334,24 @@ class Preingreso extends CI_Controller {
 		//$Ruta = $this->ruta->generar_ruta($this->session->userdata('id_grupo'));
 		
 		//Ingreso de la Ruta
-		$Ruta = $this->i_ruta->index(
-			$Id_Pedido,
-			array(),
-			$Fecha_Hora,
-			'Asignado'
-		);
+		// $Ruta = $this->i_ruta->index(
+		// 	$Id_Pedido,
+		// 	array(),
+		// 	$Fecha_Hora,
+		// 	'Asignado'
+		// );
 		
+		//Obtencion de la ruta elegida
+		$Id_Ruta = $this->input->post('asigna_ruta');
+		$Id_Ruta += 0;
+		$this->load->model('ruta/ruta_dinamica_m', 'rutad');
+		$Ruta = $this->rutad->obtener($Id_Ruta);
+
+		if(0 == count($Ruta['dptos']))
+		{
+			show_404();
+			exit();
+		}
 		
 		//Se debe medir el tiempo de respuesta.
 		//Se creara un tiempo iniciado para el usuario que quedo asignado.
@@ -362,6 +373,16 @@ class Preingreso extends CI_Controller {
 		//Ingreso de la cotizacion
 		$Cotizacion = $this->cotizacion->index($Id_Pedido, $Productos, $Id_Cliente);
 		
+
+		//Se ingresa la ruta
+		$this->load->model('pedidos/ingresar_ruta_m', 'i_ruta');
+		$Ingreso = $this->i_ruta->index(
+			$Id_Pedido,
+			$Ruta['dptos'],
+			$Fecha_Hora,
+			$this->session->userdata('id_grupo'),
+			$this->session->userdata('id_dpto')
+		);
 		
 		/*****************************************************/
 		//** Observacion **//

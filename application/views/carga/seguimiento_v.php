@@ -302,7 +302,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/metaprod.png"><span class="counter" >00.00</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/metaprod.png"><span id="esperado_num" class="counter" >0</span>%</h3>
                                 	<h5 class="text-center">Meta: Indice global de productividad</h5>
                                 </div>
                                 <button class="btn panel-info btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
@@ -327,7 +327,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/realprod.png"><span class="counter">00.00</span>%</h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/realprod.png"><span id="real_num" class="counter">0</span>%</h3>
                                 	<h5 class="text-center">Real: Porcentaje de productividad</h5>
                                 </div>
                                 <button class="btn panel-success btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
@@ -352,7 +352,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/utilizadas.png"><span class="counter">00:00</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/utilizadas.png"><span id="utilizadas_num" class="counter">0</span></h3>
                                 	<h5 class="text-center">Promedio de horas utilizadas</h5>
                                 </div>
                                 <button class="btn panel-warning btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
@@ -376,7 +376,7 @@
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
-                                	<h3 class="text-center"><img src="/html/img/icons/disponibles.png"><span class="counter">00:00</span></h3>
+                                	<h3 class="text-center"><img src="/html/img/icons/disponibles.png"><span id="disponibles_num" class="counter">0</span></h3>
                                 	<h5 class="text-center">Promedio de horas disponibles</h5>
                                 </div>
                                 <button class="btn panel-danger btn-sm btn-block" type="button" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
@@ -1193,8 +1193,12 @@ if(
 				$('#trabajos_num').text(response.trabajos.length);
 				$('#rechazos_num').text(response.rechazos.length);
 				$('#extras_num').text(response.extras[0]["total_h"]);
+				$('#utilizadas_num').text((response.utilizadas[0]["tiempo"]/60).toFixed(2));
+				$('#disponibles_num').text((133-(response.utilizadas[0]["tiempo"]/60)).toFixed(2));
+				$('#esperado_num,').text((((response.utilizadas[0]["tiempo"]/60)*100)/133).toFixed(2));
+				$('#real_num').text((((response.utilizadas[0]["tiempo"]/60)*100)/190).toFixed(2));
 			},
-			error: function(msg){ console.log("Ocurrio un Error"); }
+			error: function(msg){ alert("Ocurrio un Error"); }
 		});
 	}
 </script>

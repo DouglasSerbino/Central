@@ -65,7 +65,10 @@ $Icono_Ruta = array(
     						</tr>
                             <tr>
                                 <td>Miniatura:</td>
-                                <td> <a href="javascript:ver_agregar_scan('800-imagen_proceso');" class="iconos iscan toolizq"><span>Agregar Miniatura</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar&nbsp;Miniatura.</a></td>
+                                <!-- <td> <a  href="javascript:ver_agregar_scan('800-imagen_proceso');" class="iconos iscan toolizq"><span>Agregar Miniatura</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar&nbsp;Miniatura.</a></td> -->
+                                <td> <button type="button" data-toggle="modal" data-target="#exampleModal" class="iconos iscan toolizq"><span>Agregar Miniatura</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar&nbsp;Miniatura.</button></td>
+                                
+
                             </tr>
     					</table>
     				</div> 
@@ -653,9 +656,36 @@ $Icono_Ruta = array(
     			</div>
 
 
-<!-- <input type="button" value="Agregar Pre-Ingreso" id="agr_pre_ingreso" disabled="disabled" onclick="guardar_preingreso()" /> -->
+<!-- <input type="button" value="Agregar Pre-Ingreso" id="agr_pre_ingreso" disabled="disabled" onclick="guardar_preingreso()" /> --> -->
 </form>
+<!-- Area del modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Miniatura</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                    <div class="white-box">
+                        <h3 class="box-title"></h3>
+                        <label for="input-file-now-custom-1">Seleccione Una Imagen</label>
+                        <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="../plugins/bower_components/dropify/src/images/test-image-1.jpg" /> 
+                    </div>
+              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin area Modal -->
 <style type="text/css">
+
 	.ta100td25{
 		width: 100%;
 	}

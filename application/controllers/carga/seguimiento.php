@@ -203,8 +203,9 @@ class Seguimiento extends CI_Controller {
 		$trabajos_realizados = $this->seguimiento->obtenerTrabajosRealizadosUsuario($usuario,$mes,$ano);
 		$rechazos = $this->seguimiento->obtenerRechazosUsuario($usuario,$mes,$ano);
 		$horas_extras = $this->seguimiento->obtenerHorasExtrasUsuario($usuario,$mes,$ano);
+		$utilizadas = $this->seguimiento->obtenerTiempoUtilizadoUsuario($usuario,$mes,$ano);
 
-		$infoarray = array('trabajos'=>$trabajos_realizados,'rechazos'=>$rechazos,'extras'=>$horas_extras);
+		$infoarray = array('trabajos'=>$trabajos_realizados,'rechazos'=>$rechazos,'extras'=>$horas_extras,'utilizadas'=>$utilizadas);
 
 		//add the header here
 	    header('Content-Type: application/json');
