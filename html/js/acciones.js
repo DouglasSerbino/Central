@@ -472,31 +472,40 @@ function calcular_distorsion(){//Calcula la distorsión flexografíca.
 	radio = parseFloat($("#radio").val());
 	polimero = parseFloat($("#polimero").val());
 	adhesivo = parseFloat($("#stickyback").val());
-	
+
+	//polimero = parseFloat($("#polimero").val().split('-')[0]);
+
 	k = {
-		"0.045":6.3648,
-		"0.067":9.8947833,
-		"0.09":13.565428,
-		"0.1":15.161361,
-		"0.107":16.278514,
-		"0.112":17.07648,
-		"0.155":23.938992,
-		"0.25":39.100353
-	};
+			"0.045":6.3837312,
+			"0.067":9.8947833,
+			"0.09":13.565428,
+			"0.1":15.161361,
+			"0.107":16.278514,
+			"0.112":17.07648,
+			"0.155":23.938992,
+			"0.25":39.100353
+		};
+
+	//$("#k").val($("#polimero").val().split('-')[1]);
+
 	$("#k").val(k[polimero]);
 	
 	//Lo siento no puedo explicar este codigo porque lo tome del sistema anterior
 	if($("#pa").val() > 0 && adhesivo > 0 && polimero > 0)
 	{
-		radio = (($("#pa").val() / Math.PI) - (adhesivo * 25.4 * 2) - (polimero * 25.4 * 2)) / 2;
-		pa = (radio + (polimero * 25.4) + (adhesivo * 25.4)) * 6.2832;
-		dp = (k[polimero] / pa) * 100 - 100;
-		$("#radio").val(redondear(radio, 4));
-		$("#pb").val(redondear(radio * (Math.PI * 2), 3));
-		$("#pa").val(redondear(pa, 4));
+		//radio = (($("#pa").val() / Math.PI) - (adhesivo * 25.4 * 2) - (polimero * 25.4 * 2)) / 2;
+		radio = ((($('#pa').val()/3.1416)-(adhesivo*25.4*2)-(polimero*25.4*2))/2);
+		//pa = (radio + (polimero * 25.4) + (adhesivo * 25.4)) * 6.2832;
+		//dp = (k[polimero] / pa) * 100 - 100;
+		dp = (k[polimero] / $("#pa").val()) * 100 - 100;
+		//$("#radio").val(redondear(radio, 4));
+		$("#radio").val(radio);
+
+		$("#pb").val(redondear(radio * (6.2832), 3));
+	//	$("#pa").val(redondear(pa, 4));
 		//if(268 != IClie)
 		//{
-			$("#dp").val(redondear(Math.abs(dp), 3));
+		$("#dp").val(redondear(Math.abs(dp), 3));
 		//}
 		$("#dn").val(redondear(dp + 100, 3));
 	}

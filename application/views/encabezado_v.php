@@ -7,12 +7,23 @@
 	<meta name="author" content="Central Graphics" />
 	<title><?=$Titulo_Pagina?> - <?=$this->session->userdata('nombre_grupo')?></title>
 	<link rel="shortcut icon" href="/html/img/ico-cg.png" />
-	<script type="text/javascript" src="/html/js/jquery-1.7.1.js"></script>
+	<!-- <script src="/html/js/jquery.min.js"></script> -->
+	<!-- <script type="text/javascript" src="/html/js/jquery-1.7.1.js"></script> --> 
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified CSS -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<!-- Optional theme -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/html/js/jquery-ui-1.8.17.js"></script>
 	<script type="text/javascript" src="/html/js/acciones.js?n=1"></script>
 	<link rel="stylesheet" href="/html/css/estilo.003.css?v=010" />
 	<link rel="stylesheet" href="/html/css/jquery-ui-1.8.17.css" />
-	<link rel="stylesheet" type="text/css" href="/html/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/html/css/bootstrap.min.css"/>
+	<!-- <script src="/html/js/bootstrap.min.js"></script> -->
+
+
 	<?php
 
 	if(3 == $this->session->userdata('id_usuario') || 'central.com' == $_SERVER['SERVER_NAME'])

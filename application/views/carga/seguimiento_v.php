@@ -3,18 +3,19 @@
 <script type="text/javascript" src="/html/js/thickbox.js"></script>
 <link rel="stylesheet" href="/html/css/thickbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="/html/js/pedido.003.js?n=1"></script>
-<script src="/html/js/bootstrap.min.js"></script>
-<script src="/html/js/jquery.min.js"></script> 
-<script src="/html/js/bootstrap.min.js"></script>
+<!-- <script src="/html/js/jquery.min.js"></script>  -->
+<!-- <script src="/html/js/bootstrap.min.js"></script> -->
 <link rel="stylesheet" href="/html/css/pedido.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-<script src="/html/js/jquery.counterup.min.js"></script>
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> -->
+<!-- <script src="/html/js/jquery.counterup.min.js"></script> -->
 <link rel="stylesheet" type="text/css" href="/html/css/datatable.min.css">
 <script type="text/javascript" src="/html/js/datatable.min.js"></script>
-<script type="text/javascript" src="/html/js/jquery.flot.js"></script>
-<script type="text/javascript" src="/html/js/jquery.flot.pie.js"></script>
+<!-- <script type="text/javascript" src="/html/js/jquery.flot.js"></script> -->
+<!-- <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.flot/0.8.3/jquery.flot.min.js"></script> -->
+<!-- <script type="text/javascript" src="/html/js/jquery.flot.pie.js"></script> -->
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <style>
 	
 	table td, table th{
@@ -396,8 +397,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <strong>Tiempos y rechazos</strong>
-				<div id="grafico-linea" style="width:800px;height:300px;"></div>
+				<canvas id="grafico-linea" style="width:800px;height:300px;"></canvas>
 
 
 <form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
@@ -1159,6 +1159,10 @@ if(
 </script>
 <script type="text/javascript">
 	function cargarInfo(){
+		operadores_nombres = [];
+		numero_rechazos = [];
+		productividad_real = [];
+		productividad_esperada = [];
 		$('#listado_operadores').empty();
 		$.ajax({
 			url: '/carga/seguimiento/obtenerDatos',
@@ -1177,7 +1181,126 @@ if(
 				//contador();
 				for (var i = 0; i < response.operadores.length; i++) {
 					$('#listado_operadores').append('<button type="button" class="list-group-item list-group-item-action" onclick="infoEmpleado('+response.operadores[i]["id_usuario"]+')" >'+ response.operadores[i]["nombre"] +'</button> ');
+						operadores_nombres.push(response.operadores[i]["nombre"]);
+
+						$.ajax({
+						url: '/carga/seguimiento/obtenerDatosUsuario',
+						type: 'POST',
+						data: {'empleado': response.operadores[i]["id_usuario"] ,
+							   'mes': $('#mes_consulta').val(),
+							   'ano': $('#ano_consulta').val().trim()
+							  },
+						success : function(response){
+						 numero_rechazos.push(response.rechazos.length);
+						 productividad_esperada.push(85);
+						 productividad_real.push((((response.utilizadas[0]["tiempo"]/60)*100)/190).toFixed(2));
+						},
+						error: function(msg){ alert("Ocurrio un Error"); }
+						});
 				}
+				
+
+				//Para el grafico
+				let draw = Chart.controllers.line.prototype.draw;
+				Chart.controllers.line = Chart.controllers.line.extend({
+				    draw: function() {
+				        draw.apply(this, arguments);
+				        let ctx = this.chart.chart.ctx;
+				        let _stroke = ctx.stroke;
+				        ctx.stroke = function() {
+				            ctx.save();
+				            ctx.shadowColor = '#E56590';
+				            ctx.shadowBlur = 10;
+				            ctx.shadowOffsetX = 0;
+				            ctx.shadowOffsetY = 4;
+				            _stroke.apply(this, arguments)
+				            ctx.restore();
+				        }
+				    }
+				});
+				let ctx = $('#grafico-linea')[0].getContext('2d');
+				new Chart(ctx, {
+				    type: 'bar',
+				    data: {
+				        labels: operadores_nombres.toString().split(','),
+				        datasets: [{
+				            label: 'Productividad Real',
+				            data: productividad_real,
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)',
+				                'rgba(75, 192, 192, 0.2)',
+				                'rgba(153, 102, 255, 0.2)',
+				                'rgba(255, 159, 64, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255, 99, 132, 1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)',
+				                'rgba(75, 192, 192, 1)',
+				                'rgba(153, 102, 255, 1)',
+				                'rgba(255, 159, 64, 1)'
+				            ],
+				            borderWidth: 1
+				        },{
+				        	label: "Rechazos",
+				            data: numero_rechazos,
+				            type: 'line',
+				            borderColor: 'rgba(0, 177, 106, 1)',
+				        },{
+				        	label: "Productividad Esperada",
+				            data: productividad_esperada,
+				            type: 'line',
+				            borderColor: 'rgba(242, 121, 53, 1)',
+				            pointBackgroundColor: "#fff",
+				            pointBorderColor: "#ffb88c",
+				            pointHoverBackgroundColor: "#ffb88c",
+				            pointHoverBorderColor: "#fff",
+				            pointRadius: 4,
+				            pointHoverRadius: 4,
+				            fill: false
+				        }
+				        ]
+				    },
+				    options: {
+
+				        scales: {
+				            yAxes: [{
+				                ticks: 
+				                {
+				                    beginAtZero: true
+
+				                }
+				            }]
+
+				        },
+				        responsive: true,
+				    title: {
+				      display: true,
+				      text: 'Tiempos y Rechazos'
+				    },
+    				tooltips: {
+    				mode: 'index',
+      				intersect: true
+    				},
+				    annotation: {
+				      	annotations: [{
+				        type: 'line',
+				        mode: 'horizontal',
+				        scaleID: 'y-axis-0',
+				        value: 85,
+				        borderColor: 'rgb(75, 192, 192)',
+				        borderWidth: 10,
+				        label: {
+				          enabled: true,
+				          content: 'Meta'
+				        }
+				      }]
+				    }
+				    }
+				});
+
 				
 			},
 			error: function(msg){ console.log("Ocurrio un Error"); }
@@ -1200,7 +1323,8 @@ if(
 				response.extras[0]["total_h"] > 0 ? $('#extras_num').text(response.extras[0]["total_h"]) : $('#extras_num').text(0);
 				$('#utilizadas_num').text((response.utilizadas[0]["tiempo"]/60).toFixed(2));
 				$('#disponibles_num').text((133-(response.utilizadas[0]["tiempo"]/60)).toFixed(2));
-				$('#esperado_num,').text((((response.utilizadas[0]["tiempo"]/60)*100)/133).toFixed(2));
+				// $('#esperado_num,').text((((response.utilizadas[0]["tiempo"]/60)*100)/133).toFixed(2));
+				$('#esperado_num,').text(85);
 				$('#real_num').text((((response.utilizadas[0]["tiempo"]/60)*100)/190).toFixed(2));
 			},
 			error: function(msg){ alert("Ocurrio un Error"); }
@@ -1209,92 +1333,8 @@ if(
 </script>
 
 
-<script language='javascript' type='text/javascript'>
-		
-		var entregas_tiempo = [];
-		var entregas_atrasadas = [];
-		var reprocesos = [];
-		var info = '';
+<script type='text/javascript'>
 
-		info = $.plot($('#grafico-linea'),
-			[
-				{
-					data: reprocesos,
-					points: { show: true },
-					label: 'Porcentaje de Reprocesos'
-				}
-			],
-			{
-				xaxis:
-				{
-					min: 0,
-					ticks:
-					[
-						[0, ""],
-						[1, "Ene"], [2, "Feb"], [3, "Mar"], [4, "Abr"],
-						[5, "May"], [6, "Jun"], [7, "Jul"], [8, "Ago"],
-						[9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dic"],
-						[13, ""]
-					],
-					max: 13
-				},
-				series:
-				{
-					lines: { show: true },
-					points: { show: true }
-				},
-				grid: { hoverable: true },
-				yaxis:
-				{
-					tickFormatter: function(valor, axis)
-					{
-						return formatNumber(valor, '');
-					},
-					max: 3
-				}
-			}
-		);
-		
-		function showTooltip(x, y, contents)
-		{
-			$('<div id="tooltip">' + contents + '</div>').css(
-			{
-				position: 'absolute',
-				display: 'none',
-				top: y + 10,
-				left: x + 10,
-				border: '1px solid #fdd',
-				padding: '2px',
-				'background-color': '#fee',
-				opacity: 0.80
-			}).appendTo("body").fadeIn(200);
-		}
-		
-		var total_item = info.getData();
-		total_item = total_item.length;
-		for(z = 0; z < total_item; z++)
-		{
-			$.each(info.getData()[z].data, function(i, el, infor)
-			{
-				if('' != el)
-				{
-					var o = info.pointOffset({x: el[0], y: el[1]});
-					var mas = '';
-					if(100 == el[1])
-					{
-						mas = '+';
-					}
-					$('<div class="data-point-label">' + el[1] + mas + '</div>').css(
-					{
-						position: 'absolute',
-						left: o.left + 4,
-						top: o.top - 17,
-						display: 'none',
-						"font-size": "12px"
-					}).appendTo(info.getPlaceholder()).fadeIn('slow');
-				}
-			});
-		}
-		
-	</script>
+
+</script>
 

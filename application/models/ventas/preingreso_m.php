@@ -54,6 +54,14 @@ class Preingreso_m extends CI_Model {
 		}
 		
 	}
+
+	function obtenerPolimeros(){
+		$this->db->select('*');
+		$this->db->from('constante_polimero');
+		$query = $this->db->get();
+		$polimeros = $query->result_array();
+		return $polimeros;
+	}
 	
 }
 

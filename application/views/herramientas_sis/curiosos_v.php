@@ -6,7 +6,7 @@
 		<th>Entrega</th>
 		<th>Real</th>
 	</tr>
-<?
+<?php
 foreach($Curiosos['Pedidos'] as $Pedido)
 {
 ?>
@@ -20,7 +20,7 @@ foreach($Curiosos['Pedidos'] as $Pedido)
 		<td><?=date('d-m-Y', strtotime($Pedido['fecha_entrega']))?></td>
 		<td><?=($Pedido['fecha_reale']!='0000-00-00')?date('d-m-Y', strtotime($Pedido['fecha_reale'])):'0000-00-00'?></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>

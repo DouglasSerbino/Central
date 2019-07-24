@@ -82,6 +82,11 @@ class Preingreso extends CI_Controller {
 		//Ruta Actual
 		$Variables['Ruta_Actual'] = array();
 
+		//Polimetos
+		$this->load->model('ventas/preingreso_m', 'constante');
+		$Variables['Polimeros'] = $this->constante->obtenerPolimeros();
+		
+
 		//Departamentos
 		//Modulo para obtener el listado de los departamentos
 		$this->load->model('departamentos/listado_m', 'departamentos');

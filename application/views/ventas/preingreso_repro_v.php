@@ -1,4 +1,3 @@
-
 <script type="text/javascript" src="/html/js/pedido.003.js?n=1"></script>
 <script type="text/javascript" src="/html/js/procesos.js?n=1"></script>
 <script src="/html/js/jquery.min.js"></script> 
@@ -6,7 +5,7 @@
 <script src="/html/js/bootstrap.min.js"></script>
 <script src="/html/js/wizard.min.js"></script>
 <link href="/html/css/wizard.css" rel="stylesheet">
-<!-- <script type="text/javascript" src="/html/js/acciones.js"></script> -->
+<script type="text/javascript" src="/html/js/acciones.js"></script>
 
 
 <?php
@@ -290,7 +289,7 @@ $Icono_Ruta = array(
     										</select>
 
     										<br />
-    										<input type="text" size="9" name="alto_arte" id="alto_arte" value="" />
+    										<input type="text" size="9" name="alto_arte" id="alto_arte" value="" onblur="calcularPA()" />
     										Alto del Arte
 
     										<br />
@@ -389,7 +388,7 @@ $Icono_Ruta = array(
     									<tr>
     										<td><input type="text" size="9" name="repet_ancho" id="repet_ancho" value="1" /></td>
     										<td>Repeticiones en Ancho</td>
-    										<td><input type="text" size="9" name="repet_alto" id="repet_alto" value="1" /></td>
+    										<td><input type="text" size="9" name="repet_alto" id="repet_alto" value="1" onblur="calcularPA()" /></td>
     										<td>Repeticiones en Alto</td>
     									</tr>
     									<tr>
@@ -466,12 +465,12 @@ $Icono_Ruta = array(
     														<input type="checkbox" name="micropuntos" id="micropuntos" />
     														<label for="micropuntos">Micropuntos</label>
     													</td>
-    													<td colspan="2">
+    													<!-- <td colspan="2">
     														<input type="checkbox" name="semaforo" id="semaforo" />
     														<label for="semaforo">Sem&aacute;foros</label>
-    													</td>
+    													</td> -->
     												</tr>
-    												<tr>
+    												<!-- <tr>
     													<td>
     														<input type="checkbox" name="grafikontrol" id="grafikontrol" />
     														<label for="grafikontrol">Grafikontrol</label>
@@ -480,7 +479,7 @@ $Icono_Ruta = array(
     														<input type="text" name="color" id="color" value="" />
     														Color
     													</td>
-    												</tr>
+    												</tr> -->
     											</table>
 
     											<br />
@@ -500,21 +499,18 @@ $Icono_Ruta = array(
     													</td>
     													<td>
     														<?php
-    														$Polimero = array(
-    															'0.045', '0.067', '0.090',
-    															'0.100', '0.107', '0.112',
-    															'0.115', '0.155', '0.250'
-    														);
+    														
 
     														$Stickyback = array('0.015', '0.020', '0.0177', '0.250', '0.60');
     														?>
     														<select name="polimero" id="polimero" onchange="calcular_distorsion()">
     															<option value="">Polimero</option>
     															<?php
-    															foreach($Polimero as $index => $Valor)
+    															foreach($Polimeros as $polimero)
     															{
     																?>
-    																<option value="<?=$Valor?>"><?=$Valor?></option>
+    																<!-- <option value="<?=$polimero['clave_polimero']."-".$polimero['valor_polimero']?>"><?=$polimero['clave_polimero']?></option> -->
+                                                                    <option value="<?=$polimero['clave_polimero']?>"><?=$polimero['clave_polimero']?></option>
     																<?php
     															}
     															?>
@@ -537,25 +533,25 @@ $Icono_Ruta = array(
     												<tr>
     													<td>
     														<input type="text" name="k" id="k" size="6" value="" />
-    														<span class="toolder punteado">(K)<span>Constante (Valor autom&aacute;tico)</span></span>
+    														<span data-toggle="tooltip" data-placement="top" title="Constante (Valor autom&aacute;tico)" class="toolder punteado" class="toolder punteado">(K)<span>Constante (Valor autom&aacute;tico)</span></span>
     													</td>
     													<td>
     														<input type="text" name="pb" id="pb" size="6" value="" onblur="calcular_distorsion()" />
-    														<span class="toolder punteado">PB<span>Per&iacute;metro Base</span></span>
+    														<span data-toggle="tooltip" data-placement="top" title="Per&iacute;metro Base" class="toolder punteado">PB<span>Per&iacute;metro Base</span></span>
     													</td>
     													<td>
     														<input type="text" name="pa" id="pa" size="6" value="" onblur="calcular_distorsion()" />
-    														<span class="toolder punteado">PA<span>Per&iacute;metro Aumentado</span></span>
+    														<span data-toggle="tooltip" data-placement="top" title="Per&iacute;metro Aumentado" class="toolder punteado">PA<span>Per&iacute;metro Aumentado</span></span>
     													</td>
     												</tr>
     												<tr>
     													<td>
     														<input type="text" name="dp" id="dp" size="6" value="" />
-    														<span class="toolder punteado">DP<span>Distorsi&oacute;n Positiva</span></span>
+    														<span data-toggle="tooltip" data-placement="top" title="Distorsi&oacute;n Positiva" class="toolder punteado">DP<span>Distorsi&oacute;n Positiva</span></span>
     													</td>
     													<td>
     														<input type="text" name="dn" id="dn" size="6" value="" />
-    														<span class="toolder punteado">DN<span>Distorsi&oacute;n Negativa</span></span>
+    														<span data-toggle="tooltip" data-placement="top" title="Distorsi&oacute;n Negativa" class="toolder punteado">DN<span>Distorsi&oacute;n Negativa</span></span>
     													</td>
     												</tr>
     											</table>
@@ -656,7 +652,7 @@ $Icono_Ruta = array(
     			</div>
 
 
-<!-- <input type="button" value="Agregar Pre-Ingreso" id="agr_pre_ingreso" disabled="disabled" onclick="guardar_preingreso()" /> --> -->
+<!-- <input type="button" value="Agregar Pre-Ingreso" id="agr_pre_ingreso" disabled="disabled" onclick="guardar_preingreso()" /> -->
 </form>
 <!-- Area del modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -974,6 +970,17 @@ if(isset($Ruta_Aplicada))
 <?php
 }
 ?>
+
+</script>
+
+<script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+function calcularPA(){
+    ($('#alto_arte').val() != "") ? $('#pa').val($('#repet_alto').val()*$('#alto_arte').val()) : $('#pa').val(0);
+}
 
 </script>
 

@@ -424,8 +424,22 @@ class Seguimiento_m extends CI_Model {
 		// }
 
 
+		// $this->db->select('*');
+		// $this->db->from('pedido as pd');
+		// $this->db->join('pedido_rechazo as pr', 'pd.id_pedido = pr.id_pedido');
+		// $this->db->join('usuario as u', 'pu.id_usuario = u.id_usuario');
+		// $this->db->join('departamentos as d', 'u.id_dpto = d.id_dpto');
+		// $this->db->where('d.id_dpto', $departamento);
+		// $this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:01" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
+
 		$this->db->select('*');
-		$this->db->from('pedido_rechazo as pr');
+		$this->db->from('cliente as c');
+		$this->db->join('procesos as p', 'c.id_cliente = p.id_cliente');
+		$this->db->join('pedido as pd', 'p.id_proceso = pd.id_proceso');
+		$this->db->join('pedido_rechazo as pr', 'pd.id_pedido = pr.id_pedido');
+		$this->db->join('usuario as u', 'pr.id_usuario = u.id_usuario');
+		$this->db->join('departamentos as d', 'u.id_dpto = d.id_dpto');
+		$this->db->where('d.id_dpto', $departamento);
 		$this->db->where('pr.fecha BETWEEN "'.$ano.'-'.$mes.'-01 00:00:01" AND "'.$ano.'-'.$mes.'-31 23:59:59"');
 		$query = $this->db->get();
 		$rechazos = $query->result_array();
@@ -442,9 +456,16 @@ class Seguimiento_m extends CI_Model {
 	}
 
 	function obtenerHorasExtras($departamento,$mes,$ano){
+		// $this->db->select_sum('total_h');
+		// $this->db->from('extra');
+		// $this->db->where('fecha BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
+
 		$this->db->select_sum('total_h');
-		$this->db->from('extra');
-		$this->db->where('fecha BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
+		$this->db->from('extra as ex');
+		$this->db->join('usuario as u', 'ex.id_usuario = u.id_usuario');
+		$this->db->join('departamentos as d', 'u.id_dpto = d.id_dpto');
+		$this->db->where('d.id_dpto', $departamento);
+		$this->db->where('ex.fecha BETWEEN "'.$ano.'-'.$mes.'-01" AND "'.$ano.'-'.$mes.'-31"');
 		$query = $this->db->get();
 		$extras = $query->result_array();
 		return $extras;

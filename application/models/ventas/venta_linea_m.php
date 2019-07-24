@@ -15,21 +15,21 @@ class Venta_linea_m extends CI_Model {
 	{
 		if($condicion == 'lineal')
 		{
-			$Consulta_SQL = 'and sap.fecha >= "'.$anho.'-01-01"
-							and sap.fecha <= "'.$anho.'-12-31"
+			$Consulta_SQL = 'and s.fecha >= "'.$anho.'-01-01"
+							and s.fecha <= "'.$anho.'-12-31"
 							and mate.id_material_solicitado = "'.$id_material.'"';
 		}
 		
 		if($condicion == '')
 		{
-			$Consulta_SQL = 'and sap.fecha >= "'.$anho.'-'.$mes.'-01"
-									and sap.fecha <= "'.$anho.'-'.$mes.'-31"';
+			$Consulta_SQL = 'and s.fecha >= "'.$anho.'-'.$mes.'-01"
+									and s.fecha <= "'.$anho.'-'.$mes.'-31"';
 		}
 		
 		if($condicion == 'rango_fechas')
 		{
-			$Consulta_SQL = 'and sap.fecha >= "'.$anho.'-'.$mes.'-01"
-									and sap.fecha <= "'.$anho.'-'.$mes.'-31"
+			$Consulta_SQL = 'and s.fecha >= "'.$anho.'-'.$mes.'-01"
+									and s.fecha <= "'.$anho.'-'.$mes.'-31"
 									and mate.id_material_solicitado = "'.$id_material.'"';
 		}
 		
@@ -39,26 +39,59 @@ class Venta_linea_m extends CI_Model {
 		}
 		
 		//Total de clientes
+		// $Consulta = '
+		// 				SELECT 
+		// 					m.id_material_solicitado,
+		// 					m.material_solicitado, 
+		// 					s.fecha,
+		// 					(pp.precio*pp.cantidad) as total,
+		// 					cli.codigo_cliente, ps.proceso, ps.nombre
+		// 				FROM 
+		// 					material_solicitado m, 
+		// 					producto p,
+		// 					producto_cliente pc, 
+		// 					procesos ps, 
+		// 					cliente c,
+		// 					producto_pedido pp, 
+		// 					pedido pd, 
+		// 					pedido_sap s
+		// 				WHERE 
+		// 					and m.id_material_solicitado = p.id_material
+		// 					and p.id_producto = pc.id_producto
+		// 					and ps.id_proceso = pd.id_proceso
+		// 					and ps.id_cliente = c.id_cliente
+		// 					and pc.id_prod_clie = pp.id_prod_clie
+		// 					and pp.id_pedido = pd.id_pedido
+		// 					and pd.id_pedido = s.id_pedido					
+		// 					and confirmada = "si"'.$Consulta_SQL.' 
+		// 					and cli.id_grupo = "'.$this->session->userdata('id_grupo').'"
+		// 					order by m.id_material_solicitado asc
+		// 			';
+
 		$Consulta = '
-						select mate.id_material_solicitado,
-							mate.material_solicitado, sap.fecha,
-							(prodp.precio*prodp.cantidad) as total,
-							cli.codigo_cliente, proc.proceso, proc.nombre
-						from material_solicitado mate, producto prod,
-							producto_cliente prodc, procesos proc, cliente cli,
-							producto_pedido prodp, pedido ped, pedido_sap sap
-						where mate.id_material_solicitado = prod.id_material
-							and prod.id_producto = prodc.id_producto
-							and proc.id_proceso = ped.id_proceso
-							and proc.id_cliente = cli.id_cliente
-							and prodc.id_prod_clie = prodp.id_prod_clie
-							and prodp.id_pedido = ped.id_pedido
-							and ped.id_pedido = sap.id_pedido					
-							and confirmada = "si"
-							'.$Consulta_SQL.'
-							and cli.id_grupo = "'.$this->session->userdata('id_grupo').'"
-						order by mate.id_material_solicitado asc
-					';
+		SELECT m.id_material_solicitado,
+			   m.material_solicitado,
+			   s.fecha,
+			   (pp.precio*pp.cantidad) as total,
+			   c.codigo_cliente,
+			   ps.proceso,
+			   ps.nombre
+		FROM material_solicitado m 
+		INNER JOIN producto p ON m.id_material_solicitado = p.id_material
+		INNER JOIN producto_cliente pc ON p.id_producto = pc.id_producto
+		INNER JOIN cliente c ON pc.id_prod_clie = c.id_cliente
+		INNER JOIN procesos ps ON c.id_cliente = ps.id_cliente
+		INNER JOIN producto_pedido pp ON pp.id_producto = p.id_producto
+		INNER JOIN pedido pd ON pp.id_pedido = pd.id_pedido
+		INNER JOIN pedido_sap s ON pd.id_pedido = s.id_pedido	
+		WHERE confirmada = "si"'.$Consulta_SQL.' 
+							and c.id_grupo = "'.$this->session->userdata('id_grupo').'"
+							order by m.id_material_solicitado asc
+
+
+
+
+		';
 		//echo $Consulta;
 		$Resultado = $this->db->query($Consulta);
 		if(0 < $Resultado->num_rows())
@@ -80,47 +113,80 @@ class Venta_linea_m extends CI_Model {
 		
 		if($condicion == 'lineal')
 		{
-			$Consulta_SQL = 'and ped.fecha_reale >= "'.$anho.'-01-01"
-										and ped.fecha_reale <= "'.$anho.'-12-31"
-										and mate.id_material_solicitado = "'.$id_material.'"';
+			$Consulta_SQL = 'and pd.fecha_reale >= "'.$anho.'-01-01"
+										and pd.fecha_reale <= "'.$anho.'-12-31"
+										and m.id_material_solicitado = "'.$id_material.'"';
 		}
 		if($condicion == '')
 		{
-			$Consulta_SQL = 'and ped.fecha_reale >= "'.$anho.'-'.$mes.'-01"
-									and ped.fecha_reale <= "'.$anho.'-'.$mes.'-31"';
+			$Consulta_SQL = 'and pd.fecha_reale >= "'.$anho.'-'.$mes.'-01"
+									and pd.fecha_reale <= "'.$anho.'-'.$mes.'-31"';
 		}
 		if($condicion == 'rango_fechas')
 		{
-			$Consulta_SQL = 'and sap.fecha >= "'.$anho.'-'.$mes.'-01"
-									and sap.fecha <= "'.$anho.'-'.$mes.'-31"
-									and mate.id_material_solicitado = "'.$id_material.'"';
+			$Consulta_SQL = 'and s.fecha >= "'.$anho.'-'.$mes.'-01"
+									and s.fecha <= "'.$anho.'-'.$mes.'-31"
+									and m.id_material_solicitado = "'.$id_material.'"';
 		}
 		
 		if('todos' != $Id_Cliente)
 		{
-			$Consulta_SQL.= ' and cli.id_cliente = "'.$Id_Cliente.'" ';
+			$Consulta_SQL.= ' and c.id_cliente = "'.$Id_Cliente.'" ';
 		}
 		
 		
+		// $Consulta = '
+		// 					SELECT 
+		// 						mate.id_material_solicitado, 
+		// 						mate.material_solicitado,
+		// 						(prodp.precio*prodp.cantidad) as total, 
+		// 						ped.fecha_reale,
+		// 						cli.codigo_cliente, 
+		// 						proc.proceso, 
+		// 						proc.nombre
+		// 					FROM 
+		// 						material_solicitado mate, 
+		// 						producto prod, 
+		// 						producto_cliente prodc,
+		// 						producto_pedido prodp, 
+		// 						pedido ped, 
+		// 						pedido_sap sap,
+		// 						procesos proc, 
+		// 						cliente cli
+		// 					WHERE mate.id_material_solicitado = prod.id_material
+		// 						and prod.id_producto = prodc.id_producto
+		// 						and proc.id_proceso = ped.id_proceso
+		// 						and proc.id_cliente = cli.id_cliente
+		// 						and prodc.id_prod_clie = prodp.id_prod_ped
+		// 						and prodp.id_pedido = ped.id_pedido
+		// 						and ped.id_pedido = sap.id_pedido
+		// 						and sap.fecha = "0000-00-00"
+		// 						'.$Consulta_SQL.'
+		// 						and ped.fecha_reale != "0000-00-00"
+		// 						and cli.id_grupo = "'.$this->session->userdata('id_grupo').'"
+		// 					order by mate.id_material_solicitado asc
+		// 				';
 		$Consulta = '
-							select mate.id_material_solicitado, mate.material_solicitado,
-								(prodp.precio*prodp.cantidad) as total, ped.fecha_reale,
-								cli.codigo_cliente, proc.proceso, proc.nombre
-							from material_solicitado mate, producto prod, producto_cliente prodc,
-								producto_pedido prodp, pedido ped, pedido_sap sap,
-								procesos proc, cliente cli
-							where mate.id_material_solicitado = prod.id_material
-								and prod.id_producto = prodc.id_producto
-								and proc.id_proceso = ped.id_proceso
-								and proc.id_cliente = cli.id_cliente
-								and prodc.id_prod_clie = prodp.id_prod_clie
-								and prodp.id_pedido = ped.id_pedido
-								and ped.id_pedido = sap.id_pedido
-								and sap.fecha = "0000-00-00"
-								'.$Consulta_SQL.'
-								and ped.fecha_reale != "0000-00-00"
-								and cli.id_grupo = "'.$this->session->userdata('id_grupo').'"
-							order by mate.id_material_solicitado asc
+							SELECT 
+								m.id_material_solicitado, 
+								m.material_solicitado,
+								(pp.precio*pp.cantidad) as total, 
+								pd.fecha_reale,
+								c.codigo_cliente, 
+								ps.proceso, 
+								ps.nombre
+							FROM material_solicitado m 
+							INNER JOIN producto p ON  m.id_material_solicitado = p.id_material
+							INNER JOIN producto_cliente pc ON pc.id_producto = p.id_producto  
+							INNER JOIN cliente c ON pc.id_prod_clie = c.id_cliente
+							INNER JOIN producto_pedido pp ON pp.id_producto = p.id_producto
+							INNER JOIN pedido pd ON pp.id_pedido = pd.id_pedido
+							INNER JOIN pedido_sap s ON pd.id_pedido = s.id_pedido
+							INNER JOIN procesos ps ON c.id_cliente = ps.id_cliente
+							WHERE s.fecha = "0000-00-00" '.$Consulta_SQL.'
+								AND pd.fecha_reale != "0000-00-00"
+								AND c.id_grupo = "'.$this->session->userdata('id_grupo').'"
+							ORDER BY m.id_material_solicitado ASC
 						';
 						
 		//echo $Consulta;
@@ -173,7 +239,7 @@ class Venta_linea_m extends CI_Model {
 							and prod.id_producto = prodc.id_producto
 							and proc.id_proceso = ped.id_proceso
 							and proc.id_cliente = cli.id_cliente
-							and prodc.id_prod_clie = prodp.id_prod_clie
+							and prodc.id_prod_clie = prodp.id_prod_ped
 							and prodp.id_pedido = ped.id_pedido
 							and ped.id_pedido = sap.id_pedido					
 							and confirmada = "si"
