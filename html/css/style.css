@@ -1,0 +1,368 @@
+.sttabs {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300
+}
+
+.sttabs nav {
+    text-align: center
+}
+
+.sttabs nav ul {
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center
+}
+
+.sttabs nav ul li {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0;
+    text-align: center;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1
+}
+
+.sttabs nav a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 2.5
+}
+
+.sttabs nav a span {
+    vertical-align: middle;
+    font-wight: 500;
+    font-size: 14px;
+    font-family: Rubik, sans-serif
+}
+
+.sttabs nav a:focus {
+    outline: 0
+}
+
+.sttabs nav li.tab-current a {
+    color: #f44336
+}
+
+.tabs-style-bar nav ul li a {
+    margin: 0 2px;
+    background-color: #f7fafc;
+    color: #686868;
+    padding: 5px 0;
+    transition: background-color .2s, color .2s
+}
+
+.tabs-style-bar nav ul li a:focus,
+.tabs-style-bar nav ul li a:hover {
+    color: #f44336
+}
+
+.tabs-style-bar nav ul li a span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-family: Poppins, sans-serif
+}
+
+.tabs-style-bar nav ul li.tab-current a {
+    background: #fb9678;
+    color: #fff
+}
+
+
+@media screen and (max-width:58em) {
+    .sttabs nav a span {
+        display: none
+    }
+    .sttabs nav a:before {
+        margin-right: 0
+    }
+}
+
+
+.sttabs {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300
+}
+
+.manage-users .tabs-style-iconbox nav ul li a.sticon:before {
+    margin-bottom: 15px
+}
+
+.tabs-style-iconbox .sticon::before {
+    display: block;
+    margin: 0 0 .25em
+}
+
+.tabs-style-iconfall nav li.tab-current .sticon::before {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.tabs-style-iconfall .sticon::before {
+    display: block;
+    margin: 0 0 .35em;
+    opacity: 0;
+    font-size: 24px;
+    -webkit-transition: -webkit-transform .2s, opacity .2s;
+    transition: transform .2s, opacity .2s;
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
+    pointer-events: none
+}
+
+
+@media screen and (max-width:58em) {
+    .tabs-style-iconfall nav li .sticon::before {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.tabs-style-circle .sticon::before {
+    display: block;
+    margin: 0;
+    pointer-events: none
+}
+
+.tabs-style-circle nav li.tab-current .sticon::before {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0)
+}
+
+.manage-users .tabs-style-iconbox nav ul li a.sticon:before {
+    margin-bottom: 15px
+}
+.sticon::before {
+    display: inline-block;
+    margin: 0 .4em 0 0;
+    vertical-align: middle;
+    font-size: 20px;
+    speak: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.ti-home:before {
+    content: "\e69b"
+}
+
+.ti-trash:before {
+    content: "\e605"
+}
+
+.ti-stats-up:before {
+    content: "\e673"
+}
+
+.ti-upload:before {
+    content: "\e66b"
+}
+.ti-settings:before {
+    content: "\e60f"
+}
+
+.content-wrapper .nicescroll-rails {
+    display: none!important
+}
+
+.content-wrap {
+    background: #fff
+}
+.tabs-style-shape .content-wrap {
+    background: #f7fafc
+}
+
+.tabs-style-flip .content-wrap {
+    background: #f7fafc
+}
+
+.tabs-style-circlefill .content-wrap {
+    border-top: 1px solid #f44336
+}
+
+.content-wrap {
+    position: relative
+}
+
+.content-wrap section {
+    display: none;
+    margin: 0 auto;
+    padding: 25px;
+    min-height: 150px
+}
+
+.content-wrap section p {
+    margin: 0;
+    padding: .75em 0
+}
+
+.content-wrap section.content-current {
+    display: block
+}
+
+.no-js .content-wrap section {
+    display: block;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(255, 255, 255, .6)
+}
+
+
+
+
+
+
+table td, table th{
+        padding: 1px 3px;
+    }
+    .tabular td, .tabular th{
+        border-bottom: 2px solid #b3b3b3;
+        line-height: 18px;
+    }
+    .rut_Agregado, .rut_Asignado, .rut_Procesando, .rut_Pausado, .rut_Aprobacion, .rut_Terminado{
+        padding: 0px 1px;
+        margin: 1px;
+        font-size: 11px;
+        border-radius: 2px 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+        display: inline-block;
+        width: 36px;
+    }
+        
+    .tablero_listas{
+        position: absolute;
+        top: 250px;
+        left: 10px;
+        width: 2500px;
+        padding-bottom: 50px;
+    }
+    .tablero_listas div{
+        position: absolute;
+        top: 0px;
+    }
+    .tablero_listas ul{
+        clear: both;
+        display: block;
+        height: 24px;
+        overflow: hidden;
+        /*background: url(/html/img/un_dia.png);*/
+    }
+    .tablero_listas li{
+        float: left;
+        overflow: hidden;
+        font-size: 10px;
+        height: 22px;
+    }
+    .tiempos .no_sortable{
+        font-weight: 700;
+    }
+    .tiempos li{
+        height: 24px;
+    }
+    .no_sortable{
+        width: 98px;
+        cursor: pointer;
+        padding-left: 3px;
+    }
+    .no_sortable:hover{
+        background-color: #cccccc;
+    }
+    .line_Agregado, .line_Procesando, .line_Asignado, .line_Pausado, .no_sortable{
+        border: 1px solid #ffffff;
+        color: #000000;
+    }
+    .line_Agregado{
+        background: #d5d5d5;
+    }
+    .line_Procesando{
+        background: #c5d09a;
+    }
+    .line_Asignado, .line_Pausado{
+        background: #c5d09a;
+    }
+    .ui-sortable li{
+        cursor: pointer;
+    }
+    .ui-sortable li:active{
+        cursor: move;
+    }
+    .ui-sortable .line_Agregado:active, .ui-sortable .line_Agregado:hover,
+    .ui-sortable .line_Procesando:active, .ui-sortable .line_Procesando:hover,
+    .ui-sortable .line_Asignado:active, .ui-sortable .line_Pausado:active,
+    .ui-sortable .line_Asignado:hover, .ui-sortable .line_Pausado:hover{
+        border: 1px solid #888888;
+    }
+    .ui-sortable .no_sortable:hover, .ui-sortable .no_sortable:active{
+        border: 1px solid #ffffff;
+        cursor: default;
+    }
+    .ui-sortable .line_Agregado:active, .ui-sortable .line_Agregado:hover{
+        background-color: #aaaaaa;
+    }
+    .ui-sortable .line_Procesando:active, .ui-sortable .line_Procesando:hover{
+        background-color: #7CB26B;
+    }
+    .ui-sortable .line_Asignado:active, .ui-sortable .line_Pausado:active,
+    .ui-sortable .line_Asignado:hover, .ui-sortable .line_Pausado:hover{
+        background-color: #7795B2;
+    }
+    .tiempos li{
+        color: #000;
+        background: url(/html/img/line_titulo.png);
+    }
+    .posicion_fix .no_sortable{
+        background: #dddddd;
+        overflow: hidden;
+    }
+    .posicion_fix span:hover{
+        text-decoration: underline;
+    }
+    
+    
+    input.btn_bonito{
+        float: right;
+        margin-top: 10px;
+        border: none;
+        color: #555555;
+        font: bold 12px "helvetica neue", helvetica, arial, sans-serif;
+        line-height: 1;
+        text-align: left;
+        width: 100px;
+        height: 45px;
+        cursor: pointer;
+        background: url('/html/img/flecha-inicio.png') repeat-x;
+    }
+    input.btn_bonito:hover{
+        color: #333333;
+        background: url('/html/img/flecha-inicio.png') repeat-x;
+    }

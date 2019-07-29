@@ -16,134 +16,8 @@
 <!-- <script type="text/javascript" src="/html/js/jquery.flot.pie.js"></script> -->
 <!-- Atencion: Estos estilos contraatacan los estilos generales, porque todo tiene tamanho especial -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<style>
-	
-	table td, table th{
-		padding: 1px 3px;
-	}
-	.tabular td, .tabular th{
-		border-bottom: 2px solid #b3b3b3;
-		line-height: 18px;
-	}
-	.rut_Agregado, .rut_Asignado, .rut_Procesando, .rut_Pausado, .rut_Aprobacion, .rut_Terminado{
-		padding: 0px 1px;
-		margin: 1px;
-		font-size: 11px;
-		border-radius: 2px 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
-		display: inline-block;
-		width: 36px;
-	}
-	
-	
-	.tablero_listas{
-		position: absolute;
-		top: 250px;
-		left: 10px;
-		width: 2500px;
-		padding-bottom: 50px;
-	}
-	.tablero_listas div{
-		position: absolute;
-		top: 0px;
-	}
-	.tablero_listas ul{
-		clear: both;
-		display: block;
-		height: 24px;
-		overflow: hidden;
-		/*background: url(/html/img/un_dia.png);*/
-	}
-	.tablero_listas li{
-		float: left;
-		overflow: hidden;
-		font-size: 10px;
-		height: 22px;
-	}
-	.tiempos .no_sortable{
-		font-weight: 700;
-	}
-	.tiempos li{
-		height: 24px;
-	}
-	.no_sortable{
-		width: 98px;
-		cursor: pointer;
-		padding-left: 3px;
-	}
-	.no_sortable:hover{
-		background-color: #cccccc;
-	}
-	.line_Agregado, .line_Procesando, .line_Asignado, .line_Pausado, .no_sortable{
-		border: 1px solid #ffffff;
-		color: #000000;
-	}
-	.line_Agregado{
-		background: #d5d5d5;
-	}
-	.line_Procesando{
-		background: #c5d09a;
-	}
-	.line_Asignado, .line_Pausado{
-		background: #c5d09a;
-	}
-	.ui-sortable li{
-		cursor: pointer;
-	}
-	.ui-sortable li:active{
-		cursor: move;
-	}
-	.ui-sortable .line_Agregado:active, .ui-sortable .line_Agregado:hover,
-	.ui-sortable .line_Procesando:active, .ui-sortable .line_Procesando:hover,
-	.ui-sortable .line_Asignado:active, .ui-sortable .line_Pausado:active,
-	.ui-sortable .line_Asignado:hover, .ui-sortable .line_Pausado:hover{
-		border: 1px solid #888888;
-	}
-	.ui-sortable .no_sortable:hover, .ui-sortable .no_sortable:active{
-		border: 1px solid #ffffff;
-		cursor: default;
-	}
-	.ui-sortable .line_Agregado:active, .ui-sortable .line_Agregado:hover{
-		background-color: #aaaaaa;
-	}
-	.ui-sortable .line_Procesando:active, .ui-sortable .line_Procesando:hover{
-		background-color: #7CB26B;
-	}
-	.ui-sortable .line_Asignado:active, .ui-sortable .line_Pausado:active,
-	.ui-sortable .line_Asignado:hover, .ui-sortable .line_Pausado:hover{
-		background-color: #7795B2;
-	}
-	.tiempos li{
-		color: #000;
-		background: url(/html/img/line_titulo.png);
-	}
-	.posicion_fix .no_sortable{
-		background: #dddddd;
-		overflow: hidden;
-	}
-	.posicion_fix span:hover{
-		text-decoration: underline;
-	}
-	
-	
-	input.btn_bonito{
-		float: right;
-		margin-top: 10px;
-		border: none;
-		color: #555555;
-		font: bold 12px "helvetica neue", helvetica, arial, sans-serif;
-		line-height: 1;
-		text-align: left;
-		width: 100px;
-		height: 45px;
-		cursor: pointer;
-		background: url('/html/img/flecha-inicio.png') repeat-x;
-	}
-	input.btn_bonito:hover{
-		color: #333333;
-		background: url('/html/img/flecha-inicio.png') repeat-x;
-	}
-	
-</style>
+<script src="/html/js/cbpFWTabs.js"></script>
+<link href="/html/css/style.css" rel="stylesheet">
 
 <script type="text/javascript">
 	$(function() {
@@ -157,46 +31,435 @@
 		cambio_scan($(this).attr('id'));
 	});
 </script>
+
+<div class="container">
+<div class="col-md-12">
 <!--INICIO NUEVA SECCION-->
 <tr>
-<select id="departamento_consulta">
-	<?php 
-	foreach ($Usuarios as $Dpto_Usuarios) {
-		if(
-			'Gerente de Grupo' != $Dpto_Usuarios['dpto']
-			&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
-			&& 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
-			&& 'Ventas' != $Dpto_Usuarios['dpto']
-			&& 'Grupo Externo' != $Dpto_Usuarios['dpto'])
-		{
-	?>
-		<option value="<?=$Dpto_Usuarios['id_dpto']?>"><?=$Dpto_Usuarios['dpto']?></option>
-	<?php 
-		}
-	}
-	?>
-</select>
 
-<select name="mes_consulta" id="mes_consulta">
-	<?php
-		foreach($Meses as $Mes => $MNombre)
-		{
-	?>
-		<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
-	<?php
-		}
-	?>
-</select>
-<input type="text" name="ano_consulta" id="ano_consulta" size="8" value="<?=$Fechas['anho1']?>" />
-</td>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <select id="departamento_consulta" >
+                <?php 
+                foreach ($Usuarios as $Dpto_Usuarios) {
+                    if(
+                        'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+                        && 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+                        && 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
+                        && 'Ventas' != $Dpto_Usuarios['dpto']
+                        && 'Grupo Externo' != $Dpto_Usuarios['dpto'])
+                    {
+                ?>
+                    <option value="<?=$Dpto_Usuarios['id_dpto']?>"><?=$Dpto_Usuarios['dpto']?></option>
+                <?php 
+                    }
+                }
+                ?>
+            </select>
+
+
+            <select name="mes_consulta" id="mes_consulta">
+                <?php
+                    foreach($Meses as $Mes => $MNombre)
+                    {
+                ?>
+                    <option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
+                <?php
+                    }
+                ?>
+            </select>
+
+            <input type="text" name="ano_consulta" id="ano_consulta" size="8" value="<?=$Fechas['anho1']?>" />
+          
+
+            <button id="informacion" class="btn btn-sm btn-default" onclick="cargarInfo();">Ver Reporte</button>
+
+            <!-- <div class="clearfix"></div>  style="display: none;"-->
+
+     
+        </div>  
+
+        <div id="formulario_filtros" style="display: none;">
+            <div class="col-md-7">
+                <form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
+                    <!-- <div class="input-group"> -->
+                        <label>Comienzo</label>
+                        <input type="text" name="dia1" id="dia1" size="5" value="<?=$Fechas['dia1']?>" />
+                        <select name="mes1" id="mes1">
+                            <?php
+                            foreach($Meses as $Mes => $MNombre)
+                            {
+                                ?>
+                                <option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                        <input type="text" name="anho1" id="anho1" size="6" value="<?=$Fechas['anho1']?>" />
+
+                        <label for="trabajo2" class="pull-right">Inconclusos</label>
+                        <input type="radio" name="trabajo" id="trabajo2" class="pull-right" value="incompleto"<?=('incompleto'==$Trabajo)?' checked="checked"':''?> />
+                        
+                        <label for="trabajo1" class="pull-right">Terminados</label>
+                        <input type="radio" name="trabajo" id="trabajo1" class="pull-right" value="finalizado"<?=('finalizado'==$Trabajo)?' checked="checked"':''?> />
+
+                        <br>
+                        <br>
+
+                        <label>Finalizaci&oacute;n</label>
+                        <input type="text" name="dia2" id="dia2" size="5" value="<?=$Fechas['dia2']?>" />
+                        <select name="mes2" id="mes2">
+                            <?php
+                            foreach($Meses as $Mes => $MNombre)
+                            {
+                                ?>
+                                <option value="<?=$Mes?>"<?=($Mes==$Fechas['mes2'])?' selected="selected"':''?>><?=$MNombre?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                        <input type="text" name="anho2" id="anho2" size="8" value="<?=$Fechas['anho2']?>" />
+                        
+                        <label for="trabajo4" class="pull-right">Reproceso</label>
+                        <input type="radio" name="trabajo" id="trabajo4" class="pull-right" value="reproceso"<?=('reproceso'==$Trabajo)?' checked="checked"':''?> />
+
+                        <label for="trabajo3" class="pull-right">Atrasados</label>
+                        <input type="radio" name="trabajo" id="trabajo3" class="pull-right" value="atrasado"<?=('atrasado'==$Trabajo)?' checked="checked"':''?> />
+
+                        <br>
+                        <br>
+
+                        <label>Pa&iacute;s</label>
+                        <select name="pais_c" id="pais_c">
+                            <option value="">Todos</option>
+                            <?php
+                            foreach($Paises_C as $iPais => $nPais)
+                            {
+                                ?>
+                                <option value="<?=$iPais?>"<?=($Pais_C==$iPais)?' selected="selected"':''?>><?=$nPais?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+
+                        <select name='bus_material' id='bus_material' class="pull-right">
+                            <option value=''></option>
+                            <?php
+                            foreach($bus_materiales as $Datos)
+                            {
+                                ?>
+                                <option value='<?=$Datos['id_material_solicitado']?>' <?=($Id_material==$Datos['id_material_solicitado'])?' selected="selected"':''?>><?=$Datos['material_solicitado']?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+
+                        <br>
+                        <br>
+
+                        <label>&Aacute;rea</label>
+                        <select name="puesto" id="puesto">
+                            <option value="todos">Todos</option>
+                            <?php
+                            foreach($Usuarios as $Dpto_Usuarios)
+                            {
+                                if(
+                                    'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+                                    && 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+                                    && 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
+                                    && 'Ventas' != $Dpto_Usuarios['dpto']
+                                    && 'Grupo Externo' != $Dpto_Usuarios['dpto'])
+                                {
+                                    ?>
+                                    <optgroup label="<?=$Dpto_Usuarios['dpto']?>">
+                                        <?php
+                                        foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
+                                        {
+                                            ?>
+                                            <option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </optgroup>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
+
+                        <input type="submit" class="btn_bonito pull-right" value="Crear Reporte" />  
+
+                                              
+                        <?php
+                        if(
+                            'Sistemas' == $this->session->userdata('codigo')//|| 'Gerencia' == $this->session->userdata('codigo')
+                        )
+                        {
+                            ?>
+                            <input type="button" value="Modificar Prioridades" id="guar_prior" class="pull-right"/>
+                            <?php
+                        }
+                        ?>
+
+                        <br>
+                        <br>
+
+                        <label>Cliente</label>
+                        <input type="hidden" name="cliente_tipo" id="cliente_tipo" value="todos" />
+                        <select name="cliente" id="cliente">
+                            <option value="todos">Todos</option>
+                            <?php
+                            foreach($Clientes as $Cliente)
+                            {
+                                ?>
+                                <option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    <!-- </div> -->
+                </form>            
+            </div>     
+          
+        </div>
+    </div>
+  </td>
 </tr>
-
-<button id="informacion" class="btn btn-sm btn-default" onclick="cargarInfo();">Ver Reporte</button>
 <!--FIN NUEVA SECCION-->
-
-
+</div>
 <br>
 <br>
+
+
+
+   <!-- codigo original-->
+<!-- <div id="formulario_filtros" class="col-md-6" style="display: none;"> -->
+<!--      <form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Comienzo</td>
+                            <td>
+                                <input type="text" name="dia1" id="dia1" size="5" value="<?=$Fechas['dia1']?>" />
+                                <select name="mes1" id="mes1">
+                                    <?php
+                                    foreach($Meses as $Mes => $MNombre)
+                                    {
+                                        ?>
+                                        <option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <input type="text" name="anho1" id="anho1" size="8" value="<?=$Fechas['anho1']?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Finalizaci&oacute;n</td>
+                            <td>
+                                <input type="text" name="dia2" id="dia2" size="5" value="<?=$Fechas['dia2']?>" />
+                                <select name="mes2" id="mes2">
+                                    <?php
+                                    foreach($Meses as $Mes => $MNombre)
+                                    {
+                                        ?>
+                                        <option value="<?=$Mes?>"<?=($Mes==$Fechas['mes2'])?' selected="selected"':''?>><?=$MNombre?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <input type="text" name="anho2" id="anho2" size="8" value="<?=$Fechas['anho2']?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pa&iacute;s</td>
+                            <td>
+                                <select name="pais_c" id="pais_c">
+                                    <option value="">Todos</option>
+                                    <?php
+                                    foreach($Paises_C as $iPais => $nPais)
+                                    {
+                                        ?>
+                                        <option value="<?=$iPais?>"<?=($Pais_C==$iPais)?' selected="selected"':''?>><?=$nPais?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&Aacute;rea</td>
+                            <td>
+                                <select name="puesto" id="puesto">
+                                    <option value="todos">Todos</option>
+                                    <?php
+                                    foreach($Usuarios as $Dpto_Usuarios)
+                                    {
+                                        if(
+                                            'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+                                            && 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+                                            && 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
+                                            && 'Ventas' != $Dpto_Usuarios['dpto']
+                                            && 'Grupo Externo' != $Dpto_Usuarios['dpto'])
+                                        {
+                                            ?>
+                                            <optgroup label="<?=$Dpto_Usuarios['dpto']?>">
+                                                <?php
+                                                foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
+                                                {
+                                                    ?>
+                                                    <option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </optgroup>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cliente</td>
+                            <td>
+                                <input type="hidden" name="cliente_tipo" id="cliente_tipo" value="todos" />
+                                <select name="cliente" id="cliente">
+                                    <option value="todos">Todos</option>
+                                    <?php
+                                    foreach($Clientes as $Cliente)
+                                    {
+                                        ?>
+                                        <option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td>
+
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="radio" name="trabajo" id="trabajo1" value="finalizado"<?=('finalizado'==$Trabajo)?' checked="checked"':''?> />
+                                <label for="trabajo1">Terminados</label>
+                                <input type="radio" name="trabajo" id="trabajo2" value="incompleto"<?=('incompleto'==$Trabajo)?' checked="checked"':''?> />
+                                <label for="trabajo2">Inconclusos</label>
+                                <br />
+                                <input type="radio" name="trabajo" id="trabajo3" value="atrasado"<?=('atrasado'==$Trabajo)?' checked="checked"':''?> />
+                                <label for="trabajo3">Atrasados</label>
+                                <input type="radio" name="trabajo" id="trabajo4" value="reproceso"<?=('reproceso'==$Trabajo)?' checked="checked"':''?> />
+                                <label for="trabajo4">Reproceso</label>
+                                <select name='bus_material' id='bus_material'>
+                                    <option value=''></option>
+                                    <?php
+                                    foreach($bus_materiales as $Datos)
+                                    {
+                                        ?>
+                                        <option value='<?=$Datos['id_material_solicitado']?>' <?=($Id_material==$Datos['id_material_solicitado'])?' selected="selected"':''?>><?=$Datos['material_solicitado']?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <?php
+                    if(
+                        'Sistemas' == $this->session->userdata('codigo')
+//|| 'Gerencia' == $this->session->userdata('codigo')
+                    )
+                    {
+                        ?>
+
+                        <br /><br />
+                        <input type="button" value="Modificar Prioridades" id="guar_prior" />
+                        <?php
+                    }
+                    ?>
+                    <input type="submit" class="btn_bonito" value="Crear Reporte" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php
+                    $Avanzar = array();
+                    foreach($Usuarios as $Dpto_Usuarios)
+                    {
+                        if(
+                            'Gerente de Grupo' != $Dpto_Usuarios['dpto']
+                            && 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
+                        )
+                        {
+                            foreach($Dpto_Usuarios['usuarios'] as $Datos => $Datos_usuario)
+                            {
+                                $Avanzar[$Datos] = $Datos;
+                            }
+                        }
+                    }
+
+                    $puesto_ant = 'todos';
+                    $puesto_sig = '';
+                    $bandera = 0;
+                    foreach($Avanzar as $ide_usu_puesto)
+                    {
+                        if($bandera == 1 or $Puesto == 'todos')
+                        {
+                            $puesto_sig = $ide_usu_puesto;
+                            break;
+                        }
+                        if($ide_usu_puesto == $Puesto)
+                        {
+                            $bandera = 1;
+                        }
+                        if($bandera == 0)
+                        {
+                            $puesto_ant = $ide_usu_puesto;
+                        }
+                    }
+                    ?>
+
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+
+    </form>
+</div> -->
+
+</div>
+	<section>
+        <div class="sttabs tabs-style-bar">
+            <nav>
+                <ul>
+                    <li><a href="#section-bar-1" class="sticon ti-home"><span>INFOGRAFIAS</span></a></li>
+                    <li><a href="#section-bar-2" class="sticon ti-trash"><span>ESTADISTICAS</span></a></li>
+                    <li style="display: none"><a href="#section-bar-3" class="sticon ti-stats-up" id="li_tabla"><span>TABLAS</span></a></li>
+                   <!--  <li><a href="#section-bar-4" class="sticon ti-upload"><span>Upload</span></a></li>
+                    <li><a href="#section-bar-5" class="sticon ti-settings"><span>Settings</span></a></li> -->
+                </ul>
+            </nav>
+            <div class="content-wrap">
+                <section id="section-bar-1">
+
 <div class="row">
                     <div class="col-lg-4 col-sm-4">
                         <div class="panel panel-info">
@@ -395,228 +658,40 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
+</div>
+                </section>
+                <section id="section-bar-2">
+                     <!-- /.row -->
 				<canvas id="grafico-linea" style="width:800px;height:300px;"></canvas>
+				</section>
+                <section id="section-bar-3">
+                    <h2>Tabbing 3</h2></section>
+                <section id="section-bar-4">
+                    <h2>Tabbing 4</h2></section>
+                <section id="section-bar-5">
+                    <h2>Tabbing 5</h2></section>
+            </div>
+            <!-- /content -->
+        </div>
+	    <!-- /tabs -->
+	</section>
 
 
-<form action="/carga/seguimiento" method="post" name="miform" id="formseguimiento">
-	<table>
-		<tr>
-			<td>
-				<table>
-					<tr>
-						<td>Comienzo</td>
-						<td>
-							<input type="text" name="dia1" id="dia1" size="5" value="<?=$Fechas['dia1']?>" />
-							<select name="mes1" id="mes1">
-<?php
-foreach($Meses as $Mes => $MNombre)
-{
-?>
-								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes1'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?php
-}
-?>
-							</select>
-							<input type="text" name="anho1" id="anho1" size="8" value="<?=$Fechas['anho1']?>" />
-						</td>
-					</tr>
-					<tr>
-						<td>Finalizaci&oacute;n</td>
-						<td>
-							<input type="text" name="dia2" id="dia2" size="5" value="<?=$Fechas['dia2']?>" />
-							<select name="mes2" id="mes2">
-<?php
-foreach($Meses as $Mes => $MNombre)
-{
-?>
-								<option value="<?=$Mes?>"<?=($Mes==$Fechas['mes2'])?' selected="selected"':''?>><?=$MNombre?></option>
-<?php
-}
-?>
-							</select>
-							<input type="text" name="anho2" id="anho2" size="8" value="<?=$Fechas['anho2']?>" />
-						</td>
-					</tr>
-					<tr>
-						<td>Pa&iacute;s</td>
-						<td>
-							<select name="pais_c" id="pais_c">
-								<option value="">Todos</option>
-<?php
-foreach($Paises_C as $iPais => $nPais)
-{
-?>
-								<option value="<?=$iPais?>"<?=($Pais_C==$iPais)?' selected="selected"':''?>><?=$nPais?></option>
-<?php
-}
-?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>&Aacute;rea</td>
-						<td>
-							<select name="puesto" id="puesto">
-								<option value="todos">Todos</option>
-	<?php
-		foreach($Usuarios as $Dpto_Usuarios)
-		{
-		if(
-			'Gerente de Grupo' != $Dpto_Usuarios['dpto']
-			&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
-			&& 'Planificaci&oacute;n' != $Dpto_Usuarios['dpto']
-			&& 'Ventas' != $Dpto_Usuarios['dpto']
-			&& 'Grupo Externo' != $Dpto_Usuarios['dpto'])
-		{
-	?>
-				<optgroup label="<?=$Dpto_Usuarios['dpto']?>">
-			<?php
-				foreach($Dpto_Usuarios['usuarios'] as $Id_Usuario => $Usuario)
-				{
-			?>
-				<option value="<?=$Id_Usuario?>"<?=($Id_Usuario==$Puesto)?' selected="selected"':''?>><?=$Usuario['usuario']?></option>
-			<?php
-				}
-			?>
-				</optgroup>
-			<?php
-			}
-		}
-?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Cliente</td>
-						<td>
-							<input type="hidden" name="cliente_tipo" id="cliente_tipo" value="todos" />
-							<select name="cliente" id="cliente">
-								<option value="todos">Todos</option>
-<?php
-foreach($Clientes as $Cliente)
-{
-?>
-								<option value="<?=$Cliente['id_cliente']?>"<?=($Cliente['id_cliente']==$Id_Cliente)?' selected="selected"':''?>><?=$Cliente['codigo_cliente']?> - <?=$Cliente['nombre']?></option>
-<?php
-}
-?>
-							</select>
-						</td>
-					</tr>
-				</table>
-				
-			</td>
-			<td>
-				
-				<table>
-					<tr>
-						<td>
-							<input type="radio" name="trabajo" id="trabajo1" value="finalizado"<?=('finalizado'==$Trabajo)?' checked="checked"':''?> />
-							<label for="trabajo1">Terminados</label>
-							<input type="radio" name="trabajo" id="trabajo2" value="incompleto"<?=('incompleto'==$Trabajo)?' checked="checked"':''?> />
-							<label for="trabajo2">Inconclusos</label>
-							<br />
-							<input type="radio" name="trabajo" id="trabajo3" value="atrasado"<?=('atrasado'==$Trabajo)?' checked="checked"':''?> />
-							<label for="trabajo3">Atrasados</label>
-							<input type="radio" name="trabajo" id="trabajo4" value="reproceso"<?=('reproceso'==$Trabajo)?' checked="checked"':''?> />
-							<label for="trabajo4">Reproceso</label>
-							<select name='bus_material' id='bus_material'>
-								<option value=''></option>
-<?php
-foreach($bus_materiales as $Datos)
-{
-?>
-								<option value='<?=$Datos['id_material_solicitado']?>' <?=($Id_material==$Datos['id_material_solicitado'])?' selected="selected"':''?>><?=$Datos['material_solicitado']?></option>
-<?php
-}
-?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							
-						</td>
-					</tr>
-				</table>
-				
-<?php
-if(
-	'Sistemas' == $this->session->userdata('codigo')
-	//|| 'Gerencia' == $this->session->userdata('codigo')
-)
-{
-?>
-				
-				<br /><br />
-				<input type="button" value="Modificar Prioridades" id="guar_prior" />
-<?php
-}
-?>
-				<input type="submit" class="btn_bonito" value="Crear Reporte" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-<?php
-$Avanzar = array();
-foreach($Usuarios as $Dpto_Usuarios)
-{
-	if(
-		'Gerente de Grupo' != $Dpto_Usuarios['dpto']
-		&& 'Sistemas Inform&aacute;ticos' != $Dpto_Usuarios['dpto']
-	)
-	{
-		foreach($Dpto_Usuarios['usuarios'] as $Datos => $Datos_usuario)
-		{
-			$Avanzar[$Datos] = $Datos;
-		}
-	}
-}
+               
 
-			$puesto_ant = 'todos';
-			$puesto_sig = '';
-		$bandera = 0;
-		foreach($Avanzar as $ide_usu_puesto)
-		{
-			if($bandera == 1 or $Puesto == 'todos')
-			{
-				$puesto_sig = $ide_usu_puesto;
-				break;
-			}
-			if($ide_usu_puesto == $Puesto)
-			{
-				$bandera = 1;
-			}
-			if($bandera == 0)
-			{
-				$puesto_ant = $ide_usu_puesto;
-			}
-		}
-?>
-				<span id='puesto_ant-<?=$puesto_ant?>' name='puesto_anterior' class='span_carga' title='Cargar puesto anterior'><strong>&laquo; Anterior</strong></span> &nbsp; &nbsp;
-				<span id='puesto_sig-<?=$puesto_sig?>' name='puesto_siguiente' class='span_carga' title='Cargar puesto siguiente'><strong>Siguiente &raquo;</strong></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+ <span id='puesto_ant-<?=$puesto_ant?>' name='puesto_anterior' class='span_carga' title='Cargar puesto anterior'><strong>&laquo; Anterior</strong></span> &nbsp; &nbsp;
+                <span id='puesto_sig-<?=$puesto_sig?>' name='puesto_siguiente' class='span_carga' title='Cargar puesto siguiente'><strong>Siguiente &raquo;</strong></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php
 if(isset($Carga['trabajos']))
 {
 ?>
-				<label style="text-align: right;">Total de Trabajos: <strong><?=count($Carga['trabajos'])?></strong></label>
+                <label style="text-align: right;">Total de Trabajos: <strong><?=count($Carga['trabajos'])?></strong></label>
 <?php
 }
 ?>
-			</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
-	</table>
-	
-</form>
-
 
 <?php
 if($Mostar_Datos)
@@ -625,7 +700,7 @@ if($Mostar_Datos)
 
 <br />
 
-<div>
+<div style="display: none;">
 <table class="tabular" style="width: 100%;" id="ordena_tabla">
 	<tr class="no_ordena">
 		<th style="width: 20px;"></th>
@@ -1326,12 +1401,21 @@ if(
 				// $('#esperado_num,').text((((response.utilizadas[0]["tiempo"]/60)*100)/133).toFixed(2));
 				$('#esperado_num,').text(85);
 				$('#real_num').text((((response.utilizadas[0]["tiempo"]/60)*100)/190).toFixed(2));
+                $('#formulario_filtros').show();
 			},
 			error: function(msg){ alert("Ocurrio un Error"); }
 		});
 	}
 </script>
 
+
+<script type="text/javascript">
+    (function() {
+        [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
+            new CBPFWTabs(el);
+        });
+    })();
+    </script>
 
 <script type='text/javascript'>
 
