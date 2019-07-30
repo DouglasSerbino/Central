@@ -8,6 +8,11 @@
 <script type="text/javascript" src="/html/js/acciones.js"></script>
 
 
+<script src="/html/js/cbpFWTabs.js"></script>
+<link href="/html/css/style.css" rel="stylesheet">
+<link href="/html/css/tab_vertical.css" rel="stylesheet">
+
+
 <?php
 $Icono_Ruta = array(
     2 => 'fdi_pdf',
@@ -85,7 +90,7 @@ $Icono_Ruta = array(
     								No se puede Crear un Pedido Nuevo.<br />Este Proceso tiene una Ruta sin finalizar.</p>
     							</div>
     						</div>
-    					</div>
+    			</div>
     				</div>
     			</div>
     			<div class="panel panel-default">
@@ -621,16 +626,44 @@ $Icono_Ruta = array(
     							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
     								Cotizacion
     							</a>
-    						</h4> </div>
+    						</h4> 
+                        </div>
     						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     							<div class="panel-body">
-    								<input type="checkbox" name="cotizacion" id="cotizacion" style="display: none;" checked="checked" />
-    								<div id="div_cotizaciones"></div>
+
+                                    <div class="container-fluid">                        
+                                        <div class="vertical-tab" role="tabpanel">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#arte" data-toggle="tab">ARTE</a></li>
+                                                <li role="presentation"><a href="#negativos" data-toggle="tab">NEGATIVOS</a></li>
+                                                <li role="presentation"><a href="#planacha_fotopolimeras" data-toggle="tab">PLANCHAS FOTOPOLIMERAS</a></li>
+                                                <li role="presentation"><a href="#prueba_color" data-toggle="tab">PRUEBA DE COLOR</a></li>
+                                                <li role="presentation"><a href="#otros" data-toggle="tab">OTROS</a></li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content tabs">
+                                                <div class="tab-pane active" id="arte">lorem</div>
+                                                <div class="tab-pane" id="negativos">Profile Tab.</div>
+                                                <div class="tab-pane" id="planacha_fotopolimeras">Messages Tab.</div>
+                                                <div class="tab-pane" id="prueba_color">Settings Tab.</div>
+                                                <div class="tab-pane" id="otros">Settings Tab.</div>
+                                            </div>
+
+                                                <!-- <div role="tabpanel" class="tab-pane fade" id="Section3">
+                                                    <h3>Section 3</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius.</p>
+                                                </div> -->
+                                        </div>
+                                    </div>  
+<!-- 
+                                    <input type="checkbox" name="cotizacion" id="cotizacion" style="display: none;" checked="checked" />
+    								<div id="div_cotizaciones"></div> -->
 
     								<br />
     							</div>
     						</div>
-    					</div>
+    				</div>
     					<div class="panel panel-default">
     						<div class="panel-heading" role="tab" id="headingThree">
     							<h4 class="panel-title">
