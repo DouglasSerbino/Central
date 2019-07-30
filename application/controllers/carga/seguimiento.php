@@ -199,6 +199,28 @@ class Seguimiento extends CI_Controller {
 		$mes = $this->seguridad_m->mysql_seguro($this->input->post('mes'));
 		$ano = $this->seguridad_m->mysql_seguro($this->input->post('ano'));
 
+
+		//formulario a enviar para generar la tabla
+		$diaC = $this->seguridad_m->mysql_seguro($this->input->post('diaC'));
+		$mesC = $this->seguridad_m->mysql_seguro($this->input->post('mesC'));
+		$anoC = $this->seguridad_m->mysql_seguro($this->input->post('anoC'));
+
+		$diaF = $this->seguridad_m->mysql_seguro($this->input->post('diaF'));
+		$mesF = $this->seguridad_m->mysql_seguro($this->input->post('mesF'));
+		$anoF = $this->seguridad_m->mysql_seguro($this->input->post('anoF'));
+
+		$pais = $this->seguridad_m->mysql_seguro($this->input->post('pais'));
+		$puesto = $this->seguridad_m->mysql_seguro($this->input->post('puesto'));
+		$cliente = $this->seguridad_m->mysql_seguro($this->input->post('cliente'));
+
+		$r_terminado = $this->seguridad_m->mysql_seguro($this->input->post('r_terminado'));
+		$r_inconcluso = $this->seguridad_m->mysql_seguro($this->input->post('r_inconcluso'));
+		$r_atrasados = $this->seguridad_m->mysql_seguro($this->input->post('r_atrasados'));
+		$r_reproceso = $this->seguridad_m->mysql_seguro($this->input->post('r_reproceso'));
+
+		$material = $this->seguridad_m->mysql_seguro($this->input->post('material'));
+
+
 		$this->load->model('carga/seguimiento_m', 'seguimiento');
 		$trabajos_realizados = $this->seguimiento->obtenerTrabajosRealizadosUsuario($usuario,$mes,$ano);
 		$rechazos = $this->seguimiento->obtenerRechazosUsuario($usuario,$mes,$ano);

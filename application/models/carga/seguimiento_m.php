@@ -528,7 +528,11 @@ class Seguimiento_m extends CI_Model {
 		return $utilizado;
 		
 	}
-	
+
+
+	function data_report($diaC,$mesC,$anoC,$diaF,$mesF,$anoF,$pais,$puesto,$cliente,$r_terminado,$r_inconcluso,$r_atrasados,$r_reproceso,$material){
+
+	}	
 }
 
 /* Fin del archivo */
