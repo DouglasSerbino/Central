@@ -58,7 +58,7 @@ $db['default']['password'] = '12bichito';
 $db['default']['database'] = 'seguimiento10x';
 */
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'dserbino';
+$db['default']['username'] = 'serbino';
 $db['default']['password'] = 's8oESeL5';
 $db['default']['database'] = 'seguimiento_10x';
 

@@ -234,6 +234,83 @@ class Seguimiento extends CI_Controller {
 	    echo json_encode($infoarray);
 
 	}
+
+
+	public function obtenerTabla(){
+
+		$Variables['Fechas']['dia1'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('dia1')
+			);
+			$Variables['Fechas']['mes1'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('mes1')
+			);
+			$Variables['Fechas']['anho1'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('anho1')
+			);
+			$Variables['Fechas']['dia2'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('dia2')
+			);
+			$Variables['Fechas']['mes2'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('mes2')
+			);
+			$Variables['Fechas']['anho2'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('anho2')
+			);
+			$Variables['Puesto'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('puesto')
+			);
+			$Variables['Id_Cliente'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('cliente')
+			);
+			$Variables['Trabajo'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('trabajo')
+			);
+			$Variables['Bus_Proceso'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('bus_proceso')
+			);
+			$Variables['Id_material'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('bus_material')
+			);
+			$Variables['Pais_C'] = $this->seguridad_m->mysql_seguro(
+				$this->input->post('pais_c')
+			);
+			
+			$Variables['Mostar_Datos'] = true;
+
+			//Trabajos en carga segun los datos del formulario
+			$Variables['Carga'] = array();
+			//Cargamos el modelo.
+			$this->load->model('carga/seguimiento_m', 'seguimiento');
+			//Si se ha dado click en el boton de Generar, buscamos la información.
+			if($Variables['Mostar_Datos'])
+			{
+				//Carga laboral para el grupo
+				$Variables['Carga'] = $this->seguimiento->carga(
+					$Variables['Fechas'],
+					$Variables['Puesto'],
+					$Variables['Id_Cliente'],
+					$Variables['Trabajo'],
+					true,
+					false,
+					$Variables['Bus_Proceso'],
+					$Variables['Id_material'],
+					0,
+					$Variables['Pais_C']
+				);
+				
+			}
+
+			 $response = array(
+			 	"code"=> 200,
+			 	"procesos" => $this->load->view('carga/tabla_procesos_load', $Variables, true),
+			 );
+
+			 header('Content-Type: application/json');
+	         echo json_encode($response);
+
+			
+
+	}
 }
 
 /* Fin del archivo */
